@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <title>Mina Rees Library</title>
+    <link rel="icon" href="favicon.png" sizes="32x32">
+    <link rel="icon" href="favicon.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-md col-md-6">
+            <a class="navbar-brand" href="#">Mina Rees Library</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse ms-auto" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" id='today-hours' href="#">Library Hours</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Help
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Ask a Librarian</a></li>
+                            <li><a class="dropdown-item" href="#">Contact Us</a></li>
+                            <li><a class="dropdown-item" href="#">CUNY Accounts</a></li>
+                            <li><a class="dropdown-item" href="#">Off-Campus Access</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            About
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">About the Library</a></li>
+                            <li><a class="dropdown-item" href="#">Collections</a></li>
+                            <li><a class="dropdown-item" href="#">Hours</a></li>
+                            <li><a class="dropdown-item" href="#">Library Directory</a></li>
+                            <li><a class="dropdown-item" href="#">Donate to the Library</a></li>
+                            <li><a class="dropdown-item" href="#">Technology in the Library</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid content">
+        <div class='bento col-md-6 row'>
+            <div class="">
+                <h5 id='institution'>
+                    The Graduate Center, CUNY
+                </h5>
+                <h1 id="main_statement">
+                    Search the Collections
+                </h1>
+                <div class="tab bento-tabs" role="tabpanel">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section1" class="nav-item"><a
+                                href="#Section1" aria-controls="Catalog" role="tab" data-toggle="tab"
+                                class='active nav-link'>CATALOG</a></li>
+                        <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section2" class="nav-item"><a
+                                href="#Section2" aria-controls="Articles" role="tab" data-toggle="tab"
+                                class="nav-link">ARTICLES +</a></li>
+                        <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section4" class="nav-item"><a
+                                href="#Section4" aria-controls="Databases" role="tab" data-toggle="tab" class="nav-link"
+                                class="nav-link">DATABASES</a></li>
+                        <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section3" class="nav-item"><a
+                                href="#Section3" aria-controls="Journals" role="tab" data-toggle="tab"
+                                class="nav-link">JOURNALS</a></li>
+                    </ul>
+                </div>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade show active" id="Section1">
+                        <div class="search-input col-xs-12">
+                            <div class="input-group col-md-12">
+                                <input id="primoQueryTemp" class="search-query
+                        form-control" name="query" size="35" type="text" aria-label="search books"
+                                    placeholder="Find books & e-books">
+                                <span class="input-group-btn">
+                                    <button class="btn" form="booksearch" value="Submit" id="booksearchButton"
+                                        type="submit" aria-label="submit">
+                                        <i class="fas fa-search"></i><span> Search</span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <ul class="options" id="searchCUNY">
+                            <li>
+                                <input name="ONESEARCH" type="radio" value="any" checked="checked" id="keyword"><label
+                                    for="keyword">Keyword</label>
+                            </li>
+                            <li> <input name="ONESEARCH" type="radio" value="title" id="title"><label
+                                    for="title">Title</label></li>
+                            <li> <input name="ONESEARCH" type="radio" value="creator" id="author"><label
+                                    for="author">Author</label></li>
+                            <li> <input name="ONESEARCH" type="radio" value="sub" id="subject"><label
+                                    for="subject">Subject</label></li>
+                            <!--                              <li> <input name="ONESEARCH" type="radio"
+                        value="lsr06"
+                        id="call"><label for="call">Call Number</label></li> -->
+
+                            <li><a href='http://libguides.gc.cuny.edu/OneSearchAdvanced' class='classic'>Advanced
+                                    Search</a>
+                            </li>
+                            <li><a href='https://cuny-gc.primo.exlibrisgroup.com/discovery/account?vid=01CUNY_GC:CUNY_GC'
+                                    class='classic'>OneSearch Account</a></li>
+                        </ul>
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="Section2">
+                        <div class="search-input col-xs-12">
+                            <div class="input-group col-md-12">
+                                <input type="text" class="search-query
+                        form-control" id="articleSearch" placeholder="Find articles, online resources, and more"
+                                    aria-label="Search for articles" />
+                                <span class="input-group-btn">
+                                    <button class="btn" type="button" id="articleButton" aria-label="submit">
+                                        <i class="fas fa-search"></i><span> Search</span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <ul class="options" id="articleSearchRadio">
+                            <li>
+                                <input name="articleSearch" type="radio" value="any" checked="checked"
+                                    id="keyword2"><label for="keyword2">Keyword</label>
+                            </li>
+                            <li> <input name="articleSearch" type="radio" value="title" id="title2"><label
+                                    for="title2">Title</label></li>
+                            <li> <input name="articleSearch" type="radio" value="creator" id="author2"><label
+                                    for="author2">Author</label></li>
+                            <li> <input name="articleSearch" type="radio" value="sub" id="subject2"><label
+                                    for="subject2">Subject</label></li>
+                        </ul>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="Section3">
+                        <form action="https://gm5yv9ts3z.search.serialssolutions.com/" name="SS_EJPSearchForm">
+                            <input name="V" type="hidden" value="1.0"> <input name="N" type="hidden" value="100"> <input
+                                name="L" type="hidden" value="gm5yv9ts3z">
+                            <div class="search-input">
+                                <div class="input-group col-md-12">
+                                    <input type="text" class="search-query
+                                                form-control" name="C" id="journalSearch"
+                                        placeholder="Find a journal or newspaper" aria-label="journal search" />
+                                    <span class="input-group-btn">
+                                        <button class="btn" value="Submit" type="submit" id="journalButton"
+                                            aria-label="submit">
+                                            <i class="fas fa-search"></i><span> Search</span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <ul class="options" id="searchJournals" name="S">
+                                <li>
+                                    <input type="radio" name="S" value="AC_T_B" checked="checked" id="begins"><label
+                                        for="begins">Title
+                                        begins with</label>
+                                </li>
+                                <li> <input type="radio" name="S" value="T_W_A" id="contains"><label
+                                        for="contains">Title
+                                        contains
+                                    </label></li>
+                                <li> <input type="radio" name="S" value="I_M" id="issn"><label for="issn">ISSN</label>
+                                </li>
+                            </ul>
+                            <input name="V" type="hidden" value="1.0"> <input name="N" type="hidden" value="100"> <input
+                                name="L" type="hidden" value="gm5yv9ts3z">
+                            <!-- <div><input id="SS_CFocusTag" name="C" type="text" ></div> -->
+                        </form>
+                        <div class="journals-a-z">
+                            <h3 class='browse-header'><a href='https://gm5yv9ts3z.search.serialssolutions.com/'>Browse
+                                    journals by title</a></h3>
+                            <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=1">1</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=A">A</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=B">B</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=C">C</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=D">D</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=E"
+                                    class="active">E</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=F">F</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=G">G</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=H">H</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=I">I</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=J">J</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=K">K</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=L">L</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=M">M</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=N">N</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=O">O</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=P">P</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=R">R</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=S">S</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=T">T</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=U">U</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=V">V</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=W">W</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a
+                                    href="https://gm5yv9ts3z.search.serialssolutions.com/?L=GM5YV9TS3Z&V=1.0&N=100&S=T_AZ&C=Z">Z</a>
+                            </span>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="Section4">
+                        <div class="database-list input-group col-xs-12"></div>
+                        <div class="databases">
+                            <h3 class='browse-header'><a href='http://libguides.gc.cuny.edu/az.php'>Browse databases by
+                                    title</a></h3>
+                            <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=1">1</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=a">A</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=b">B</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=c">C</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=d">D</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=e"
+                                    class="active">E</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=f">F</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=g">G</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=h">H</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=i">I</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=j">J</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=k">K</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=l">L</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=m">M</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=n">N</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=o">O</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=p">P</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=q">Q</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=r">R</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=s">S</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=t">T</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=u">U</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=v">V</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=w">W</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=x">X</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=y">Y</a>
+                            </span> <span class="views-summary
+                        views-summary-unformatted"> <a href="http://libguides.gc.cuny.edu/az.php?a=z">Z</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-filter"
+            style="background-image: url(cuny14-0045-min.jpg)">
+        </div><!-- /.header-filter -->
+
+        <div class="main main-raised col-md-6 row">
+            <div class="below-content">
+                <div class="feature-wrapper card card-raised research">
+                    <h2>RESEARCH</h2>
+                    <ul class="list-unstyled front-page-list">
+                        <li><a href="https://libguides.gc.cuny.edu/az.php">Databases A-Z</a></li>
+                        <li><a href="https://libguides.gc.cuny.edu/ebooks">E-book Collections</a></li>
+                        <li><a href="https://libguides.gc.cuny.edu/GoogleScholar">Google Scholar</a></li>
+                        <li><a href="https://gm5yv9ts3z.search.serialssolutions.com/">Journals A-Z</a></li>
+                        <li class=""><a href="http://libguides.gc.cuny.edu/OneSearch">OneSearch</a></li>
+                        <li><a href="https://libguides.gc.cuny.edu/MaRLI">Outside CUNY</a></li>
+                        <li><a href="https://libguides.gc.cuny.edu/">Research Guides</a></li>
+                        <li class=""><a href="https://libguides.gc.cuny.edu/WorldCatorg">WorldCat</a></li>
+                    </ul>
+                </div>
+                <div class="feature-wrapper card card-raised services">
+                    <h2>SERVICES</h2>
+                    <ul class="list-unstyled front-page-list">
+                        <li>
+                            <div id="libchat_b52f2cdc0eb17645195f20b93093a46e"></div>
+                            <script type="text/javascript"
+                                src="https://v2.libanswers.com/load_chat.php?hash=b52f2cdc0eb17645195f20b93093a46e"></script>
+                        </li>
+                        <li><a href="https://libguides.gc.cuny.edu/access">Access &amp; Borrowing</a></li>
+                        <li><a href="https://library.gc.cuny.edu/ask-a-librarian/">Ask a Librarian</a></li>
+                        <li id="covid"><a href="https://libguides.gc.cuny.edu/covid-19">Covid-19
+                                Continuity</a>
+                        </li>
+                        <li><a href="../instruction-and-workshops/">Instruction &amp; Workshops</a></li>
+                        <li><a href="https://gc-cuny.illiad.oclc.org/illiad/logon.html">Interlibrary
+                                Loan</a>
+                        </li>
+                        <li id="covid"><a href="../online-services/">Online Services</a></li>
+                        <li><a href="https://libguides.gc.cuny.edu/reserves">Reserves</a></li>
+                    </ul>
+                </div>
+                <div class="feature-wrapper card card-raised scholarship">
+                    <h2 class="feature-header">SCHOLARSHIP</h2>
+                    <ul class="list-unstyled front-page-list">
+                        <li><a href="https://libguides.gc.cuny.edu/citation">Citation Management</a></li>
+                        <li><a href="https://academicworks.cuny.edu/">CUNY Academic Works</a></li>
+                        <li><a href="https://libguides.gc.cuny.edu/datamgmt">Data Management</a></li>
+                        <li><a href="https://libguides.gc.cuny.edu/digital_tools_consult">Digital Tools
+                                &amp;
+                                Techniques</a></li>
+                        <li><a href="https://libguides.gc.cuny.edu/dissertations">Dissertations &amp;
+                                Theses</a>
+                        </li>
+                        <li><a href="https://libguides.gc.cuny.edu/openaccess">Open Access</a></li>
+                        <li><a href="https://libguides.gc.cuny.edu/oer">Open Educational Resources</a></li>
+                        <li><a href="https://library.gc.cuny.edu/scholarship">Scholarly Research
+                                Services</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class='hours-and-events row col-md-6 space-between'>
+            <div class='events-section col-md-8' id='events'>
+                Loading...
+                <script id="template" type="x-tmpl-mustache">
+                    <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/calendar?cid=15537">Events</a></h3>
+                    <div>
+                    {{#events}}
+                    <div class='event'>
+                    <h4><a href='{{event_link}}'>{{event_name}}</a></h4>
+                    <div class='event-date'>{{event_date}} {{event_time}}</div>
+                    <div class='event-description'>{{{event_description}}}</div>
+                    </div>
+                    {{/events}}
+                    </div>
+                </script>
+            </div>
+            <div class='hours-section col-md-4' id=hours>
+                Loading...
+                <script id="hours-template" type="x-tmpl-mustache">
+
+                    <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/hours?cid=15537">Hours</a></h3> 
+                    <div class='hours'>
+                    <table class='hours-table table table-striped'>
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                    {{#days}}
+                        <tr class={{isToday}}>
+                            <td>{{day}}</td>
+                            <td>{{hours}}</td>
+                        </tr>
+                        {{/days}}
+                    </tbody>
+                    </div>
+                </script>
+            
+            </div>
+        </div>
+        <div id='news' class='news-section rss-feed row col-md-6'>
+        </div>
+
+        <footer class="footer row col-md-12">
+            <div class="container col-md-6">
+                <div class="footer-content">
+                    <div id="footer-logo col-md-2">
+                        <a href="https://library.gc.cuny.edu/"><img
+                                src="https://library.gc.cuny.edu/new4/wp-content/uploads/2019/01/LibraryLogo-inverse-transparent-compressed-410x148-256.png"
+                                alt="library logo" class='footer-logo'></a>
+                        <div class=""><span style="color:#989898;">Header images © Chris
+                                Cooper</span></div>
+                    </div>
+                    <div class='col-md-2'>
+                        <p>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:2128177040"> (212) 817-7040</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-map-marker"></i>
+                            <span> 365 Fifth Avenue, </br>
+                                New York, NY 10016</span>
+                        </p>
+                        <p>
+                            <i class="fas fa-envelope"></i>
+                            <a href="../ask-a-librarian/"> Contact Us</a>
+                        </p>
+                        <p>
+                            <i class="fab fa-twitter"></i><span> @cunyGClibrary</span></a>
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <div>
+                            <ul class='footer-list'>
+                                <li><a href="https://library.gc.cuny.edu/cuny-accounts/">CUNY Accounts</a></li>
+                                <li><a href="https://library.gc.cuny.edu/support-the-library/">Donate to the
+                                        Library</a></li>
+                                <li><a href="https://www.gc.cuny.edu/">The Graduate Center</a></li>
+                                <li><a href="https://www.gc.cuny.edu/GC-Header/GC-Portal">GC Portal</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-rss/3.3.0/jquery.rss.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.1/mustache.min.js"
+        integrity="sha512-3GRj7sme01zpWwRNPNy48Rda1bD9cq34lqYG5vb8ZXGc+wRqsoBJ3+AC25IYW5w5SrWlzHqIpNIxZt5QF9sXLg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="utils.js" type="text/javascript"></script>
+
+ 
+</body>
+
+</html>
