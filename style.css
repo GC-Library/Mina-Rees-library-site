@@ -74,7 +74,6 @@ h1, h2, h3, h4, h5, h6 {
 	border-bottom: none;
 }
 .navbar-brand{
-	margin-left: 10px;
 }
 .navbar-brand:hover{
 	color: #005daa !important;
@@ -508,6 +507,9 @@ border-radius: unset !important;
     flex-direction: column;
     align-items: center;
 }
+.event{
+	margin-right: 10px;
+}
 .event-date{
 	font-weight:800;
 }
@@ -573,7 +575,7 @@ flex-flow: row wrap;
 flex: 1 1 auto;
 justify-content: space-between;
 color: white;
-margin-top: 20px;
+margin-top: 40px;
 font-size: 16px;
 }
 .footer-content > div > div {

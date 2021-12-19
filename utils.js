@@ -77,7 +77,7 @@ $(document).ready(function ($) {
         layoutTemplate: "<h3 class='lower-header'><a href='https://gclibrary.commons.gc.cuny.edu/'>News &amp; Views</a></h3><ul class='news'>{entries}</ul>",
     
         // inner template for each entry
-        entryTemplate: '<li>{image}<h4><a href="{url}">{title}</a></h4><p>{shortBody}</p></li>',
+        entryTemplate: '<li>{image}<h4><a href="{url}">{title}</a></h4><p>{shortBodyWithDots}</p></li>',
     
         // additional token definition for in-template-usage
         // default: {}
@@ -86,6 +86,13 @@ $(document).ready(function ($) {
           image: function(entry, tokens) {
             return entry.content.match(/<img[^>]+>/) || "";
             },
+            shortBodyWithDots: function(entry, tokens) {
+                // get all text after open p tag
+                var shortBodyText = entry.content.replace(/<[^>]+>/g, '');
+                console.log(shortBodyText); 
+                var truncatedBodyText = shortBodyText.substring(0, 200) + "...";
+                return truncatedBodyText;
+            }
         },
         // formats the date with moment.js (optional)
         // default: 'dddd MMM Do'
@@ -205,4 +212,3 @@ $(document).ready(function ($) {
         }
     })
 });
-var hello = 'hello'
