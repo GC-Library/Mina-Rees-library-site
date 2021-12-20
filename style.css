@@ -101,6 +101,14 @@ h1, h2, h3, h4, h5, h6 {
     max-height: calc(750px + (500 - 600) * (100vw - 600px) / (1200 - 600));
 } */
 
+#alert-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.alert{
+	height: fit-content;
+}
 .header-filter {
 	transform: scale(1.4);
     position: absolute;
