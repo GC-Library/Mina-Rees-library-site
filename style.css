@@ -78,8 +78,7 @@ h1, h2, h3, h4, h5, h6 {
 .navbar a {
 	border-bottom: none;
 }
-.navbar-brand{
-}
+
 .navbar-brand:hover{
 	color: #005daa !important;
 }
