@@ -95,6 +95,15 @@ h1, h2, h3, h4, h5, h6 {
 #today-hours{
 	margin-right: 100px;
 }
+#s-lg-embedded-search-widget-1640026870420 button{
+	color: white !important;
+	background-color: #3c4859 !important;
+	/* border-radius:0; */
+}
+.s-lg-form-control{
+	border-radius: 0;
+	margin-left: 50px;
+}
 
 /* Hero & etc. */
 /* .item {
