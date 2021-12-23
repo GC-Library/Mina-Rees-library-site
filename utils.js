@@ -42,6 +42,9 @@ $(document).ready(function ($) {
             var allEvents = [];
             for (var i = 0; i < 2; i++) {
                 var event = result.events[i];
+                if (event == null) {
+                    break;
+                }
                 var event_link = event.url.public;
                 var event_date = new Date(event.start);
                 var event_time = event_date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -64,9 +67,16 @@ $(document).ready(function ($) {
             var events = {
                 "events": allEvents
             }
-            var template = document.getElementById('template').innerHTML;
-            var rendered = Mustache.render(template, events);
-            $('#events').html(rendered);
+            // if events is empty then display a different message
+            if (events.events.length == 0) {
+                console.log("No events found");
+                $("#events").html("<h3 class='lower-header'><a href=''>Featured Database</a></h3>");
+            } else {
+                var template = document.getElementById('template').innerHTML;
+                var rendered = Mustache.render(template, events);
+                $('#events').html(rendered);
+            }
+
         }
     });
 
@@ -123,7 +133,9 @@ $(document).ready(function ($) {
 
             // a callback, which gets triggered when an error occurs
             // default: function() { throw new Error("jQuery RSS: url don't link to RSS-Feed") }
-            error: function () { },
+            error: function () {
+                    console.log("News rss did not load.");
+             },
 
             // a callback, which gets triggered when everything was loaded successfully
             // this is an alternative to the next parameter (callback function)
@@ -222,7 +234,6 @@ $(document).ready(function ($) {
             const alertHTML = '<div class="alert alert-dismissible alert-'+ alertColor +' fade show" role="alert">' + alertText
                 + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
             if (toShow) {
-                console.log('showing')
                 var target = $('#alert-container')
                 target.html(alertHTML).find('.alert').addClass(alertColor)
             }

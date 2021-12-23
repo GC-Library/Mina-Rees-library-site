@@ -93,7 +93,6 @@ h1, h2, h3, h4, h5, h6 {
 	color: #005daa !important;
 }
 #today-hours{
-	margin-right: 100px;
 }
 #s-lg-embedded-search-widget-1640026870420 button{
 	color: white !important;
@@ -105,11 +104,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin-left: 50px;
 }
 
-/* Hero & etc. */
-/* .item {
-    max-height: calc(750px + (500 - 600) * (100vw - 600px) / (1200 - 600));
-} */
-
+/* alert */
 #alert-container{
 	display: flex;
 	justify-content: center;
@@ -117,6 +112,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 .alert{
 	height: fit-content;
+}
+.alert .btn-close:hover{
+	background-color: inherit;
 }
 .header-filter {
 	transform: scale(1.4);
