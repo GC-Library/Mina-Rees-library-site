@@ -392,6 +392,7 @@ input[type="radio"] + label:hover{
     column-gap: 8%;
     row-gap: 1rem;
     grid-auto-flow: dense;
+	justify-items: stretch;
 }
 
 .feature-wrapper {
@@ -401,7 +402,7 @@ input[type="radio"] + label:hover{
     display: flex;
     flex-direction: column;
     min-width: 270px;
-	max-width: 350px;
+	/* max-width: 350px; */
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
@@ -495,6 +496,10 @@ border-radius: unset !important;
     flex: 1 1 auto;
 	justify-content: space-between;
 	/* max-width: 66%; */
+}
+
+iframe{
+	margin-bottom: 20px;
 }
 
 .event-description div{

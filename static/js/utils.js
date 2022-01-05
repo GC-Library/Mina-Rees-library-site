@@ -70,7 +70,25 @@ $(document).ready(function ($) {
             // if events is empty then display a different message
             if (events.events.length == 0) {
                 console.log("No events found");
-                $("#events").html("<h3 class='lower-header'><a href=''>Featured Database</a></h3>");
+                $("#events").html(' <h3 class="lower-header"><a href="https://www.youtube.com/channel/UCF11xs3zCmMdMdWoOfxP_kg">Featured Video</a></h3><iframe id="vid" width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLbp9SdWbaAjmttsctx1kDqiVOZruZDwCm" frameborder="0" allowfullscreen></iframe>');
+                swapVideos = function () {
+                    const YOUTUBE_API_KEY = "AIzaSyDB8xovapQlJM7waqm0aU5o3rtA3B7olfI";
+                    var playlistURL = `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=UCF11xs3zCmMdMdWoOfxP_kg&part=snippet,id&order=date&maxResults=20`;
+                    fetch(playlistURL)
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data.items);
+                            // play random video
+                            var randomVideo = data.items[Math.floor(Math.random() * data.items.length)];
+                            console.log(randomVideo); 
+                            var videoEmbed = document.getElementById('vid')
+                            videoEmbed.src = `https://www.youtube.com/embed/${randomVideo.id.videoId}`;
+                        });
+                }
+                swapVideos();
+
+
+
             } else {
                 var template = document.getElementById('template').innerHTML;
                 var rendered = Mustache.render(template, events);
@@ -134,8 +152,8 @@ $(document).ready(function ($) {
             // a callback, which gets triggered when an error occurs
             // default: function() { throw new Error("jQuery RSS: url don't link to RSS-Feed") }
             error: function () {
-                    console.log("News rss did not load.");
-             },
+                console.log("News rss did not load.");
+            },
 
             // a callback, which gets triggered when everything was loaded successfully
             // this is an alternative to the next parameter (callback function)
@@ -231,7 +249,7 @@ $(document).ready(function ($) {
             const alertText = alert.message;
             const alertColor = alert.style;
             const toShow = alert.show;
-            const alertHTML = '<div class="alert alert-dismissible alert-'+ alertColor +' fade show" role="alert">' + alertText
+            const alertHTML = '<div class="alert alert-dismissible alert-' + alertColor + ' fade show" role="alert">' + alertText
                 + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
             if (toShow) {
                 var target = $('#alert-container')
