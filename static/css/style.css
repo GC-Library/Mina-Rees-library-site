@@ -146,6 +146,7 @@ h1, h2, h3, h4, h5, h6 {
 	min-height: 408px;
 }
 
+
 .header-filter::before {
     background-color: rgba(0, 0, 0, 0.3);
     
@@ -182,6 +183,7 @@ h1, h2, h3, h4, h5, h6 {
 .tab .nav-tabs li{
 	margin-bottom: 0;
     margin-right: 10px;
+	min-width: 120px;
 }
 .tab .nav-tabs li a{
 	display: block;
