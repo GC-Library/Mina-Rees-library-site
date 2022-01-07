@@ -54,7 +54,7 @@ $(document).ready(function ($) {
                 var event_description = event.description;
                 var event_description_start = event_description.indexOf('<p>');
 
-                var event_description_short = event_description.substring(event_description_start, event_description_start + 200) + "...";
+                var event_description_short = event_description.substring(event_description_start, event_description_start + 300) + "...";
                 var eventData = {
                     "event_name": event_name,
                     "event_description": event_description_short,
@@ -80,7 +80,7 @@ $(document).ready(function ($) {
                             console.log(data.items);
                             // play random video
                             var randomVideo = data.items[Math.floor(Math.random() * data.items.length)];
-                            console.log(randomVideo); 
+                            console.log(randomVideo);
                             var videoEmbed = document.getElementById('vid')
                             videoEmbed.src = `https://www.youtube.com/embed/${randomVideo.id.videoId}`;
                         });
@@ -176,71 +176,49 @@ $(document).ready(function ($) {
         success: function (result) {
             var minaRees = result.locations[0]
             var hoursThisWeek = minaRees.weeks[0]
+            var today = moment().format('dddd');
 
-            // highlight today's hours
-            var today = new Date().getDay()
-            var hoursArranged = [
-                {
-                    day: 'Sunday',
-                    hours: hoursThisWeek.Sunday.rendered,
-                    isToday: today === 0
-                },
-                {
-                    day: 'Monday',
-                    hours: hoursThisWeek.Monday.rendered,
-                    isToday: today === 1
-                },
-                {
-                    day: 'Tuesday',
-                    hours: hoursThisWeek.Tuesday.rendered,
-                    isToday: today === 2
-                },
-                {
-                    day: 'Wednesday',
-                    hours: hoursThisWeek.Wednesday.rendered,
-                    isToday: today === 3
-                },
-                {
-                    day: 'Thursday',
-                    hours: hoursThisWeek.Thursday.rendered,
-                    isToday: today === 4
-                },
-                {
-                    day: 'Friday',
-                    hours: hoursThisWeek.Friday.rendered,
-                    isToday: today === 5
-                },
-                {
-                    day: 'Saturday',
-                    hours: hoursThisWeek.Saturday.rendered,
-                    isToday: today === 6
+            // add 15 minutes to "to" time 
+            const correctHours = Object.keys(hoursThisWeek).map(key => {
+                var hours = hoursThisWeek[key]
+                hours.day = key
+                if (hours.times.status === "open") {
+                    var to = hours.times.hours[0].to
+                    var from = hours.times.hours[0].from
+                    var fromTime = moment(from, "HH:mm")
+                    hours.times.hours[0].from = fromTime.format("h A")
+                    var toTime = moment(to, "hh:mm A").add(15, 'minutes').format("h A")
+                    hours.times.hours[0].to = toTime
                 }
-            ]
-            hoursArranged.forEach(function (item) {
-                var day = item.day
-                var hours = item.hours
-                if (hours.includes('closed')) {
-                    var newHours = 'Closed'
-                    hoursArranged.push({
-                        day: day,
-                        hours: newHours,
-                        isToday: item.isToday
-                    })
+                return hours
+            });
+            const renderHours = Object.keys(correctHours).map(key => {
+                var hours = correctHours[key]
+                if (hours.day === today) {
+                    hours.isToday = true
+                }else{
+                    hours.isToday = false
                 }
+                if (hours.times.status && hours.times.status !== "closed") {
+                    hours.rendered = hours.times.hours.map(hour => {
+                        return `${hour.from} - ${hour.to}`
+                    }).join("")
+                }
+                return hours
             })
             var hours = {
-                "days": hoursArranged
+                "days": renderHours
             }
-            var todayHours = hoursArranged.filter(function (item) {
-                return item.isToday
-            })
-            var todayHours = "Today's Hours: " + todayHours[0].hours
+            var todayHours = hours.days.filter(day => day.day === today)
+            var todayHours = "Today's Hours: " + todayHours[0].times.hours[0].from + " - " + todayHours[0].times.hours[0].to
             $('#today-hours').html(todayHours)
             var template = document.getElementById('hours-template').innerHTML;
             var rendered = Mustache.render(template, hours);
             $('#hours').html(rendered);
         }
-    })
+    });
+
+
 
     $.ajax({
         url: 'alert.yml', dataType: 'text', success: function (data) {
