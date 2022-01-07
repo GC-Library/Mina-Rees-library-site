@@ -182,14 +182,6 @@ $(document).ready(function ($) {
             const correctHours = Object.keys(hoursThisWeek).map(key => {
                 var hours = hoursThisWeek[key]
                 hours.day = key
-                if (hours.times.status === "open") {
-                    var to = hours.times.hours[0].to
-                    var from = hours.times.hours[0].from
-                    var fromTime = moment(from, "HH:mm")
-                    hours.times.hours[0].from = fromTime.format("h A")
-                    var toTime = moment(to, "hh:mm A").add(15, 'minutes').format("h A")
-                    hours.times.hours[0].to = toTime
-                }
                 return hours
             });
             const renderHours = Object.keys(correctHours).map(key => {
