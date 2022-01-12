@@ -11,4 +11,4 @@
 alert:
   style: danger
   message: it's a snow day!
-  show: True
+  show: False

@@ -178,7 +178,7 @@ $(document).ready(function ($) {
             var hoursThisWeek = minaRees.weeks[0]
             var today = moment().format('dddd');
 
-            // add 15 minutes to "to" time 
+            
             const correctHours = Object.keys(hoursThisWeek).map(key => {
                 var hours = hoursThisWeek[key]
                 hours.day = key

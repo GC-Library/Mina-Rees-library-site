@@ -25,7 +25,6 @@ a {
 	text-decoration: none;
 }
 a:hover, a:focus {
-	color: #005daa;
 	border-bottom: 3px solid rgb(0,93,170);
 	opacity: 1.0;
 	transition: none;
@@ -35,7 +34,7 @@ a:not(.btn):not(.wp-block-button__link):not(.wp-block-button):not(.button):not(.
 	opacity: 1.0;
 }
 a, .navbar .dropdown-menu li:hover > a, .navbar .dropdown-menu li:focus > a, .navbar .dropdown-menu li:active > a, .navbar .navbar-nav > li .dropdown-menu li:hover > a, body:not(.home) .navbar-default .navbar-nav > .active:not(.btn) > a, body:not(.home) .navbar-default .navbar-nav > .active:not(.btn) > a:hover, body:not(.home) .navbar-default .navbar-nav > .active:not(.btn) > a:focus, a:hover, .card-blog a.moretag:hover, .card-blog a.more-link:hover, .widget a:hover {
-	color: #005daa;
+	/* color: #005daa; */
 }
 
 .content{
@@ -77,10 +76,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 .navbar a {
 	border-bottom: none;
+	font-family: Roboto Condensed;
 }
 
 .navbar-brand:hover{
-	color: #005daa !important;
+	background-color: #005daa !important;
+	transition: 0.3s;
 }
 .nav-link {
 	color: white !important;
@@ -90,7 +91,8 @@ h1, h2, h3, h4, h5, h6 {
 	text-transform: uppercase;
 }
 .nav-link:hover{
-	color: #005daa !important;
+	background-color: #005daa !important;
+	transition: 0.3s;
 }
 #today-hours{
 }
@@ -497,7 +499,7 @@ border-radius: unset !important;
 	font-size: 16px;
     flex: 1 1 auto;
 	justify-content: space-between;
-	/* max-width: 66%; */
+	/* min-width: 66%; */
 }
 
 iframe{
@@ -524,7 +526,7 @@ iframe{
 .news > li{
 	display: flex;
     padding-bottom: 10px;
-    max-width: 50%;
+    max-width: 25%;
     flex: 1 1 auto;
     justify-content: space-around;
     border-right: 1px solid #e2e2e2;
