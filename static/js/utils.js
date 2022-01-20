@@ -7,7 +7,7 @@ $(document).ready(function ($) {
     $("#booksearchButton").click(function () {
         query = $("input#primoQueryTemp").val();
         radio = $("#searchCUNY > li input[name=ONESEARCH]:checked").val();
-        finalQuery = "https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC&query=" + radio + ",contains," + query + "&tab=Everything&search_scope=MyInst_and_CI&sortby=rank&mfacet=rtype,include,books,1&mfacet=rtype,include,book_chapters,1&lang=en_US&mode=basic&offset=0";
+        finalQuery = "https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC&query=" + radio + ",contains," + query + "&tab=Everything&search_scope=IZ_CI_AW&sortby=rank&mfacet=rtype,include,books,1&mfacet=rtype,include,book_chapters,1&lang=en_US&mode=basic&offset=0";
         window.location = finalQuery;
     });
     $('#primoQueryTemp').keypress(function (e) {
@@ -18,7 +18,7 @@ $(document).ready(function ($) {
     $("#articleButton").click(function () {
         query = $("#articleSearch").val();
         radio = $("#articleSearchRadio > li input[name=articleSearch]:checked").val();
-        finalQuery = "https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC&query=" + radio + ",contains," + query + "&tab=Everything&search_scope=MyInst_and_CI&sortby=rank&facet=rtype,exclude,book_chapters&facet=rtype,exclude,books&lang=en_US&mode=basic&offset=0";
+        finalQuery = "https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC&query=" + radio + ",contains," + query + "&tab=Everything&search_scope=IZ_CI_AW&sortby=rank&facet=rtype,exclude,book_chapters&facet=rtype,exclude,books&lang=en_US&mode=basic&offset=0";
         window.location = finalQuery;
     });
     $('#articleSearch').keypress(function (e) {
