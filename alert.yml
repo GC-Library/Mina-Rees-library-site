@@ -10,5 +10,5 @@
 # https://getbootstrap.com/docs/5.0/components/alerts/
 alert:
   style: danger
-  message: it's a snow day!
-  show: False
+  message: The library will be closed Friday evening and all Saturday due to snow. 
+  show: True
