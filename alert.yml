@@ -11,4 +11,4 @@
 alert:
   style: danger
   message: The library will be closed Friday evening and all Saturday due to snow. 
-  show: True
+  show: False
