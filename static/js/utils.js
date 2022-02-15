@@ -34,6 +34,13 @@ $(document).ready(function ($) {
         $(this).parent().removeClass('active');
     });
 
+    function truncate( str, n, useWordBoundary ){
+        if (str.length <= n) { return str; }
+        const subString = str.substr(0, n-1);
+        return (useWordBoundary 
+          ? subString.substr(0, subString.lastIndexOf(" ")) 
+          : subString) + "&hellip;";
+      };
 
     $.ajax({
         url: 'https://gc-cuny.libcal.com/1.0/events?cal_id=15537&iid=5568&key=1329a09432a4a0fce7f49801a8824ed7',
@@ -45,6 +52,7 @@ $(document).ready(function ($) {
                 if (event == null) {
                     break;
                 }
+
                 var event_link = event.url.public;
                 var event_date = new Date(event.start);
                 var event_time = event_date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -53,18 +61,17 @@ $(document).ready(function ($) {
                 var event_name = event.title;
                 var event_description = event.description;
                 var event_description_start = event_description.indexOf('<p>');
-
+                var event_description_short = truncate(event_description, 400, true);
                 // var event_description_short = event_description.substring(event_description_start, event_description_start + 300) + "...";
                 var eventData = {
                     "event_name": event_name,
-                    "event_description": event_description,
+                    "event_description": event_description_short,
                     "event_date": event_date_string_with_day,
                     "event_time": event_time_string,
                     "event_link": event_link
                 };
                 allEvents.push(eventData);
             }
-            console.log(allEvents);
             var events = {
                 "events": allEvents
             }
@@ -93,7 +100,6 @@ $(document).ready(function ($) {
             } else {
                 var template = document.getElementById('template').innerHTML;
                 var rendered = Mustache.render(template, events);
-                console.log(rendered);
                 $('#events').html(rendered);
             }
 

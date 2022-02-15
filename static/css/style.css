@@ -518,13 +518,7 @@ iframe{
     margin-left: 0px !important;
     padding-right: 0px;
 }
-.line-clamp {
-	display: -webkit-box;
-	-webkit-line-clamp: 6;
-	-webkit-box-orient: vertical; 
-	overflow: hidden;
-	text-overflow: ellipsis; 
-  }
+
 
 .table .true td {
 	background-color: #3c4859;
