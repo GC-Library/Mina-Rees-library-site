@@ -61,7 +61,7 @@ $(document).ready(function ($) {
                 var event_name = event.title;
                 var event_description = event.description;
                 var event_description_start = event_description.indexOf('<p>');
-                var event_description_short = truncate(event_description, 400, true);
+                var event_description_short = truncate(event_description, 350, true);
                 // var event_description_short = event_description.substring(event_description_start, event_description_start + 300) + "...";
                 var eventData = {
                     "event_name": event_name,
