@@ -111,6 +111,8 @@ h1, h2, h3, h4, h5, h6 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: fixed;
+    bottom: 22px;
 }
 .alert{
 	height: fit-content;
@@ -127,7 +129,7 @@ h1, h2, h3, h4, h5, h6 {
     right: 0;
     z-index: -1;
     background-position: 50% -20%;
-    height: 550px;
+    height: 460px;
 }
 
 .header-filter:before, .header-filter:after {
@@ -144,8 +146,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bento{
-    margin-top: 150px;
-	min-height: 408px;
+    margin-top: 160px;
+	min-height: 285px;
 }
 
 
