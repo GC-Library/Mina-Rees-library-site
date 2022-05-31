@@ -11,4 +11,4 @@
 alert:
   style: danger
   message: The library will be closed on Sat 5/28 thru Mon 5/30 for Memorial Day Weekend.
-  show: True
+  show: False
