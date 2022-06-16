@@ -213,7 +213,7 @@ $(document).ready(function ($) {
     });
 
     $.ajax({
-        url: 'alert.yml', dataType: 'text', success: function (data) {
+        url: 'https://raw.githubusercontent.com/GC-Library/Mina-Rees-library-site/main/alert.yml', dataType: 'text', success: function (data) {
             const doc = jsyaml.load(data)
             const alert = doc.alert
             const alertText = alert.message;

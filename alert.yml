@@ -10,5 +10,5 @@
 # https://getbootstrap.com/docs/5.0/components/alerts/
 alert:
   style: danger
-  message: The library will be closed on Sat 5/28 thru Mon 5/30 for Memorial Day Weekend.
+  message: The library is open for the summer!
   show: True
