@@ -9,6 +9,6 @@
 # dark
 # https://getbootstrap.com/docs/5.0/components/alerts/
 alert:
-  style: danger
-  message: The library is open for the summer!
+  style: info
+  message: The library is open for the summer...
   show: True
