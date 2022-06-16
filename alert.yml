@@ -11,4 +11,4 @@
 alert:
   style: info
   message: The library is open for the summer!
-  show: True
+  show: False
