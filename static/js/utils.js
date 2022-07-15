@@ -1,8 +1,25 @@
+// function searchPrimo() {
+//     document.getElementById("primoJournalQuery").value = "any,contains," + document.getElementById("primoQueryTemp2").value.replace(/[,]/g, " ");
+//     console.log(document.forms["searchForm"]);
+//     document.forms["searchForm"].submit();
+//     }
 
 $(document).ready(function ($) {
     $(".database-list").load("https://lgapi-us.libapps.com/widgets.php?site_id=146&widget_type=2&search_terms=&search_match=2&subject_ids=&sort_by=name&list_format=2&drop_text=Select+a+Database...&output_format=1&load_type=2&enable_description=1&widget_embed_type=2&num_results=0&enable_more_results=0&window_target=2&config_id=1535395835265", function () {
         $("#s-lg-frm-az-widget-1535395835265").addClass('col-md-12');
     })
+
+
+    $("#journalSearchButton").click(function () {
+        var query = $("#primoQueryTemp2").val();
+        query = 'query=any,contains,' + query.replace(/[,]/g, " ") + '&tab=jsearch_slot&vid=01CUNY_GC:CUNY_GC&offset=0&journals=any,'+ query.replace(/[,]/g, " ");
+        window.location = 'https://cuny-gc.primo.exlibrisgroup.com/discovery/jsearch?' + query;
+    });
+    $('#primoQueryTemp2').keypress(function (e) {
+        if (e.which == 13) {//Enter key pressed
+            $('#journalSearchButton').click();//Trigger search button click event
+        }
+    });
 
     $("#booksearchButton").click(function () {
         query = $("input#primoQueryTemp").val();
@@ -24,10 +41,8 @@ $(document).ready(function ($) {
     $('#articleSearch').keypress(function (e) {
         if (e.which == 13) {//Enter key pressed
             $('#articleButton').click();//Trigger search button click event
-
         }
     });
-
 
     $('.bento-tabs a').click(function (e) {
         e.preventDefault();
@@ -54,7 +69,7 @@ $(document).ready(function ($) {
                 var event_time_string = event_time
                 var event_name = event.title;
                 var event_description_start = event_description.indexOf('<p>');
-                
+
                 var event_description_stripped = event_description.replace(/(<([^>]+)>)/gi, "");
                 var event_description_short = event_description_stripped.substring(0, 300) + "...";
                 var eventData = {
@@ -79,7 +94,6 @@ $(document).ready(function ($) {
                     fetch(playlistURL)
                         .then(response => response.json())
                         .then(data => {
-                            console.log(data.items);
                             // play random video
                             var randomVideo = data.items[Math.floor(Math.random() * data.items.length)];
                             console.log(randomVideo);
@@ -88,8 +102,6 @@ $(document).ready(function ($) {
                         });
                 }
                 swapVideos();
-
-
 
             } else {
                 var template = document.getElementById('template').innerHTML;
@@ -180,7 +192,7 @@ $(document).ready(function ($) {
             var hoursThisWeek = minaRees.weeks[0]
             var today = moment().format('dddd');
 
-            
+
             const correctHours = Object.keys(hoursThisWeek).map(key => {
                 var hours = hoursThisWeek[key]
                 hours.day = key
@@ -190,7 +202,7 @@ $(document).ready(function ($) {
                 var hours = correctHours[key]
                 if (hours.day === today) {
                     hours.isToday = true
-                }else{
+                } else {
                     hours.isToday = false
                 }
                 if (hours.times.status && hours.times.status !== "closed") {
