@@ -9,7 +9,6 @@ $(document).ready(function ($) {
         $("#s-lg-frm-az-widget-1535395835265").addClass('col-md-12');
     })
 
-
     $("#journalSearchButton").click(function () {
         var query = $("#primoQueryTemp2").val();
         query = 'query=any,contains,' + query.replace(/[,]/g, " ") + '&tab=jsearch_slot&vid=01CUNY_GC:CUNY_GC&offset=0&journals=any,'+ query.replace(/[,]/g, " ");
