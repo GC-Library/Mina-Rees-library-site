@@ -11,7 +11,7 @@ $(document).ready(function ($) {
 
     $("#journalSearchButton").click(function () {
         var query = $("#primoQueryTemp2").val();
-        query = 'query=any,contains,' + query.replace(/[,]/g, " ") + '&tab=jsearch_slot&vid=01CUNY_GC:CUNY_GC&offset=0&journals=any,'+ query.replace(/[,]/g, " ");
+        query = 'query=any,contains,' + query.replace(/[,]/g, " ") + '&tab=jsearch_slot&vid=01CUNY_GC:CUNY_GC&offset=0&journals=any,' + query.replace(/[,]/g, " ");
         window.location = 'https://cuny-gc.primo.exlibrisgroup.com/discovery/jsearch?' + query;
     });
     $('#primoQueryTemp2').keypress(function (e) {
