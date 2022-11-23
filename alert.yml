@@ -10,5 +10,5 @@
 # https://getbootstrap.com/docs/5.0/components/alerts/
 alert:
   style: info
-  message: The library is open for the summer!
-  show: False
+  message: The Mina Rees Library is closed November 23 and 24.
+  show: True
