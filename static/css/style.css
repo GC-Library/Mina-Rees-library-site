@@ -83,6 +83,9 @@ h1, h2, h3, h4, h5, h6 {
 	background-color: #005daa !important;
 	transition: 0.3s;
 }
+.navbar-nav > .nav-item{
+	margin-left: 20px;
+}
 .nav-link {
 	color: white !important;
 	font-size: 16px;
@@ -94,8 +97,10 @@ h1, h2, h3, h4, h5, h6 {
 	background-color: #005daa !important;
 	transition: 0.3s;
 }
-#today-hours{
+#give{
+	background-color: #005daa;
 }
+
 #s-lg-embedded-search-widget-1640026870420 button{
 	color: white !important;
 	background-color: #3c4859 !important;
