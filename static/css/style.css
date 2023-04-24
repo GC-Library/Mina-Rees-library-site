@@ -653,6 +653,9 @@ footer .glyphicon {
 .footer-logo{
 width: 80%;
 }
+.statement{
+	padding-top: 20px !important;
+}
 .twit{
 	padding-right: 10px;
 	position: relative;
