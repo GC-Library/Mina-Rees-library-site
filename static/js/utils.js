@@ -114,87 +114,27 @@ $(document).ready(function ($) {
     const RSS_URL = `https://gclibrary.commons.gc.cuny.edu/category/blog/website-front-page/feed/?fsk=5c1146bca3512`;
 
 
-let parser = new RSSParser();
-parser.parseURL(RSS_URL, function(err, feed) {
-  if (err) throw err;
-  console.log(feed.title);
-  feed.items.forEach(function(entry) {
-    console.log(entry.title + ':' + entry.link);
-  })
-})
-        
-
-    // $('#news').rss('https://gclibrary.commons.gc.cuny.edu/category/blog/website-front-page/feed/?fsk=5c1146bca3512',
-    //     {
-    //         limit: 4,
-    //         ssl: true,
-    //         support: false,
-    //         layoutTemplate: "<h3 class='lower-header'><a href='https://gclibrary.commons.gc.cuny.edu/'>News &amp; Views</a></h3><ul class='news'>{entries}</ul>",
-
-    //         // inner template for each entry
-    //         entryTemplate: '<li>{image}<h4><a href="{url}">{title}</a></h4><p>{shortBodyWithDots}</p></li>',
-
-    //         // additional token definition for in-template-usage
-    //         // default: {}
-    //         // valid values: any object/hash
-    //         tokens: {
-    //             image: function (entry, tokens) {
-    //                 return entry.content.match(/<img[^>]+>/) || "";
-    //             },
-    //             shortBodyWithDots: function (entry, tokens) {
-    //                 // get all text after open p tag
-    //                 var shortBodyText = entry.content.replace(/<[^>]+>/g, '');
-    //                 var truncatedBodyText = shortBodyText.substring(0, 200) + "...";
-    //                 return truncatedBodyText;
-    //             }
-    //         },
-    //         // formats the date with moment.js (optional)
-    //         // default: 'dddd MMM Do'
-    //         // valid values: see http://momentjs.com/docs/#/displaying/
-    //         dateFormat: "MMMM Do, YYYY",
-
-    //         // localizes the date with moment.js (optional)
-    //         // default: 'en'
-    //         dateLocale: "en",
-
-    //         // Defines the format which is used for the feed.
-    //         // Default: null (utf8)
-    //         // valid values: https://github.com/ashtuchkin/iconv-lite/wiki/Supported-Encodings
-    //         encoding: "ISO-8859-1",
-
-    //         // Defined the order of the feed's entries.
-    //         // Default: undefined (keeps the order of the original feed)
-    //         // valid values: All entry properties; title, link, content, contentSnippet, publishedDate, categories, author, thumbnail
-    //         // Order can be reversed by prefixing a dash (-)
-    //         order: "-publishedDate",
-
-    //         // formats the date in whatever manner you choose. (optional)
-    //         // this function should return your formatted date.
-    //         // this is useful if you want to format dates without moment.js.
-    //         // if you don't use moment.js and don't define a dateFormatFunction, the dates will
-    //         // not be formatted; they will appear exactly as the RSS feed gives them to you.
-    //         dateFormatFunction: function (date) { },
-
-    //         // a callback, which gets triggered when an error occurs
-    //         // default: function() { throw new Error("jQuery RSS: url don't link to RSS-Feed") }
-    //         error: function () {
-    //             console.log("News rss did not load.");
-    //         },
-
-    //         // a callback, which gets triggered when everything was loaded successfully
-    //         // this is an alternative to the next parameter (callback function)
-    //         // default: function(){}
-    //         success: function () { },
-
-    //         // a callback, which gets triggered once data was received but before the rendering.
-    //         // this can be useful when you need to remove a spinner or something similar
-    //         onData: function () { }
-    //     },
-
-    //     // callback function
-    //     // called after feeds are successfully loaded and after animations are done
-    //     function callback() { }
-    // );
+    let parser = new RSSParser();
+    parser.parseURL(RSS_URL, function (err, feed) {
+        if (err) throw err;
+        var entriesList = [];
+        feed.items.forEach(function (entry) {
+            entry.image = entry.content.match(/<img[^>]+>/)[0] || "";
+            const DOMparser = new DOMParser();
+            entry.image = DOMparser.parseFromString(entry.image, "text/html").body.firstChild.src;
+            const shortBodyText = entry.content.replace(/<[^>]+>/g, '');
+            entry.shortBodyWithDots = shortBodyText.substring(0, 200) + "...";
+            entriesList.push(entry);
+        })
+        var template = document.getElementById('news-template').innerHTML;
+        var news = {
+            "items": entriesList.slice(0, 4)
+        }
+        console.log(news);
+                    
+        var rendered = Mustache.render(template, news);
+        $('#news').html(rendered);
+    });
 
     $.ajax({
         url: 'https://gc-cuny.libcal.com/widget/hours/grid?iid=5568&format=json&weeks=4&systemTime=0',
