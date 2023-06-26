@@ -120,8 +120,13 @@ $(document).ready(function ($) {
         var entriesList = [];
         feed.items.forEach(function (entry) {
             const DOMparser = new DOMParser();
-            entry.image = entry.content.match(/<img[^>]+>/)[0] || "";
+            if (!entry.content.match(/<img[^>]+>/)) {
+                entry.image = "";
+            }
+            else{
+            entry.image = entry.content.match(/<img[^>]+>/)[0];
             entry.image = DOMparser.parseFromString(entry.image, "text/html").body.firstChild.src;
+            }
             const shortBodyText = entry.content.replace(/<[^>]+>/g, '');
             entry.shortBodyWithDots = shortBodyText.substring(0, 200) + "...";
             // re-encode as html which includes &#8217;s etc
