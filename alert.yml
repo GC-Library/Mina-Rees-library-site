@@ -11,4 +11,4 @@
 alert:
   style: info
   message: Due to server maintenance, off-campus access to our databases and ebooks will not be available tonight, July 12th, from 11pm -July 13th 1am. We apologize for this inconvenience.
-  show: True
+  show: False
