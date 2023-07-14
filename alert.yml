@@ -10,5 +10,5 @@
 # https://getbootstrap.com/docs/5.0/components/alerts/
 alert:
   style: info
-  message: Due to server maintenance, off-campus access to our databases and ebooks will be intermittently available Monday, July 17th, from 6am - 8am. We apologize for this inconvenience.
+  message: Due to server maintenance, off-campus access to our databases and ebooks will be intermittently available Tuesday, July 18th, from 6am - 8am. We apologize for this inconvenience.
   show: True
