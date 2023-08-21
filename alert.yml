@@ -10,5 +10,5 @@
 # https://getbootstrap.com/docs/5.0/components/alerts/
 alert:
   style: info
-  message: The Mina Rees Library is closed November 24th-27th.
+  message: Due to server maintenance, off-campus access to our databases and ebooks will be intermittently available Tuesday, July 18th, from 6am - 8am. We apologize for this inconvenience.
   show: False
