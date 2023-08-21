@@ -123,9 +123,9 @@ $(document).ready(function ($) {
             if (!entry.content.match(/<img[^>]+>/)) {
                 entry.image = "";
             }
-            else{
-            entry.image = entry.content.match(/<img[^>]+>/)[0];
-            entry.image = DOMparser.parseFromString(entry.image, "text/html").body.firstChild.src;
+            else {
+                entry.image = entry.content.match(/<img[^>]+>/)[0];
+                entry.image = DOMparser.parseFromString(entry.image, "text/html").body.firstChild.src;
             }
             const shortBodyText = entry.content.replace(/<[^>]+>/g, '');
             entry.shortBodyWithDots = shortBodyText.substring(0, 200) + "...";
@@ -140,7 +140,7 @@ $(document).ready(function ($) {
             "items": entriesList.slice(0, 4)
         }
         console.log(news);
-                    
+
         var rendered = Mustache.render(template, news);
         $('#news').html(rendered);
     });
