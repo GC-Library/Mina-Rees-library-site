@@ -111,14 +111,40 @@ $(document).ready(function ($) {
         }
     });
 
+    var entriesList = [];
+
     const RSS_URL = `https://gclibrary.commons.gc.cuny.edu/category/blog/website-front-page/feed/?fsk=5c1146bca3512`;
-
-
     let parser = new RSSParser();
     parser.parseURL(RSS_URL, function (err, feed) {
         if (err) throw err;
-        var entriesList = [];
-        feed.items.forEach(function (entry) {
+        // for each up to 3 items in feed.items {
+        feed.items.forEach(function (entry, i) {
+            if (i > 2) {
+                return;
+            }
+            const DOMparser = new DOMParser();
+            if (!entry.content.match(/<img[^>]+>/)) {
+                entry.image = "";
+            }
+            else {
+                entry.image = entry.content.match(/<img[^>]+>/)[0];
+                entry.image = DOMparser.parseFromString(entry.image, "text/html").body.firstChild.src;
+            }
+            const shortBodyText = entry.content.replace(/<[^>]+>/g, '');
+            entry.shortBodyWithDots = shortBodyText.substring(0, 200) + "...";
+            // re-encode as html which includes &#8217;s etc
+            entry.shortBodyWithDots = DOMparser.parseFromString(entry.shortBodyWithDots, "text/html").body.firstChild.textContent;
+            entriesList.push(entry);
+        })
+    });
+
+    var OERFellowURL = 'https://gclibrary.commons.gc.cuny.edu/category/blog/fellow-post/feed/?fsk=5c1146bca3512'
+    parser.parseURL(OERFellowURL, function (err, feed) {
+        if (err) throw err;
+        feed.items.forEach(function (entry, i) {
+            if (i > 0) {
+                return;
+            }
             const DOMparser = new DOMParser();
             if (!entry.content.match(/<img[^>]+>/)) {
                 entry.image = "";
@@ -132,18 +158,20 @@ $(document).ready(function ($) {
             // re-encode as html which includes &#8217;s etc
             entry.shortBodyWithDots = DOMparser.parseFromString(entry.shortBodyWithDots, "text/html").body.firstChild.textContent;
 
-
             entriesList.push(entry);
         })
-        var template = document.getElementById('news-template').innerHTML;
-        var news = {
-            "items": entriesList.slice(0, 4)
-        }
-        console.log(news);
-
+    });
+    var news = {
+        "items": []
+    }
+    news.items = entriesList
+    var template = document.getElementById('news-template').innerHTML;
+    // waiting for rss feed fetch to finish
+    setTimeout(function () {
         var rendered = Mustache.render(template, news);
         $('#news').html(rendered);
-    });
+    }
+        , 500);
 
     $.ajax({
         url: 'https://gc-cuny.libcal.com/widget/hours/grid?iid=5568&format=json&weeks=4&systemTime=0',
@@ -152,7 +180,6 @@ $(document).ready(function ($) {
             var minaRees = result.locations[0]
             var hoursThisWeek = minaRees.weeks[0]
             var today = moment().format('dddd');
-
 
             const correctHours = Object.keys(hoursThisWeek).map(key => {
                 var hours = hoursThisWeek[key]
