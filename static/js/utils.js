@@ -113,6 +113,7 @@ $(document).ready(function ($) {
 
     var entriesList = [];
 
+    const promisedRSS = new Promise((resolve, reject) => {
     const RSS_URL = `https://gclibrary.commons.gc.cuny.edu/category/blog/website-front-page/feed/?fsk=5c1146bca3512`;
     let parser = new RSSParser();
     parser.parseURL(RSS_URL, function (err, feed) {
@@ -136,8 +137,7 @@ $(document).ready(function ($) {
             entry.shortBodyWithDots = DOMparser.parseFromString(entry.shortBodyWithDots, "text/html").body.firstChild.textContent;
             entriesList.push(entry);
         })
-    });
-
+    }).then(() => {
     var OERFellowURL = 'https://gclibrary.commons.gc.cuny.edu/category/blog/fellow-post/feed/?fsk=5c1146bca3512'
     parser.parseURL(OERFellowURL, function (err, feed) {
         if (err) throw err;
@@ -160,10 +160,14 @@ $(document).ready(function ($) {
 
             entriesList.push(entry);
         })
-    });
+    })}).then(() => {
+        resolve(entriesList);
+    })});
+
     var news = {
         "items": []
     }
+    
     news.items = entriesList
     var template = document.getElementById('news-template').innerHTML;
     // waiting for rss feed fetch to finish
