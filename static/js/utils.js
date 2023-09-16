@@ -111,71 +111,107 @@ $(document).ready(function ($) {
         }
     });
 
-    var entriesList = [];
 
-    const promisedRSS = new Promise((resolve, reject) => {
-    const RSS_URL = `https://gclibrary.commons.gc.cuny.edu/category/blog/website-front-page/feed/?fsk=5c1146bca3512`;
-    let parser = new RSSParser();
-    parser.parseURL(RSS_URL, function (err, feed) {
-        if (err) throw err;
-        // for each up to 3 items in feed.items {
-        feed.items.forEach(function (entry, i) {
-            if (i > 2) {
-                return;
-            }
-            const DOMparser = new DOMParser();
-            if (!entry.content.match(/<img[^>]+>/)) {
-                entry.image = "";
-            }
-            else {
-                entry.image = entry.content.match(/<img[^>]+>/)[0];
-                entry.image = DOMparser.parseFromString(entry.image, "text/html").body.firstChild.src;
-            }
-            const shortBodyText = entry.content.replace(/<[^>]+>/g, '');
-            entry.shortBodyWithDots = shortBodyText.substring(0, 200) + "...";
-            // re-encode as html which includes &#8217;s etc
-            entry.shortBodyWithDots = DOMparser.parseFromString(entry.shortBodyWithDots, "text/html").body.firstChild.textContent;
-            entriesList.push(entry);
-        })
-    }).then(() => {
-    var OERFellowURL = 'https://gclibrary.commons.gc.cuny.edu/category/blog/fellow-post/feed/?fsk=5c1146bca3512'
-    parser.parseURL(OERFellowURL, function (err, feed) {
-        if (err) throw err;
-        feed.items.forEach(function (entry, i) {
-            if (i > 0) {
-                return;
-            }
-            const DOMparser = new DOMParser();
-            if (!entry.content.match(/<img[^>]+>/)) {
-                entry.image = "";
-            }
-            else {
-                entry.image = entry.content.match(/<img[^>]+>/)[0];
-                entry.image = DOMparser.parseFromString(entry.image, "text/html").body.firstChild.src;
-            }
-            const shortBodyText = entry.content.replace(/<[^>]+>/g, '');
-            entry.shortBodyWithDots = shortBodyText.substring(0, 200) + "...";
-            // re-encode as html which includes &#8217;s etc
-            entry.shortBodyWithDots = DOMparser.parseFromString(entry.shortBodyWithDots, "text/html").body.firstChild.textContent;
+    const fetchBlogEntries = function () {
+        var entriesList = [];
+        fetch('https://gclibrary.commons.gc.cuny.edu/category/blog/website-front-page/feed/?fsk=5c1146bca3512')
+            .then(response => response.text())
+            .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+            .then(data => {
+                const items = data.querySelectorAll("item");
+                items.forEach((el, i) => {
+                    if (i > 2) {
+                        return;
+                    }
+                    // select all elements in item
+                    const all = el.querySelectorAll("*");
+                    // all is a Nodelist. Find the content element
+                    const allArray = Array.from(all);
+                    var contentElement = allArray.find(el => el.tagName === "content:encoded").innerHTML;
 
-            entriesList.push(entry);
-        })
-    })}).then(() => {
-        resolve(entriesList);
-    })});
+                    var entry = {
+                        title: el.querySelector("title").innerHTML,
+                        link: el.querySelector("link").innerHTML,
+                        pubDate: el.querySelector("pubDate").innerHTML,
+                        description: el.querySelector("description").innerHTML,
+                    }
+                    const DOMparser = new DOMParser();
+                    if (!contentElement.match(/<img[^>]+>/)) {
+                        entry.image = "";
+                    }
+                    else {
+                        entry.image = contentElement.match(/<img[^>]+>/)[0];
+                        entry.image = DOMparser.parseFromString(entry.image, "text/html").body.firstChild.src;
+                    }
+                    const tempDiv = document.createElement("div");
+                    tempDiv.innerHTML = contentElement;
+                    contentElement = tempDiv.textContent || tempDiv.innerText || "";
+                    entry.content = contentElement;
+                    entry.shortBodyWithDots = entry.content.replace(/<[^>]+>/g, '');
+                    entry.shortBodyWithDots = entry.shortBodyWithDots.substring(0, 200) + "...";
+                    var title = entry.title;
+                    var temptTitle = document.createElement("div");
+                    temptTitle.innerHTML = title;
+                    title = temptTitle.textContent || temptTitle.innerText || "";
+                    entry.title = title;
+                    entriesList.push(entry);
+                });
+            }).then(() => {
+                fetch('https://gclibrary.commons.gc.cuny.edu/category/blog/fellow-post/feed/?fsk=5c1146bca3512')
+                    .then(response => response.text())
+                    .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+                    .then(data => {
+                        const items = data.querySelectorAll("item");
+                        items.forEach((el, i) => {
+                            if (i > 2) {
+                                return;
+                            }
+                            // select all elements in item
+                            const all = el.querySelectorAll("*");
+                            // all is a Nodelist. Find the content element
+                            const allArray = Array.from(all);
+                            var contentElement = allArray.find(el => el.tagName === "content:encoded").innerHTML;
 
-    var news = {
-        "items": []
+                            var entry = {
+                                title: el.querySelector("title").innerHTML,
+                                link: el.querySelector("link").innerHTML,
+                                pubDate: el.querySelector("pubDate").innerHTML,
+                                description: el.querySelector("description").innerHTML,
+                            }
+                            const DOMparser = new DOMParser();
+                            if (!contentElement.match(/<img[^>]+>/)) {
+                                entry.image = "";
+                            }
+                            else {
+                                entry.image = contentElement.match(/<img[^>]+>/)[0];
+                                entry.image = DOMparser.parseFromString(entry.image, "text/html").body.firstChild.src;
+                            }
+                            const tempDiv = document.createElement("div");
+                            tempDiv.innerHTML = contentElement;
+                            contentElement = tempDiv.textContent || tempDiv.innerText || "";
+                            entry.content = contentElement;
+                            entry.shortBodyWithDots = entry.content.replace(/<[^>]+>/g, '');
+                            entry.shortBodyWithDots = entry.shortBodyWithDots.substring(0, 200) + "...";
+                            var title = entry.title;
+                            var temptTitle = document.createElement("div");
+                            temptTitle.innerHTML = title;
+                            title = temptTitle.textContent || temptTitle.innerText || "";
+                            entry.title = title;
+                            entriesList.push(entry);
+                        });
+                    }).then(() => {
+                        var news = {
+                            "items": []
+                        }
+                        console.log(entriesList);
+                        news.items = entriesList
+                        var template = document.getElementById('news-template').innerHTML;
+                        var rendered = Mustache.render(template, news);
+                        $('#news').html(rendered);
+                    })
+            })
     }
-    
-    news.items = entriesList
-    var template = document.getElementById('news-template').innerHTML;
-    // waiting for rss feed fetch to finish
-    setTimeout(function () {
-        var rendered = Mustache.render(template, news);
-        $('#news').html(rendered);
-    }
-        , 500);
+    fetchBlogEntries();
 
     $.ajax({
         url: 'https://gc-cuny.libcal.com/widget/hours/grid?iid=5568&format=json&weeks=4&systemTime=0',
