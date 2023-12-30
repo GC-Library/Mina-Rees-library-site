@@ -203,7 +203,6 @@ $(document).ready(function ($) {
                         var news = {
                             "items": []
                         }
-                        console.log(entriesList);
                         news.items = entriesList
                         var template = document.getElementById('news-template').innerHTML;
                         var rendered = Mustache.render(template, news);
@@ -220,7 +219,6 @@ $(document).ready(function ($) {
             var minaRees = result.locations[0]
             var hoursThisWeek = minaRees.weeks[0]
             var today = moment().format('dddd');
-
             const correctHours = Object.keys(hoursThisWeek).map(key => {
                 var hours = hoursThisWeek[key]
                 hours.day = key
@@ -244,11 +242,18 @@ $(document).ready(function ($) {
                 "days": renderHours
             }
             var todayHours = hours.days.filter(day => day.day === today)
+            if (todayHours[0].times.status === "closed") {
+                todayHours = "Today's Hours: Closed"
+            } else {
             var todayHours = "Today's Hours: " + todayHours[0].times.hours[0].from + " - " + todayHours[0].times.hours[0].to
+            }
             $('#today-hours').html(todayHours)
             var template = document.getElementById('hours-template').innerHTML;
             var rendered = Mustache.render(template, hours);
             $('#hours').html(rendered);
+        },
+        error: function (err) {
+            console.log(err);
         }
     });
 
@@ -267,4 +272,20 @@ $(document).ready(function ($) {
             }
         }
     })
+
+    // const librarians = ["Stephen Zweibel","Elvis Bakaitis","Maura Smale","Mason Brown",
+    // "Jill Cirasella", "Beth Posner", "Marilyn Reside", "Alycia Sellie", "Stephen Klein",
+    // "Roxanne Shirazi", "Polly Thistlethwaite", "Silvia Cho"]
+    // const librarian = librarians[Math.floor(Math.random() * librarians.length)];
+    // const librarianHyphenated = librarian.replace(/\s+/g, '-').toLowerCase();
+    // $.ajax({
+    //     url: 'https://gc.cuny.edu/people/' + librarianHyphenated, type: 'HEAD', success: function (data) {
+    //         const target = $('#librarian')
+    //         target.html(data)
+    //         // target.attr("href", "https://gc.cuny.edu/people/" + libarianHyphenated)
+    //     }, error: function (err) {
+    //         console.log(err);
+    //     }
+
+    // })
 });
