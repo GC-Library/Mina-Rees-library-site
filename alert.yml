@@ -10,6 +10,5 @@
 # https://getbootstrap.com/docs/5.0/components/alerts/
 alert:
   style: info
-  # message: Our historic elevator is currently out of order. Please see <a href='https://gclibrary.commons.gc.cuny.edu/2023/08/25/elevator-undergoing-repairs/'>this blog post</a> for more info.
-  message: The library will be closed Tuesday 2/13 due to inclement weather
+  message: Our historic elevator is currently out of order. Please see <a href='https://gclibrary.commons.gc.cuny.edu/2023/08/25/elevator-undergoing-repairs/'>this blog post</a> for more info.
   show: True
