@@ -157,10 +157,14 @@ h6 {
 	background-color: #005daa;
 }
 
-#s-lg-embedded-search-widget-1640026870420 button {
+#s-lg-widget-1709908805506 input{
+	border-radius: 0 !important;
+}
+
+#s-lg-widget-1709908805506 button {
 	color: white !important;
-	background-color: #3c4859 !important;
-	/* border-radius:0; */
+	background-color: #005daa !important;
+	border-radius:0;
 }
 
 .s-lg-form-control {
@@ -220,7 +224,6 @@ h6 {
 
 .header-filter::before {
 	background-color: rgba(0, 0, 0, 0.3);
-
 }
 
 /* navtabs */

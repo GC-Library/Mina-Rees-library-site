@@ -34,6 +34,11 @@
                         <a class="nav-link" id='today-hours' href="https://gc-cuny.libcal.com/hours?cid=15537">Library
                             Hours</a>
                     </li>
+                    <!-- <li class="nav-item">
+                        <script>springshare_widget_config_1709908805506 = { link_text: 'Search Box' };</script>
+                        <div id="s-lg-widget-1709908805506"></div>
+                        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://lgapi-us.libapps.com/widgets.php?site_id=146&widget_type=7&widget_embed_type=1&output_format=1&search_box_type=1&group_id=0&placeholder_text=Search+Library+Site&button_text=Search&widget_height=&widget_width=250&config_id=1709908805506"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "s-lg-widget-script-1709908805506");</script>
+                    </li> -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -273,7 +278,8 @@
                         <li><a href="https://libguides.gc.cuny.edu/access">Access &amp; Borrowing</a></li>
                         <li><a href='https://cuny-gc.primo.exlibrisgroup.com/discovery/account?vid=01CUNY_GC:CUNY_GC'
                                 class='classic'>Renew Books</a></li>
-                        <li><a href="https://ezproxy.gc.cuny.edu/login?url=https://gc-cuny.illiad.oclc.org/illiad/illiad.dll">Interlibrary
+                        <li><a
+                                href="https://ezproxy.gc.cuny.edu/login?url=https://gc-cuny.illiad.oclc.org/illiad/illiad.dll">Interlibrary
                                 Loan</a>
                         </li>
                         <li><a href="https://libguides.gc.cuny.edu/reserves">Reserves</a></li>
@@ -341,7 +347,6 @@
                     </tbody>
                     </div>
                 </script>
-
             </div>
         </div>
         <div id='news' class='news-section rss-feed row col-xxl-8 col-md-12'>
@@ -358,17 +363,45 @@
             <div class='people-section col-md-4' id='people'>
                 <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/hours">People</a></h3>
                 <p id="librarian">People failed to load!</p> -->
-                <!-- <script id="people-template" type="x-tmpl-mustache">
+        <!-- <script id="people-template" type="x-tmpl-mustache">
 
                    
                 </script> -->
 
-            <!-- </div>
+        <!-- </div>
             <div class='youtube-section col-md-4' id=youtube>
                 <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/hours">Videos</a></h3>
                 <p>Videos failed to load!</p>
             </div>
         </div> -->
+
+        <div id='collections-and-videos' class="row col-xxl-8 space-between col-md-12">
+            <div class='collections-section col-md-4' id='collections'>
+                <h3 class="lower-header"><a href="https://libguides.gc.cuny.edu/library_collections">Collections</a>
+                </h3>
+                <p>Collections failed to load!</p>
+                <script id="collections-template" type="x-tmpl-mustache">
+                    
+                    <h3 class="lower-header"><a href="https://libguides.gc.cuny.edu/library_collections">Collections</a>
+                    
+                </script>
+            </div>
+            <div class='youtube-section col-md-4' id=youtube>
+                <h3 class="lower-header"><a href="https://www.youtube.com/user/GCCUNYLibrary">Videos</a></h3>
+                <p>Videos failed to load!</p>
+                <script id="youtube-template" type="x-tmpl-mustache">
+                    <h3 class="lower-header"><a href="https://www.youtube.com/user/GCCUNYLibrary">Videos</a></h3>
+                    <div class='youtube'>
+                    <ul>
+                    {{#videos}}
+                        <li><a href="{{link}}">{{title}}</a></li>
+                    {{/videos}}
+                    </ul>
+                    </div>
+                </script>
+            </div>
+        </div>
+
         <footer class="footer row col-xxl-12 col-md-12">
             <div class="container col-md-12 col-xxl-8">
                 <div class="footer-content">
@@ -421,7 +454,7 @@
     <div class="question-form-link">
         <a href="https://cuny.libanswers.com/chat/widget/ba1a6a4dac7e5525a9e2ec72bea7ed40">Chat with a Librarian</a>
     </div>
-    
+
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-rss/3.3.0/jquery.rss.min.js"></script> -->
     <script src="https://unpkg.com/rss-parser/dist/rss-parser.min.js"></script>
 
