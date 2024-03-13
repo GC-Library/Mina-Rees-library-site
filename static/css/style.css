@@ -157,14 +157,14 @@ h6 {
 	background-color: #005daa;
 }
 
-#s-lg-widget-1709908805506 input{
+#s-lg-widget-1709908805506 input {
 	border-radius: 0 !important;
 }
 
 #s-lg-widget-1709908805506 button {
 	color: white !important;
 	background-color: #005daa !important;
-	border-radius:0;
+	border-radius: 0;
 }
 
 .s-lg-form-control {
@@ -640,7 +640,6 @@ iframe {
 	padding-right: 0px;
 }
 
-
 .table .true td {
 	background-color: #3c4859;
 	color: white !important;
@@ -687,6 +686,47 @@ iframe {
 	font-weight: 500;
 	color: #005daa;
 	margin-bottom: 15px;
+}
+
+/* Collections and Videos */
+#collections-and-videos {
+	
+	display: flex;
+	flex-direction: row wrap;
+	justify-content: space-between;
+}
+.collection-image-container {
+	width: 90%;
+	height: 300px;
+	overflow: hidden;
+	position: relative;
+}
+
+#collection img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.collection-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	color: white;
+	font-size: 24px;
+	font-weight: 600;
+	text-align: center;
+}
+#vid{
+	padding-left: 2rem;
+	width: 100%;
 }
 
 @media (max-width: 991px) {
