@@ -14,7 +14,7 @@ jobs:
 
       - name: Download New JSON
         run: |
-          if curl -o data/new-collections.json https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/collections?apikey=l8xx19fe635164904a9a80d6787cbb6a28a5&format=json; then
+          if curl -o data/new-collections.json -H "Accept: application/json" https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/collections?apikey=l8xx19fe635164904a9a80d6787cbb6a28a5&format=json; then
             echo "Download successful."
           else
             echo "Download failed."
