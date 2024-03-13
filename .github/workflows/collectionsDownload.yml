@@ -1,0 +1,73 @@
+name: Daily Collections Update
+on:
+  schedule:
+    - cron: '0 8 * * *' # Runs every day at midnight (UTC)
+  workflow_dispatch:
+
+jobs:
+  update-csv:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Download New JSON
+        run: |
+          if curl -o data/new-collections.json https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/collections?apikey=l8xx19fe635164904a9a80d6787cbb6a28a5&format=json; then
+            echo "Download successful."
+          else
+            echo "Download failed."
+            exit 1
+          fi
+
+      - name: Check File Size
+        id: check-json
+        run: |
+          if [ -s data/new-collections.json ]; then
+            echo "File is not empty."
+          else
+            echo "File is empty."
+            exit 1
+          fi
+          
+      - name: Check for Differences
+        id: check-differences
+        run: |
+          if ! diff -q data/new-collections.json data/collections.json; then
+            echo "Files are different."
+            echo "DIFFERENT_JSON=true" >> $GITHUB_ENV
+          else
+            echo "Files are the same. Skipping commit."
+            echo "DIFFERENT_JSON=false" >> $GITHUB_ENV
+          fi
+
+      - name: Overwrite
+        if: steps.check-json.outcome == 'success' && env.DIFFERENT_JSON == 'true'
+        run: |
+          mv data/new-collections.json data/collections.json
+
+      - name: Commit and Push Changes
+        if: steps.check-json.outcome == 'success' && env.DIFFERENT_JSON == 'true'
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          
+          timestamp=$(date +'%Y%m%d%H%M%S')
+          branch_name="update-json-$timestamp"
+
+          git checkout -b "$branch_name"
+
+          git add data/collections.json
+
+          git commit -m "Update Collections file"
+
+          git push origin "$branch_name"
+
+          git checkout main
+          git merge --no-ff "$branch_name"
+          git push origin main
+
+          # delete the temporary branch
+          git branch -d "$branch_name"
+          git push origin --delete "$branch_name"
