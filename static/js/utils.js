@@ -147,7 +147,7 @@ $(document).ready(function ($) {
                     .then(data => {
                         const items = data.querySelectorAll("item");
                         items.forEach((el, i) => {
-                            if (i > 2) {
+                            if (i > 1) {
                                 return;
                             }
                             // select all elements in item
