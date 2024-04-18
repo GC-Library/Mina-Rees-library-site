@@ -194,6 +194,7 @@ $(document).ready(function ($) {
                     })
             })
     }
+    fetchBlogEntries();
 
     $.ajax({
         url: 'https://gc-cuny.libcal.com/widget/hours/grid?iid=5568&format=json&weeks=4&systemTime=0',
