@@ -104,7 +104,7 @@ $(document).ready(function ($) {
             .then(data => {
                 const items = data.querySelectorAll("item");
                 items.forEach((el, i) => {
-                    if (i > 3) {
+                    if (i > 2) {
                         return;
                     }
                     // select all elements in item
@@ -144,7 +144,46 @@ $(document).ready(function ($) {
                 fetch('https://gclibrary.commons.gc.cuny.edu/category/blog/fellow-post/feed/?fsk=5c1146bca3512')
                     .then(response => response.text())
                     .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-                    .then(() => {
+                    .then(data => {
+                        const items = data.querySelectorAll("item");
+                        items.forEach((el, i) => {
+                            if (i > 0) {
+                                return;
+                            }
+                            // select all elements in item
+                            const all = el.querySelectorAll("*");
+                            // all is a Nodelist. Find the content element
+                            const allArray = Array.from(all);
+                            var contentElement = allArray.find(el => el.tagName === "content:encoded").innerHTML;
+
+                            var entry = {
+                                title: el.querySelector("title").innerHTML,
+                                link: el.querySelector("link").innerHTML,
+                                pubDate: el.querySelector("pubDate").innerHTML,
+                                description: el.querySelector("description").innerHTML,
+                            }
+                            const DOMparser = new DOMParser();
+                            if (!contentElement.match(/<img[^>]+>/)) {
+                                entry.image = "";
+                            }
+                            else {
+                                entry.image = contentElement.match(/<img[^>]+>/)[0];
+                                entry.image = DOMparser.parseFromString(entry.image, "text/html").body.firstChild.src;
+                            }
+                            const tempDiv = document.createElement("div");
+                            tempDiv.innerHTML = contentElement;
+                            contentElement = tempDiv.textContent || tempDiv.innerText || "";
+                            entry.content = contentElement;
+                            entry.shortBodyWithDots = entry.content.replace(/<[^>]+>/g, '');
+                            entry.shortBodyWithDots = entry.shortBodyWithDots.substring(0, 200) + "...";
+                            var title = entry.title;
+                            var temptTitle = document.createElement("div");
+                            temptTitle.innerHTML = title;
+                            title = temptTitle.textContent || temptTitle.innerText || "";
+                            entry.title = title;
+                            entriesList.push(entry);
+                        });
+                    }).then(() => {
                         var news = {
                             "items": []
                         }
