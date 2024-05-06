@@ -22,7 +22,7 @@ jobs:
 
       - name: execute py script # run main.py
         run: python main.py
-         - name: commit files
+      - name: commit files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
