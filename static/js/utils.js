@@ -293,8 +293,15 @@ $(document).ready(function ($) {
         );
 
     swapVideos = function () {
-        const YOUTUBE_API_KEY = "AIzaSyDB8xovapQlJM7waqm0aU5o3rtA3B7olfI";
-        var playlistURL = `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=UCF11xs3zCmMdMdWoOfxP_kg&part=snippet,id&order=date&maxResults=20`;
+    //    list of video IDs in data/videos.txt 
+        fetch('./data/videos.txt')
+            .then(response => response.text())
+            .then(data => {
+                const videoIDs = data.split("\n");
+                const randomVideoID = videoIDs[Math.floor(Math.random() * videoIDs.length)];
+                const videoEmbed = document.getElementById('vid')
+                videoEmbed.src = `https://www.youtube.com/embed/${randomVideoID}`;
+            });
         fetch(playlistURL)
             .then(response => response.json())
             .then(data => {
