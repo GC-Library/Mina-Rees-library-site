@@ -895,3 +895,8 @@ input[type="button"],
 .btn {
 	text-transform: uppercase;
 }
+
+/* iframe hack */
+iframe {
+	overflow-y: hidden;
+}
