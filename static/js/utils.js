@@ -84,7 +84,7 @@ $(document).ready(function ($) {
             // if events is empty then display a different message
             if (events.events.length == 0) {
                 console.log("No events found");
-                $("#events").html('<h3 class="lower-header">DIGITAL PROJECTS</h3><iframe title="Content Box frame" id="s-lg-widget-frame-1716564549198" width="" height="" scrolling="no" style="height: 410px; width: 90%;" src="//lgapi-us.libapps.com/widget_box.php?site_id=146&widget_type=8&output_format=2&widget_title=Digital+Collections+Gallery&widget_height=&widget_width=&widget_embed_type=1&guide_id=1204677&box_id=32696065&map_id=38442276&content_only=0&include_jquery=0&config_id=1716564549198"></iframe>');
+                $("#events").html('<h3 class="lower-header">EXPLORE OUR DIGITAL PROJECTS</h3><iframe title="Content Box frame" id="s-lg-widget-frame-1716564549198" width="" height="" scrolling="no" style="height: 410px; width: 90%;" src="//lgapi-us.libapps.com/widget_box.php?site_id=146&widget_type=8&output_format=2&widget_title=Digital+Collections+Gallery&widget_height=&widget_width=&widget_embed_type=1&guide_id=1204677&box_id=32696065&map_id=38442276&content_only=0&include_jquery=0&config_id=1716564549198"></iframe>');
 
                 $('.events-section').removeClass('col-md-8').addClass('col-md-7');
 
