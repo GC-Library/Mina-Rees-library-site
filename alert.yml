@@ -11,4 +11,4 @@
 alert:
   style: info
   message: The library is currently closed due to a power outage. We anticipate reopening on Monday.
-  show: True
+  show: False
