@@ -23,10 +23,10 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top col-xs-12">
         <div class="container-fluid col-xs-12 col-xxl-8">
-            <a class="navbar-brand" href="/">Mina Rees Library</a>
+            <a class="navbar-brand" href="/" aria-label="Mina Rees Library Home">Mina Rees Library</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" aria-hidden="true"></span>
             </button>
             <div class="collapse navbar-collapse ms-auto" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -73,7 +73,7 @@
                         </ul>
                     </li>
                     <li class="nav-item" id="give">
-                        <a class="nav-link" href="https://www.gc.cuny.edu/giving/friends-mina-rees-library">
+                        <a class="nav-link" href="https://www.gc.cuny.edu/giving/friends-mina-rees-library" aria-label="Give to the Library">
                             Give</a>
                     </li>
                 </ul>
@@ -361,7 +361,7 @@
                         <div>
                             <a href="{{collectionLink}}">
                                 <div class='collection-image-container'>
-                                <img src="{{collectionThumbnail}}" alt="{{collectionName}}">
+                                <img src="{{collectionThumbnail}}" alt="{{collectionName}}" aria-hidden="true">
                                 <div class="collection-overlay">
                                     <div class="text">{{collectionName}}</div>
                                 </div>
