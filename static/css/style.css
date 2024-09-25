@@ -668,8 +668,10 @@ iframe {
 
 .news>li>img {
 	display: block;
-	width: 200px;
-	height: auto;
+	/* width: 200px;
+	height: auto; */
+    max-width: 200px;
+    height: 100px;
 	margin-bottom: 15px;
 	border: solid 4px #e2e2e2;
 }
