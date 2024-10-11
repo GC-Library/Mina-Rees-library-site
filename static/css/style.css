@@ -560,6 +560,10 @@ input[type="radio"]+label:hover {
 	text-decoration: none;
 }
 
+.link-description {
+	color: #8e949a;
+}
+
 /* Ask-a-librarian */
 #libchat_b52f2cdc0eb17645195f20b93093a46e button.libchat_online {
 	visibility: hidden;
