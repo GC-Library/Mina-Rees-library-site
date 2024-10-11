@@ -565,7 +565,7 @@ input[type="radio"]+label:hover {
 }
 
 .link-description {
-	color: #8e949a;
+	opacity: 0.70;
 }
 
 /* Ask-a-librarian */
