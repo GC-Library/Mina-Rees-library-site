@@ -37,20 +37,7 @@ a:not(.btn):not(.wp-block-button__link):not(.wp-block-button):not(.button):not(.
 	opacity: 1.0;
 }
 
-a,
-.navbar .dropdown-menu li:hover>a,
-.navbar .dropdown-menu li:focus>a,
-.navbar .dropdown-menu li:active>a,
-.navbar .navbar-nav>li .dropdown-menu li:hover>a,
-body:not(.home) .navbar-default .navbar-nav>.active:not(.btn)>a,
-body:not(.home) .navbar-default .navbar-nav>.active:not(.btn)>a:hover,
-body:not(.home) .navbar-default .navbar-nav>.active:not(.btn)>a:focus,
-a:hover,
-.card-blog a.moretag:hover,
-.card-blog a.more-link:hover,
-.widget a:hover {
-	/* color: #005daa; */
-}
+
 
 .content {
 	display: flex;
@@ -507,12 +494,13 @@ input[type="radio"]+label:hover {
 
 /* Below the Fold*/
 .below-content {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
-	column-gap: 8%;
-	row-gap: 1rem;
-	grid-auto-flow: dense;
-	justify-items: stretch;
+	display: flex;
+	/* display: grid; */
+	/* grid-template-columns: repeat(auto-fit, minmax(200px, 2fr)); */
+	/* column-gap: 8%; */
+	/* row-gap: 1rem; */
+	/* grid-auto-flow: dense; */
+	/* justify-items: stretch; */
 }
 
 .feature-wrapper {
@@ -561,13 +549,14 @@ input[type="radio"]+label:hover {
 }
 
 .front-page-list>li {
+	border-bottom: 1px solid #b1b4b6;
 	margin-bottom: 5px;
 	font-size: 18px;
 }
 
 .front-page-list>li>a {
 	color: #005daa;
-	font-weight: 400;
+	font-weight: bold;
 	text-decoration: none;
 }
 
@@ -882,9 +871,9 @@ footer .glyphicon {
 .card-raised,
 .img-raised,
 .iframe-container iframe {
-	-webkit-box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+	/* -webkit-box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 	-moz-box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
-	box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2); */
 }
 
 a:hover {
