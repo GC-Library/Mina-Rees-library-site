@@ -529,7 +529,7 @@ input[type="radio"]+label:hover {
 	text-decoration: none;
 	font-weight: 700;
 	word-wrap: break-word;
-	margin-bottom: 20px;
+	/* margin-bottom: 20px; */
 	margin-top: 20px;
 	font-size: 28px;
 	font-family: Roboto Condensed !important;
@@ -554,8 +554,14 @@ input[type="radio"]+label:hover {
 
 .front-page-list>li {
 	border-bottom: 1px solid #b1b4b6;
-	margin-bottom: 5px;
+	/* margin-bottom: 5px; */
+	margin-top: 10px;
 	font-size: 18px;
+}
+
+/* last one no border */
+.front-page-list>li:last-child {
+	border-bottom: none;
 }
 
 .front-page-list>li>a {
@@ -565,7 +571,8 @@ input[type="radio"]+label:hover {
 }
 
 .link-description {
-	opacity: 0.70;
+	opacity: 0.75;
+	font-size: 14px;
 }
 
 /* Ask-a-librarian */
