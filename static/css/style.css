@@ -530,6 +530,7 @@ input[type="radio"]+label:hover {
 	font-weight: 700;
 	word-wrap: break-word;
 	/* margin-bottom: 20px; */
+	margin-bottom: 0px;
 	margin-top: 20px;
 	font-size: 28px;
 	font-family: Roboto Condensed !important;
@@ -554,8 +555,7 @@ input[type="radio"]+label:hover {
 
 .front-page-list>li {
 	border-bottom: 1px solid #b1b4b6;
-	/* margin-bottom: 5px; */
-	margin-top: 10px;
+	margin-top: 15px;
 	font-size: 18px;
 }
 
