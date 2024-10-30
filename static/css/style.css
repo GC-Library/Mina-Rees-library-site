@@ -111,6 +111,8 @@ h6 {
 	text-transform: uppercase;
 	padding-top: 0;
 	padding-bottom: 0;
+	padding-left: 16px;
+	padding-right: 16px;
 }
 
 .navbar a {
@@ -186,7 +188,7 @@ h6 {
 	z-index: -1;
 	/* background-position: 20% 38%; */
 	height: 480px;
-	background-position: center top; /* Center the image */
+	background-position: 50% 30%; /* Center the image */
 	background-repeat: no-repeat; /* Do not repeat the image */
 	background-size: cover; /* Resize the background image to cover the entire container */
 }
@@ -203,17 +205,12 @@ h6 {
 }
 
 .header-filter::before {
-	/* background-color: rgba(0, 0, 0, 0.3); */
+	background-color: rgba(0, 0, 0, 0.4);
 }
 
 .bento {
 	margin-top: 100px;
 	min-height: 340px;
-}
-
-
-.header-filter::before {
-	background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* navtabs */
