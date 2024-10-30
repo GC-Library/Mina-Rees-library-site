@@ -111,8 +111,8 @@ h6 {
 	text-transform: uppercase;
 	padding-top: 0;
 	padding-bottom: 0;
-	padding-left: 16px;
-	padding-right: 16px;
+	padding-left: 15px;
+	padding-right: 13px;
 }
 
 .navbar a {
@@ -404,9 +404,9 @@ h6 {
 #s-lg-frm-az-widget-1535395835265 button {
 	box-shadow: none;
 	height: 45px;
-	border: 1px solid #3c4859;
+	/* border: 1px solid #3c4859; */
 	border-left: none;
-	background-color: #3c4859;
+	background-color: #005daa;
 	padding: 1em !important;
 	border-top-left-radius: 0 !important;
 	border-bottom-left-radius: 0 !important;
@@ -662,7 +662,7 @@ iframe {
 }
 
 .table .true td {
-	background-color: #3c4859;
+	background-color: #005daa;
 	color: white !important;
 }
 
@@ -814,7 +814,7 @@ iframe {
 /* Footer */
 
 footer.footer.footer-black {
-	background: #3c4859;
+	background: #005daa;
 	color: #fff;
 }
 
@@ -848,7 +848,7 @@ footer.footer.footer-black {
 }
 
 footer {
-	background-color: #3c4859;
+	background-color: #005daa;
 }
 
 footer .glyphicon {
