@@ -500,7 +500,8 @@ input[type="radio"]+label:hover {
 /* Below the Fold*/
 
 .main-raised {
-	margin-top: 20px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 .below-content {
@@ -564,12 +565,14 @@ input[type="radio"]+label:hover {
 }
 
 .front-page-list{
-	border-left: 1px solid #b1b4b6;
+
 	padding-left: 10px;
 	margin-left: 8px;
 }
 
 .front-page-list>li {
+	border-left: 1px solid #b1b4b6;
+	padding-left: 5px;
 	margin-top: 15px;
 	font-size: 18px;
 }
@@ -630,6 +633,7 @@ input[type="radio"]+label:hover {
 }
 .hours-and-events {
 	margin-top: 30px;
+	margin-bottom: 30px;
 	display: flex;
 	flex-direction: row wrap;
 }
@@ -680,6 +684,7 @@ iframe {
 
 #news {
 	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 .news {
@@ -711,7 +716,6 @@ iframe {
 	position: relative;
 	display: flex;
 	justify-content: center;
-
 }
 
 .news li img {
@@ -738,6 +742,7 @@ iframe {
 /* Collections and Videos */
 #collections-and-videos {
 	margin-top: 30px;
+	margin-bottom: 30px;
 	display: flex;
 	flex-direction: row wrap;
 	justify-content: space-between;
