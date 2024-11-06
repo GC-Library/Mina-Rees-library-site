@@ -83,325 +83,332 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid content">
-        <div class='bento col-xxl-10 row col-md-12'>
-            <div class="">
-                <h5 id='institution'>
-                    <span>
-                        CUNY Graduate Center
-                    </span>
-                </h5>
-                <h1 id="main_statement">
-                    <span>
-                        Search the Collections
-                    </span>
-                </h1>
-                <div class="tab bento-tabs" role="tabpanel">
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs row" role="tablist">
-                        <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section1"
-                            class="nav-item col-sm-2"><a href="#Section1" aria-controls="Catalog" role="tab"
-                                data-toggle="tab" class='active nav-link'>CATALOG</a></li>
-                        <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section2"
-                            class="nav-item col-sm-2"><a href="#Section2" aria-controls="Articles" role="tab"
-                                data-toggle="tab" class="nav-link">ARTICLES +</a></li>
-                        <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section4"
-                            class="nav-item col-sm-2"><a href="#Section4" aria-controls="Databases" role="tab"
-                                data-toggle="tab" class="nav-link" class="nav-link">DATABASES</a></li>
-                        <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section3"
-                            class="nav-item col-sm-2"><a href="#Section3" aria-controls="Journals" role="tab"
-                                data-toggle="tab" class="nav-link">JOURNALS</a></li>
-                    </ul>
-                </div>
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade show active" id="Section1">
-                        <div class="search-input col-xs-10">
-                            <div class="input-group col-md-12">
-                                <input id="primoQueryTemp" class="search-query
+    <div>
+        <div class="container-fluid content">
+            <div class='bento col-xxl-10 row col-md-12'>
+                <div class="">
+                    <h5 id='institution'>
+                        <span>
+                            CUNY Graduate Center
+                        </span>
+                    </h5>
+                    <h1 id="main_statement">
+                        <span>
+                            Search the Collections
+                        </span>
+                    </h1>
+                    <div class="tab bento-tabs" role="tabpanel">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs row" role="tablist">
+                            <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section1"
+                                class="nav-item col-sm-2"><a href="#Section1" aria-controls="Catalog" role="tab"
+                                    data-toggle="tab" class='active nav-link'>CATALOG</a></li>
+                            <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section2"
+                                class="nav-item col-sm-2"><a href="#Section2" aria-controls="Articles" role="tab"
+                                    data-toggle="tab" class="nav-link">ARTICLES +</a></li>
+                            <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section4"
+                                class="nav-item col-sm-2"><a href="#Section4" aria-controls="Databases" role="tab"
+                                    data-toggle="tab" class="nav-link" class="nav-link">DATABASES</a></li>
+                            <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section3"
+                                class="nav-item col-sm-2"><a href="#Section3" aria-controls="Journals" role="tab"
+                                    data-toggle="tab" class="nav-link">JOURNALS</a></li>
+                        </ul>
+                    </div>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade show active" id="Section1">
+                            <div class="search-input col-xs-10">
+                                <div class="input-group col-md-12">
+                                    <input id="primoQueryTemp" class="search-query
                         form-control" name="query" size="35" type="text" aria-label="search books"
-                                    placeholder="Find books & e-books">
-                                <span class="input-group-btn">
-                                    <button class="btn" form="booksearch" value="Submit" id="booksearchButton"
-                                        type="submit" aria-label="submit">
-                                        <i class="fas fa-search"></i><span> Search</span>
-                                    </button>
-                                </span>
+                                        placeholder="Find books & e-books">
+                                    <span class="input-group-btn">
+                                        <button class="btn" form="booksearch" value="Submit" id="booksearchButton"
+                                            type="submit" aria-label="submit">
+                                            <i class="fas fa-search"></i><span> Search</span>
+                                        </button>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
 
-                        <ul class="options" id="searchCUNY">
-                            <li>
-                                <input name="ONESEARCH" type="radio" value="any" checked="checked" id="keyword"><label
-                                    for="keyword">Keyword</label>
-                            </li>
-                            <li> <input name="ONESEARCH" type="radio" value="title" id="title"><label
-                                    for="title">Title</label></li>
-                            <li> <input name="ONESEARCH" type="radio" value="creator" id="author"><label
-                                    for="author">Author</label></li>
-                            <li> <input name="ONESEARCH" type="radio" value="sub" id="subject"><label
-                                    for="subject">Subject</label></li>
-                            <!--                              <li> <input name="ONESEARCH" type="radio"
+                            <ul class="options" id="searchCUNY">
+                                <li>
+                                    <input name="ONESEARCH" type="radio" value="any" checked="checked"
+                                        id="keyword"><label for="keyword">Keyword</label>
+                                </li>
+                                <li> <input name="ONESEARCH" type="radio" value="title" id="title"><label
+                                        for="title">Title</label></li>
+                                <li> <input name="ONESEARCH" type="radio" value="creator" id="author"><label
+                                        for="author">Author</label></li>
+                                <li> <input name="ONESEARCH" type="radio" value="sub" id="subject"><label
+                                        for="subject">Subject</label></li>
+                                <!--                              <li> <input name="ONESEARCH" type="radio"
                         value="lsr06"
                         id="call"><label for="call">Call Number</label></li> -->
 
-                            <li><a href='http://libguides.gc.cuny.edu/OneSearchAdvanced' class='classic'>Advanced
-                                    Search</a>
-                            </li>
-                            <li><a href='https://cuny-gc.primo.exlibrisgroup.com/discovery/account?vid=01CUNY_GC:CUNY_GC'
-                                    class='classic'>OneSearch Account</a></li>
+                                <li><a href='http://libguides.gc.cuny.edu/OneSearchAdvanced' class='classic'>Advanced
+                                        Search</a>
+                                </li>
                                 <li><a href='https://cuny-gc.primo.exlibrisgroup.com/discovery/account?vid=01CUNY_GC:CUNY_GC'
-                                    class='classic'>Renew Books</a></li>
-                        </ul>
+                                        class='classic'>OneSearch Account</a></li>
+                                <li><a href='https://cuny-gc.primo.exlibrisgroup.com/discovery/account?vid=01CUNY_GC:CUNY_GC'
+                                        class='classic'>Renew Books</a></li>
+                            </ul>
 
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="Section2">
-                        <div class="search-input col-xs-10">
-                            <div class="input-group col-md-12">
-                                <input type="text" class="search-query
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="Section2">
+                            <div class="search-input col-xs-10">
+                                <div class="input-group col-md-12">
+                                    <input type="text" class="search-query
                         form-control" id="articleSearch" placeholder="Find articles, online resources, and more"
-                                    aria-label="Search for articles" />
-                                <span class="input-group-btn">
-                                    <button class="btn" type="button" id="articleButton" aria-label="submit">
-                                        <i class="fas fa-search"></i><span> Search</span>
-                                    </button>
-                                </span>
+                                        aria-label="Search for articles" />
+                                    <span class="input-group-btn">
+                                        <button class="btn" type="button" id="articleButton" aria-label="submit">
+                                            <i class="fas fa-search"></i><span> Search</span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <ul class="options" id="articleSearchRadio">
+                                <li>
+                                    <input name="articleSearch" type="radio" value="any" checked="checked"
+                                        id="keyword2"><label for="keyword2">Keyword</label>
+                                </li>
+                                <li> <input name="articleSearch" type="radio" value="title" id="title2"><label
+                                        for="title2">Title</label></li>
+                                <li> <input name="articleSearch" type="radio" value="creator" id="author2"><label
+                                        for="author2">Author</label></li>
+                                <li> <input name="articleSearch" type="radio" value="sub" id="subject2"><label
+                                        for="subject2">Subject</label></li>
+                            </ul>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="Section3">
+                            <div class="search-input col-xs-10">
+                                <div class="input-group col-md-12">
+                                    <input type="text" id="primoQueryTemp2" placeholder="Find journals"
+                                        aria-label="Search for journals" class="search-query form-control">
+                                    <span class="input-group-btn">
+                                        <button class="btn" type="button" id="journalSearchButton" aria-label="submit">
+                                            <i class="fas fa-search"></i><span> Search</span>
+                                        </button>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                        <ul class="options" id="articleSearchRadio">
-                            <li>
-                                <input name="articleSearch" type="radio" value="any" checked="checked"
-                                    id="keyword2"><label for="keyword2">Keyword</label>
-                            </li>
-                            <li> <input name="articleSearch" type="radio" value="title" id="title2"><label
-                                    for="title2">Title</label></li>
-                            <li> <input name="articleSearch" type="radio" value="creator" id="author2"><label
-                                    for="author2">Author</label></li>
-                            <li> <input name="articleSearch" type="radio" value="sub" id="subject2"><label
-                                    for="subject2">Subject</label></li>
-                        </ul>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="Section3">
-                        <div class="search-input col-xs-10">
-                            <div class="input-group col-md-12">
-                                <input type="text" id="primoQueryTemp2" placeholder="Find journals"
-                                    aria-label="Search for journals" class="search-query form-control">
-                                <span class="input-group-btn">
-                                    <button class="btn" type="button" id="journalSearchButton" aria-label="submit">
-                                        <i class="fas fa-search"></i><span> Search</span>
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="Section4">
-                        <div class="database-list input-group col-xs-10"></div>
-                        <div class="databases">
-                            <h3 class='browse-header'><a href='https://libguides.gc.cuny.edu/az/databases'>Browse
-                                    databases by
-                                    title</a></h3>
-                            <span class="views-summary
+                        <div role="tabpanel" class="tab-pane fade" id="Section4">
+                            <div class="database-list input-group col-xs-10"></div>
+                            <div class="databases">
+                                <h3 class='browse-header'><a href='https://libguides.gc.cuny.edu/az/databases'>Browse
+                                        databases by
+                                        title</a></h3>
+                                <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=1">1</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=a">A</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=b">B</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=c">C</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=d">D</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=e"
-                                    class="active">E</a>
-                            </span> <span class="views-summary
+                                        class="active">E</a>
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=f">F</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=g">G</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=h">H</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=i">I</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=j">J</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=k">K</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=l">L</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=m">M</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=n">N</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=o">O</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=p">P</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=q">Q</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=r">R</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=s">S</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=t">T</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=u">U</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=v">V</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=w">W</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=x">X</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=y">Y</a>
-                            </span> <span class="views-summary
+                                </span> <span class="views-summary
                         views-summary-unformatted"> <a href="https://libguides.gc.cuny.edu/az/databases?a=z">Z</a>
-                            </span>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="header-filter" style="background-image: url(static/images/DSC_1707.JPG)">
-        </div><!-- /.header-filter -->
+            <div class="header-filter" style="background-image: url(static/images/DSC_1707.JPG)">
+            </div><!-- /.header-filter -->
 
-        <div class="main main-raised col-xxl-10 row col-md-12 ">
-            <div class="below-content">
-
-                <!-- Research Section -->
-                <div class="col-12 col-md-3 col-xxl-2 feature-wrapper  research">
-                    <h2>Research</h2>
-                    <ul class="list-unstyled front-page-list">
-                        <li>
-                            <a href="https://libguides.gc.cuny.edu/az/databases">Databases A-Z</a>
-                            <p class="link-description">Browse our complete list of academic databases by name or
-                                subject.</p>
-                        </li>
-                        <!-- <li>
+            <div class="main main-raised col-xxl-10 row col-md-12 ">
+                <div class="below-content">
+                    <!-- Research Section -->
+                    <div class="col-12 col-md-3 col-xxl-2 feature-wrapper  research">
+                        <h2>Research</h2>
+                        <ul class="list-unstyled front-page-list">
+                            <li>
+                                <a href="https://libguides.gc.cuny.edu/az/databases">Databases A-Z</a>
+                                <p class="link-description">Browse our complete list of academic databases by name or
+                                    subject.</p>
+                            </li>
+                            <!-- <li>
                             <a href="https://libguides.gc.cuny.edu/ebooks">E-book Collections</a>
                             <p class="link-description">Access thousands of e-books from major collections and
                                 publishers.</p>
                         </li> -->
-                        <li>
-                            <a href="https://libguides.gc.cuny.edu/GoogleScholar">Google Scholar</a>
-                            <p class="link-description">Use Google Scholar to find scholarly articles across
-                                disciplines.</p>
-                        </li>
-                        <!-- <li>
+                            <li>
+                                <a href="https://libguides.gc.cuny.edu/GoogleScholar">Google Scholar</a>
+                                <p class="link-description">Use Google Scholar to find scholarly articles across
+                                    disciplines.</p>
+                            </li>
+                            <!-- <li>
                             <a href="https://libguides.gc.cuny.edu/JournalsAZ">Journal Search</a>
                             <p class="link-description">Find journals by title or subject in our comprehensive search tool.</p>
                         </li> -->
-                        <li>
-                            <a href="http://libguides.gc.cuny.edu/OneSearch">OneSearch</a>
-                            <p class="link-description">Search across all library materials: books, articles, databases,
-                                and more.</p>
-                        </li>
-                        <li>
-                            <a href="https://libguides.gc.cuny.edu/">Research Guides</a>
-                            <p class="link-description">Explore subject-specific guides curated by librarians.</p>
-                        </li>
-                        <li>
-                            <a href="https://libguides.gc.cuny.edu/WorldCatorg">WorldCat</a>
-                            <p class="link-description">Search the world’s libraries to find books, articles, and more.
-                            </p>
-                        </li>
-                    </ul>
-                </div>
+                            <li>
+                                <a href="http://libguides.gc.cuny.edu/OneSearch">OneSearch</a>
+                                <p class="link-description">Search across all library materials: books, articles,
+                                    databases,
+                                    and more.</p>
+                            </li>
+                            <li>
+                                <a href="https://libguides.gc.cuny.edu/">Research Guides</a>
+                                <p class="link-description">Explore subject-specific guides curated by librarians.</p>
+                            </li>
+                            <li>
+                                <a href="https://libguides.gc.cuny.edu/WorldCatorg">WorldCat</a>
+                                <p class="link-description">Search the world’s libraries to find books, articles, and
+                                    more.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
 
-                <!-- Services Section -->
-                <div class="col-12 col-md-3 col-xxl-2 feature-wrapper  services">
-                    <h2>Services</h2>
-                    <ul class="list-unstyled front-page-list">
-                        <!-- <li>
+                    <!-- Services Section -->
+                    <div class="col-12 col-md-3 col-xxl-2 feature-wrapper  services">
+                        <h2>Services</h2>
+                        <ul class="list-unstyled front-page-list">
+                            <!-- <li>
                             <a href="https://libguides.gc.cuny.edu/access/alumni">Alumni Access</a>
                             <p class="link-description">Discover library access options available for alumni.</p>
                         </li> -->
-                        <li>
-                            <a href="https://libguides.gc.cuny.edu/ask-a-librarian">Ask a Librarian</a>
-                            <p class="link-description">Get help with research, citations, or using the library's
-                                resources.</p>
-                        </li>
-                        <li>
-                            <a href="https://libguides.gc.cuny.edu/access">Borrowing &amp; Access</a>
-                            <p class="link-description">Learn how to borrow books and other materials from the library.
-                            </p>
-                        </li>
-                        <li>
-                            <a href="https://libguides.gc.cuny.edu/instruction-and-workshops">Instruction &amp;
-                                Workshops</a>
-                            <p class="link-description">Attend library workshops and instructional sessions on research
-                                skills.</p>
-                        </li>
-                        <li>
-                            <a
-                                href="https://ezproxy.gc.cuny.edu/login?url=https://gc-cuny.illiad.oclc.org/illiad/illiad.dll">Interlibrary
-                                Loan</a>
-                            <p class="link-description">Request materials from other libraries via our interlibrary loan
-                                system.</p>
-                        </li>
-                        <!-- <li>
+                            <li>
+                                <a href="https://libguides.gc.cuny.edu/ask-a-librarian">Ask a Librarian</a>
+                                <p class="link-description">Get help with research, citations, or using the library's
+                                    resources.</p>
+                            </li>
+                            <li>
+                                <a href="https://libguides.gc.cuny.edu/access">Borrowing &amp; Access</a>
+                                <p class="link-description">Learn how to borrow books and other materials from the
+                                    library.
+                                </p>
+                            </li>
+                            <li>
+                                <a href="https://libguides.gc.cuny.edu/instruction-and-workshops">Instruction &amp;
+                                    Workshops</a>
+                                <p class="link-description">Attend library workshops and instructional sessions on
+                                    research
+                                    skills.</p>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://ezproxy.gc.cuny.edu/login?url=https://gc-cuny.illiad.oclc.org/illiad/illiad.dll">Interlibrary
+                                    Loan</a>
+                                <p class="link-description">Request materials from other libraries via our interlibrary
+                                    loan
+                                    system.</p>
+                            </li>
+                            <!-- <li>
                             <a href='https://cuny-gc.primo.exlibrisgroup.com/discovery/account?vid=01CUNY_GC:CUNY_GC'
                                 class='classic'>Renew Books</a>
                             <p class="link-description">Renew borrowed materials online with your library account.</p>
                         </li> -->
-                        <li>
-                            <a href="https://libguides.gc.cuny.edu/reserves">Reserves</a>
-                            <p class="link-description">Access course reserve materials and other high-demand resources.
-                            </p>
-                        </li>
-                    </ul>
-                </div>
+                            <li>
+                                <a href="https://libguides.gc.cuny.edu/reserves">Reserves</a>
+                                <p class="link-description">Access course reserve materials and other high-demand
+                                    resources.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
 
-                <!-- Scholarship Section -->
-                <div class="col-12 col-md-3 col-xxl-2 feature-wrapper  scholarship">
-                    <h2 class="feature-header">Scholarship</h2>
-                    <ul class="list-unstyled front-page-list">
-                        <li>
-                            <a href="https://libguides.gc.cuny.edu/citation">Cite Your Sources</a>
-                            <p class="link-description">Guides on how to properly cite sources in different styles (MLA,
-                                APA, etc.).</p>
-                        </li>
-                        <li>
-                            <a href="https://libguides.gc.cuny.edu/datamgmt">Data Management</a>
-                            <p class="link-description">Get support for managing research data effectively.</p>
-                        </li>
-                        <!-- <li>
+                    <!-- Scholarship Section -->
+                    <div class="col-12 col-md-3 col-xxl-2 feature-wrapper  scholarship">
+                        <h2 class="feature-header">Scholarship</h2>
+                        <ul class="list-unstyled front-page-list">
+                            <li>
+                                <a href="https://libguides.gc.cuny.edu/citation">Cite Your Sources</a>
+                                <p class="link-description">Guides on how to properly cite sources in different styles
+                                    (MLA,
+                                    APA, etc.).</p>
+                            </li>
+                            <li>
+                                <a href="https://libguides.gc.cuny.edu/datamgmt">Data Management</a>
+                                <p class="link-description">Get support for managing research data effectively.</p>
+                            </li>
+                            <!-- <li>
                             <a href="https://libguides.gc.cuny.edu/digital_tools_consult">Digital Scholarship</a>
                             <p class="link-description">Learn about digital tools and techniques for research and publication.</p>
                         </li> -->
-                        <li>
-                            <a href="https://libguides.gc.cuny.edu/dissertations">Dissertations &amp; Theses</a>
-                            <p class="link-description">Access dissertations and theses submitted by Graduate Center
-                                students.</p>
-                        </li>
-                        <!-- <li>
+                            <li>
+                                <a href="https://libguides.gc.cuny.edu/dissertations">Dissertations &amp; Theses</a>
+                                <p class="link-description">Access dissertations and theses submitted by Graduate Center
+                                    students.</p>
+                            </li>
+                            <!-- <li>
                             <a href="https://libguides.gc.cuny.edu/grants">Grants &amp; Funding</a>
                             <p class="link-description">Find resources and guidance for applying for grants and funding.
                             </p>
                         </li> -->
-                        <li>
-                            <a href="https://libguides.gc.cuny.edu/scholarship">Scholarly Services</a>
-                            <p class="link-description">Explore services related to scholarly publishing and sharing.
-                            </p>
-                        </li>
-                        <li>
-                            <a href="https://libguides.gc.cuny.edu/share">Share Your Work</a>
-                            <p class="link-description">Learn how to submit your scholarly work to the library's
-                                repository.</p>
-                        </li>
-                    </ul>
-                </div>
+                            <li>
+                                <a href="https://libguides.gc.cuny.edu/scholarship">Scholarly Services</a>
+                                <p class="link-description">Explore services related to scholarly publishing and
+                                    sharing.
+                                </p>
+                            </li>
+                            <li>
+                                <a href="https://libguides.gc.cuny.edu/share">Share Your Work</a>
+                                <p class="link-description">Learn how to submit your scholarly work to the library's
+                                    repository.</p>
+                            </li>
+                        </ul>
+                    </div>
 
+                </div>
             </div>
         </div>
-
-
-
-        <div class='hours-and-events row col-xxl-10 space-between col-md-12'>
-            <div class='events-section col-md-8' id='events'>
-                <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/calendar?cid=15537">Events</a></h3>
-                <p>No events!</p>
-                <script id="template" type="x-tmpl-mustache">
+        <div class="container-fluid content events-wrapper">
+            <div class='hours-and-events row col-xxl-10 space-between col-md-12'>
+                <div class='events-section col-md-8' id='events'>
+                    <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/calendar?cid=15537">Events</a></h3>
+                    <p>No events!</p>
+                    <script id="template" type="x-tmpl-mustache">
                     <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/calendar?cid=15537">Events</a></h3>
                     <div>
                     {{#events}}
@@ -413,11 +420,11 @@
                     {{/events}}
                     </div>
                 </script>
-            </div>
-            <div class='hours-section col-md-4' id=hours>
-                <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/hours">Hours</a></h3>
-                <p>Hours failed to load!</p>
-                <script id="hours-template" type="x-tmpl-mustache">
+                </div>
+                <div class='hours-section col-md-4' id=hours>
+                    <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/hours">Hours</a></h3>
+                    <p>Hours failed to load!</p>
+                    <script id="hours-template" type="x-tmpl-mustache">
 
                     <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/hours">Hours</a></h3> 
                     <div class='hours'>
@@ -435,8 +442,10 @@
                     </tbody>
                     </div>
                 </script>
+                </div>
             </div>
         </div>
+        <div class="container-fluid content collections-wrapper">
         <div id='collections-and-videos' class="row col-xxl-10 space-between col-md-12">
             <div class='collections-section col-md-6' id='collection'>
                 <h3 class="lower-header"><a
@@ -469,6 +478,8 @@
 
             </div>
         </div>
+    </div>
+    <div class="container-fluid content news-wrapper">
         <div id='news' class='news-section rss-feed row col-xxl-10 col-md-12'>
             <script id="news-template" type="x-tmpl-mustache">
             <h3 class='lower-header'><a href='https://gclibrary.commons.gc.cuny.edu/'>News &amp; Views</a></h3>
@@ -479,21 +490,23 @@
             </ul>
             </script>
         </div>
-        <!-- <div id='people-and-videos' class='row col-xxl-8 space-between col-md-12'>
+    </div>
+    <!-- <div id='people-and-videos' class='row col-xxl-8 space-between col-md-12'>
             <div class='people-section col-md-4' id='people'>
                 <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/hours">People</a></h3>
                 <p id="librarian">People failed to load!</p> -->
-        <!-- <script id="people-template" type="x-tmpl-mustache">
+    <!-- <script id="people-template" type="x-tmpl-mustache">
 
                    
                 </script> -->
 
-        <!-- </div>
+    <!-- </div>
             <div class='youtube-section col-md-4' id=youtube>
                 <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/hours">Videos</a></h3>
                 <p>Videos failed to load!</p>
             </div>
         </div> -->
+    </div>
     </div>
 
     <footer class="footer row col-xxl-12 col-md-12">
