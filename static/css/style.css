@@ -282,8 +282,8 @@ h6 {
 
 .tab .nav-tabs li.active a,
 .tab .nav-tabs li a:hover {
-	background-color: #3c4859;
-	border: 1px solid #3c4859;
+	background-color: #005daa;
+	border: 1px solid #005daa;
 }
 
 .tab .nav-tabs li a:before,
@@ -384,7 +384,7 @@ h6 {
 #s-lg-sel-az-widget-1535395835265 {
 	height: 45px;
 	background: rgba(255, 255, 255);
-	border: 3px solid #3c4859;
+	border: 3px solid #005daa;
 	border-right: none;
 	background-color: white;
 	color: white;
@@ -404,7 +404,7 @@ h6 {
 #s-lg-frm-az-widget-1535395835265 button {
 	box-shadow: none;
 	height: 45px;
-	/* border: 1px solid #3c4859; */
+	/* border: 1px solid #005daa; */
 	border-left: none;
 	background-color: #005daa;
 	padding: 1em !important;
