@@ -270,7 +270,7 @@
                 <div class="below-content">
                     <!-- Research Section -->
                     <div class="col-12 col-md-3 col-xxl-2 feature-wrapper  research">
-                        <h2>Research</h2>
+                        <h3 class="lower-header">Research</h3>
                         <ul class="list-unstyled front-page-list">
                             <li>
                                 <a href="https://libguides.gc.cuny.edu/az/databases">Databases A-Z</a>
@@ -312,7 +312,7 @@
 
                     <!-- Services Section -->
                     <div class="col-12 col-md-3 col-xxl-2 feature-wrapper  services">
-                        <h2>Services</h2>
+                        <h3 class="lower-header">Services</h3>
                         <ul class="list-unstyled front-page-list">
                             <!-- <li>
                             <a href="https://libguides.gc.cuny.edu/access/alumni">Alumni Access</a>
@@ -360,7 +360,7 @@
 
                     <!-- Scholarship Section -->
                     <div class="col-12 col-md-3 col-xxl-2 feature-wrapper  scholarship">
-                        <h2 class="feature-header">Scholarship</h2>
+                        <h3 class="lower-header">Scholarship</h3>
                         <ul class="list-unstyled front-page-list">
                             <li>
                                 <a href="https://libguides.gc.cuny.edu/citation">Cite Your Sources</a>
@@ -446,13 +446,13 @@
             </div>
         </div>
         <div class="container-fluid content collections-wrapper">
-        <div id='collections-and-videos' class="row col-xxl-10 space-between col-md-12">
-            <div class='collections-section col-md-6' id='collection'>
-                <h3 class="lower-header"><a
-                        href="https://cuny-gc.primo.exlibrisgroup.com/discovery/collectionDiscovery?vid=01CUNY_GC%3ACUNY_GC">Collections</a>
-                </h3>
-                <p>Collections failed to load!</p>
-                <script id="collections-template" type="x-tmpl-mustache">
+            <div id='collections-and-videos' class="row col-xxl-10 space-between col-md-12">
+                <div class='collections-section col-md-6' id='collection'>
+                    <h3 class="lower-header"><a
+                            href="https://cuny-gc.primo.exlibrisgroup.com/discovery/collectionDiscovery?vid=01CUNY_GC%3ACUNY_GC">Collections</a>
+                    </h3>
+                    <p>Collections failed to load!</p>
+                    <script id="collections-template" type="x-tmpl-mustache">
                     <h3 class="lower-header"><a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/collectionDiscovery?vid=01CUNY_GC%3ACUNY_GC">Featured Collection</a></h3>
                     <div class='collections'>
                     {{#collection}}
@@ -469,19 +469,19 @@
                     {{/collection}}
                     </div>
                 </script>
-            </div>
-            <div class='youtube-section col-md-6' id=youtube>
-                <h3 class="lower-header"><a href="https://www.youtube.com/channel/UCF11xs3zCmMdMdWoOfxP_kg">Featured
-                        Video</a></h3><iframe id="vid" width="560" height="315"
-                    src="https://www.youtube.com/embed/videoseries?list=PLbp9SdWbaAjmttsctx1kDqiVOZruZDwCm"
-                    frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class='youtube-section col-md-6' id=youtube>
+                    <h3 class="lower-header"><a href="https://www.youtube.com/channel/UCF11xs3zCmMdMdWoOfxP_kg">Featured
+                            Video</a></h3><iframe id="vid" width="560" height="315"
+                        src="https://www.youtube.com/embed/videoseries?list=PLbp9SdWbaAjmttsctx1kDqiVOZruZDwCm"
+                        frameborder="0" allowfullscreen></iframe>
 
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container-fluid content news-wrapper">
-        <div id='news' class='news-section rss-feed row col-xxl-10 col-md-12'>
-            <script id="news-template" type="x-tmpl-mustache">
+        <div class="container-fluid content news-wrapper">
+            <div id='news' class='news-section rss-feed row col-xxl-10 col-md-12'>
+                <script id="news-template" type="x-tmpl-mustache">
             <h3 class='lower-header'><a href='https://gclibrary.commons.gc.cuny.edu/'>News &amp; Views</a></h3>
             <ul class='news'>
             {{#items}}
@@ -489,18 +489,18 @@
             {{/items}}
             </ul>
             </script>
+            </div>
         </div>
-    </div>
-    <!-- <div id='people-and-videos' class='row col-xxl-8 space-between col-md-12'>
+        <!-- <div id='people-and-videos' class='row col-xxl-8 space-between col-md-12'>
             <div class='people-section col-md-4' id='people'>
                 <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/hours">People</a></h3>
                 <p id="librarian">People failed to load!</p> -->
-    <!-- <script id="people-template" type="x-tmpl-mustache">
+        <!-- <script id="people-template" type="x-tmpl-mustache">
 
                    
                 </script> -->
 
-    <!-- </div>
+        <!-- </div>
             <div class='youtube-section col-md-4' id=youtube>
                 <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/hours">Videos</a></h3>
                 <p>Videos failed to load!</p>
