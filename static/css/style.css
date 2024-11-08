@@ -508,7 +508,7 @@ input[type="radio"]+label:hover {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 
 	/* display: grid; */
 	/* grid-template-columns: repeat(auto-fit, minmax(200px, 2fr)); */
@@ -519,19 +519,11 @@ input[type="radio"]+label:hover {
 }
 
 .feature-wrapper {
-	flex-grow: calc(1/4);
-	/* padding-left: 20px !important;
-	padding-right: 20px !important; */
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	min-width: 320px;
-	/* max-width: 500px; */
+	width: 300px;
 	word-wrap: break-word;
-	background-color: #fff;
-	background-clip: border-box;
-	/* border: 1px solid rgba(0, 0, 0, 2); */
-	border-radius: 0;
 	}
 
 .feature-wrapper h2 {
@@ -742,7 +734,7 @@ iframe {
 	margin-top: 30px;
 	margin-bottom: 30px;
 	display: flex;
-	flex-direction: row wrap;
+	flex-flow: row wrap;
 	justify-content: space-between;
 }
 
@@ -781,6 +773,21 @@ iframe {
 }
 
 @media (max-width: 991px) {
+
+	.below-content {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.feature-wrapper {
+		width: 100%;
+	}
+
+	.hours-and-events {
+		flex-flow: column wrap;
+	}
+
 	.events-section>div {
 		flex-flow: column wrap;
 	}
@@ -788,6 +795,18 @@ iframe {
 	.event {
 		width: 100%;
 		margin-top: 20px;
+	}
+
+	.hours-section {
+		width: 70%;
+	}
+
+	#collections-and-videos {
+		display: flex;
+		flex-flow: column wrap;
+	}
+	#collections-and-videos>div {
+		width: 80%;
 	}
 
 	.news {
@@ -928,19 +947,6 @@ footer .glyphicon {
 
 }
 
-.card .card-image,
-.card-no-width .card-image,
-.card .header,
-.card-no-width .header,
-.card-profile .card-avatar,
-.card-testimonial .card-avatar img,
-.card-raised,
-.img-raised,
-.iframe-container iframe {
-	/* -webkit-box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
-	-moz-box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
-	box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2); */
-}
 
 a:hover {
 	text-decoration: none;
