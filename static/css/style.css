@@ -505,6 +505,7 @@ input[type="radio"]+label:hover {
 	justify-content: space-between;
 	flex-wrap: wrap;
 	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 .feature-wrapper {
@@ -533,59 +534,10 @@ input[type="radio"]+label:hover {
 }
 
 .lower-header {
-	font-size: 20px;
+	font-size: 30px;
 	font-weight: 400;
 	padding-top: 20px;
-}
-
-/* Option 1: Change font to 'Georgia', add italic style */
-.lower-header.option1 {
-    font-size: 20px;
-    font-weight: 400;
-    font-family: 'Georgia', serif;
-    padding-top: 20px;
-    color: #000;
-    font-style: italic;
-}
-
-/* Option 2: Change font to 'Courier New', add underline */
-.lower-header.option2 {
-    font-size: 20px;
-    font-weight: 400;
-    font-family: 'Courier New', monospace;
-    padding-top: 20px;
-    color: #000;
-    text-decoration: underline;
-}
-
-/* Option 3: Change font to 'Times New Roman', add bold style */
-.lower-header.option3 {
-    font-size: 20px;
-    font-weight: bold;
-    font-family: 'Times New Roman', Times, serif;
-    padding-top: 20px;
-    color: #000;
-}
-
-/* Option 4: Change font to 'Verdana', add letter spacing */
-.lower-header.option4 {
-    font-size: 20px;
-    font-weight: 400;
-    font-family: 'Verdana', sans-serif;
-    padding-top: 20px;
-    color: #000;
-    letter-spacing: 1px;
-}
-
-/* Option 5: Change font to 'Arial', add background color */
-.lower-header.option5 {
-    font-size: 20px;
-    font-weight: 400;
-    font-family: 'Arial', sans-serif;
-    padding-top: 20px;
-    color: #000;
-    background-color: #f0f0f0;
-    padding: 10px;
+    font-family: 'Playfair Display', serif;
 }
 
 .front-page-list{
@@ -725,8 +677,8 @@ iframe {
 	flex: 1 1 auto;
 	justify-content: space-around;
 	border-right: 1px solid #e2e2e2;
-	padding-right: 30px;
-	padding-left: 25px;
+	padding-left: 20px;
+	padding-right: 20px;
 	flex-direction: column;
 	align-items: center;
 }
