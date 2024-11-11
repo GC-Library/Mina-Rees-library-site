@@ -303,7 +303,7 @@ h6 {
 
 .tab .nav-tabs li.active a:before,
 .tab .nav-tabs li a:hover:before,
-.tab .nav-tabs li.active a:after,
+.tab .nav-tabs li active a:after,
 .tab .nav-tabs li a:hover:after {
 	width: 50%;
 }
@@ -504,6 +504,7 @@ input[type="radio"]+label:hover {
 	flex-direction: row;
 	justify-content: space-between;
 	flex-wrap: wrap;
+	margin-top: 20px;
 }
 
 .feature-wrapper {
@@ -534,14 +535,57 @@ input[type="radio"]+label:hover {
 .lower-header {
 	font-size: 20px;
 	font-weight: 400;
-	text-transform: uppercase;
-	/* border-top: 1px solid #e2e2e2; */
 	padding-top: 20px;
 }
 
-.lower-header a {
-	color: #12130f;
-	text-decoration: none;
+/* Option 1: Change font to 'Georgia', add italic style */
+.lower-header.option1 {
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Georgia', serif;
+    padding-top: 20px;
+    color: #000;
+    font-style: italic;
+}
+
+/* Option 2: Change font to 'Courier New', add underline */
+.lower-header.option2 {
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Courier New', monospace;
+    padding-top: 20px;
+    color: #000;
+    text-decoration: underline;
+}
+
+/* Option 3: Change font to 'Times New Roman', add bold style */
+.lower-header.option3 {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    padding-top: 20px;
+    color: #000;
+}
+
+/* Option 4: Change font to 'Verdana', add letter spacing */
+.lower-header.option4 {
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Verdana', sans-serif;
+    padding-top: 20px;
+    color: #000;
+    letter-spacing: 1px;
+}
+
+/* Option 5: Change font to 'Arial', add background color */
+.lower-header.option5 {
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Arial', sans-serif;
+    padding-top: 20px;
+    color: #000;
+    background-color: #f0f0f0;
+    padding: 10px;
 }
 
 .front-page-list{
@@ -765,6 +809,7 @@ iframe {
 	.main {
 		flex-direction: column;
 		align-items: center;
+
 	}
 
 	.features {
@@ -790,11 +835,6 @@ iframe {
 	.event {
 		width: 100%;
 		margin-top: 20px;
-	}
-
-	.hours-section> .lower-header {
-		margin-top: 20px;
-		margin-bottom: 35px;
 	}
 
 	#collections-and-videos {
