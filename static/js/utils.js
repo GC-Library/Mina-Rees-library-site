@@ -2,7 +2,7 @@
 
 // Debug flags for testing fallback scenarios
 const DEBUG = {
-    SIMULATE_COMMONS_DOWN: false,  // Set to true to simulate commons.gc.cuny.edu being down
+    SIMULATE_COMMONS_DOWN: true,  // Set to true to simulate commons.gc.cuny.edu being down
     SIMULATE_LIBCAL_DOWN: false,   // Set to true to simulate libcal API being down
     SIMULATE_ALL_DOWN: false       // Set to true to simulate all external services being down
 };
@@ -86,15 +86,8 @@ async function loadBlogEntries() {
         renderNews({ items: entriesList });
         
     } catch (error) {
-        console.log('Falling back to local news data:', error.message);
-        try {
-            const fallbackResponse = await fetch('./data/fallback_news.json');
-            const fallbackData = await fallbackResponse.json();
-            renderNews(fallbackData);
-        } catch (fallbackError) {
-            console.error('Failed to load fallback news:', fallbackError);
-            $('#news').html('<h3 class="lower-header">News temporarily unavailable</h3>');
-        }
+        console.log('Commons site unavailable:', error.message);
+        $('.news-section.rss-feed.row').remove();
     }
 }
 
