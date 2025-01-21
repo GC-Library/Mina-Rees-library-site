@@ -2,7 +2,7 @@
 
 // Debug flags for testing fallback scenarios
 const DEBUG = {
-    SIMULATE_COMMONS_DOWN: true,  // Set to true to simulate commons.gc.cuny.edu being down
+    SIMULATE_COMMONS_DOWN: false,  // Set to true to simulate commons.gc.cuny.edu being down
     SIMULATE_LIBCAL_DOWN: false,   // Set to true to simulate libcal API being down
     SIMULATE_ALL_DOWN: false       // Set to true to simulate all external services being down
 };
@@ -65,7 +65,9 @@ async function loadBlogEntries() {
         }
 
         // Try main feed first
-        const response = await fetch('https://gclibrary.commons.gc.cuny.edu/category/blog/website-front-page/feed/?fsk=5c1146bca3512');
+        const response = await fetch('https://gclibrary.commons.gc.cuny.edu/category/blog/website-front-page/feed/?fsk=5c1146bca3512', {
+            // mode: 'no-cors'
+        });
         if (!response.ok) throw new Error('Primary feed unavailable');
         
         const str = await response.text();
