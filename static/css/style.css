@@ -265,8 +265,10 @@ h6 {
 	min-width: 120px;
 }
 
-.tab .nav-tabs li a {
-	display: block;
+.tab .nav-tabs .nav-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	background: rgba(10, 10, 10, .6) !important;
 	padding: 10px;
 	border: 1px solid rgba(40, 40, 40, .6);
@@ -278,41 +280,39 @@ h6 {
 	text-align: center;
 	z-index: 1;
 	transition: all 0.3s ease 0s;
+	width: 100%;
+	text-transform: uppercase;
 }
 
-.tab .nav-tabs li a i {
-	display: block;
-	font-size: 40px;
-	color: white;
-	margin-bottom: 15px;
-}
-
-.tab .nav-tabs li.active a,
-.tab .nav-tabs li a:hover {
-	background-color: #3c4859;
+.tab .nav-tabs .nav-link:hover,
+.tab .nav-tabs .nav-link.active {
+	background-color: #3c4859 !important;
 	border: 1px solid #3c4859;
+	color: white;
 }
 
-.tab .nav-tabs li a:before,
-.tab .nav-tabs li a:after {
-	content: "";
-	width: 0;
-	position: absolute;
-	bottom: -1px;
-	left: 0;
-	transition: all 0.3s ease 0s;
+.tab .nav-tabs .nav-item {
+	display: flex;
+	align-items: stretch;
 }
 
-.tab .nav-tabs li a:after {
-	left: auto;
-	right: 0;
+.tab .nav-tabs button {
+	box-shadow: none;
+	padding: 0;
+	border: none;
+	width: 100%;
+	height: 100%;
+	background: none;
 }
 
-.tab .nav-tabs li.active a:before,
-.tab .nav-tabs li a:hover:before,
-.tab .nav-tabs li.active a:after,
-.tab .nav-tabs li a:hover:after {
-	width: 50%;
+.tab .nav-tabs button:hover,
+.tab .nav-tabs button:focus {
+	background: none;
+	outline: none;
+}
+
+.tab .nav-tabs button:active {
+	transform: none;
 }
 
 /* Tab Content */
@@ -323,6 +323,7 @@ h6 {
 	font-size: 15px;
 	color: white;
 	line-height: 30px;
+	background: rgba(10, 10, 10, .6);
 }
 
 .tab .tab-content h3 {
@@ -331,6 +332,14 @@ h6 {
 
 .tab-content.tabs {
 	padding: 0px;
+}
+
+.tab-pane {
+	display: none;
+}
+
+.tab-pane.active.show {
+	display: block;
 }
 
 /* Browse Header */

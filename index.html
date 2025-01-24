@@ -89,26 +89,26 @@
                 <h1 id="main_statement">
                     Search the Collections
                 </h1>
-                <div class="tab bento-tabs" role="tabpanel">
+                <div class="tab bento-tabs">
                     <!-- Nav tabs -->
-                    <ul class="nav nav-tabs row" role="tablist">
-                        <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section1"
-                            class="nav-item col-sm-2"><a href="#Section1" aria-controls="Catalog" role="tab"
-                                data-toggle="tab" class='active nav-link'>CATALOG</a></li>
-                        <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section2"
-                            class="nav-item col-sm-2"><a href="#Section2" aria-controls="Articles" role="tab"
-                                data-toggle="tab" class="nav-link">ARTICLES +</a></li>
-                        <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section4"
-                            class="nav-item col-sm-2"><a href="#Section4" aria-controls="Databases" role="tab"
-                                data-toggle="tab" class="nav-link" class="nav-link">DATABASES</a></li>
-                        <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section3"
-                            class="nav-item col-sm-2"><a href="#Section3" aria-controls="Journals" role="tab"
-                                data-toggle="tab" class="nav-link">JOURNALS</a></li>
+                    <ul class="nav nav-tabs row" id="searchTabs" role="tablist">
+                        <li class="nav-item col-sm-2" role="presentation">
+                            <button class="nav-link active" id="catalog-tab" data-bs-toggle="tab" data-bs-target="#Section1" type="button" role="tab" aria-controls="Section1" aria-selected="true">CATALOG</button>
+                        </li>
+                        <li class="nav-item col-sm-2" role="presentation">
+                            <button class="nav-link" id="articles-tab" data-bs-toggle="tab" data-bs-target="#Section2" type="button" role="tab" aria-controls="Section2" aria-selected="false">ARTICLES +</button>
+                        </li>
+                        <li class="nav-item col-sm-2" role="presentation">
+                            <button class="nav-link" id="databases-tab" data-bs-toggle="tab" data-bs-target="#Section4" type="button" role="tab" aria-controls="Section4" aria-selected="false">DATABASES</button>
+                        </li>
+                        <li class="nav-item col-sm-2" role="presentation">
+                            <button class="nav-link" id="journals-tab" data-bs-toggle="tab" data-bs-target="#Section3" type="button" role="tab" aria-controls="Section3" aria-selected="false">JOURNALS</button>
+                        </li>
                     </ul>
                 </div>
                 <!-- Tab panes -->
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade show active" id="Section1">
+                <div class="tab-content" id="searchTabContent">
+                    <div class="tab-pane fade show active" id="Section1" role="tabpanel" aria-labelledby="catalog-tab">
                         <div class="search-input col-xs-12">
                             <div class="input-group col-md-12">
                                 <input id="primoQueryTemp" class="search-query
@@ -146,7 +146,7 @@
                         </ul>
 
                     </div>
-                    <div role="tabpanel" class="tab-pane fade" id="Section2">
+                    <div class="tab-pane fade" id="Section2" role="tabpanel" aria-labelledby="articles-tab">
                         <div class="search-input col-xs-12">
                             <div class="input-group col-md-12">
                                 <input type="text" class="search-query
@@ -172,7 +172,7 @@
                                     for="subject2">Subject</label></li>
                         </ul>
                     </div>
-                    <div role="tabpanel" class="tab-pane fade" id="Section3">
+                    <div class="tab-pane fade" id="Section3" role="tabpanel" aria-labelledby="journals-tab">
                         <div class="search-input col-xs-12">
                             <div class="input-group col-md-12">
                                 <input type="text" id="primoQueryTemp2" placeholder="Find journals"
@@ -185,7 +185,7 @@
                             </div>
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane fade" id="Section4">
+                    <div class="tab-pane fade" id="Section4" role="tabpanel" aria-labelledby="databases-tab">
                         <div class="database-list input-group col-xs-12"></div>
                         <div class="databases">
                             <h3 class='browse-header'><a href='https://libguides.gc.cuny.edu/az/databases'>Browse databases by

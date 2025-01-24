@@ -33,10 +33,19 @@ function setupSearchHandlers() {
     $("#booksearchButton").click(handleBookSearch);
     $("#articleButton").click(handleArticleSearch);
     
-    // Enter key handlers
-    ['#primoQueryTemp2', '#primoQueryTemp', '#articleSearch'].forEach(selector => {
-        $(selector).keypress(e => {
-            if (e.which === 13) $(selector.replace('Temp2', 'SearchButton').replace('Temp', 'searchButton')).click();
+    // Enter key handlers for all search inputs
+    const searchInputMap = {
+        '#primoQueryTemp2': handleJournalSearch,
+        '#primoQueryTemp': handleBookSearch,
+        '#articleSearch': handleArticleSearch
+    };
+
+    Object.entries(searchInputMap).forEach(([inputSelector, handler]) => {
+        $(inputSelector).keydown(e => {
+            if (e.key === 'Enter') {
+                e.preventDefault(); // Prevent default form submission
+                handler();
+            }
         });
     });
 }
