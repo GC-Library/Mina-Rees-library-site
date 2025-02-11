@@ -74,8 +74,13 @@ async function loadBlogEntries() {
         }
 
         // Try main feed first
-        const response = await fetch('https://gclibrary.commons.gc.cuny.edu/category/blog/website-front-page/feed/?fsk=5c1146bca3512', {
-            // mode: 'no-cors'
+        const timestamp = new Date().getTime();
+        const response = await fetch(`https://gclibrary.commons.gc.cuny.edu/category/blog/website-front-page/feed/?fsk=5c1146bca3512&_=${timestamp}`, {
+            cache: 'no-store',  // Prevent caching to always get fresh feed
+            headers: {
+                'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
+            }
         });
         if (!response.ok) throw new Error('Primary feed unavailable');
         
@@ -85,16 +90,25 @@ async function loadBlogEntries() {
         
         // Try fellow posts feed if main feed succeeded
         try {
-            const fellowResponse = await fetch('https://gclibrary.commons.gc.cuny.edu/category/blog/fellow-post/feed/?fsk=5c1146bca3512');
+            const fellowResponse = await fetch(`https://gclibrary.commons.gc.cuny.edu/category/blog/fellow-post/feed/?fsk=5c1146bca3512&_=${timestamp}`, {
+                cache: 'no-store',  // Prevent caching to always get fresh feed
+                headers: {
+                    'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
+                }
+            });
             if (fellowResponse.ok) {
-                const fellowData = new window.DOMParser().parseFromString(await fellowResponse.text(), "text/xml");
-                entriesList = entriesList.concat(processNewsEntries(fellowData, 1));
+                const fellowStr = await fellowResponse.text();
+                const fellowData = new window.DOMParser().parseFromString(fellowStr, "text/xml");
+                const fellowEntries = processNewsEntries(fellowData, 1);
+                entriesList = entriesList.concat(fellowEntries);
             }
         } catch (fellowError) {
             console.log('Fellow posts unavailable:', fellowError.message);
         }
 
         renderNews({ items: entriesList });
+
         
     } catch (error) {
         console.log('Commons site unavailable:', error.message);
