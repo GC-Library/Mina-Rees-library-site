@@ -502,7 +502,6 @@ input[type="radio"]+label:hover {
 	flex-direction: row;
 	justify-content: space-between;
 	flex-wrap: wrap;
-	/* margin-top: 40px; */
 	margin-bottom: 30px;
 }
 
@@ -511,8 +510,6 @@ input[type="radio"]+label:hover {
 	display: flex;
 	flex-direction: column;
 	word-wrap: break-word;
-	/* min-width: 300px;
-	max-width: 400px; */
 	}
 
 	/* feature wrapper other than the first one */
@@ -623,14 +620,15 @@ input[type="radio"]+label:hover {
 	font-weight: 400;
 	font-size: 16px;
 	flex: 1 1 auto;
-	justify-content: center;
+	justify-content: start;
 	/* min-width: 66%; */
 }
 
 .event {
-	padding-right: 20px;
-	width: 50%;
-	/* min-width: 250px; */
+	padding-right: 10px;
+	margin-right: 10px;
+	width: 45%;
+	border-right: 1px solid #e2e2e2;
 }
 
 .event h4 {
@@ -675,15 +673,15 @@ iframe {
 	justify-content: space-between;
 }
 
-.news>li {
+.news-item {
 	display: flex;
 	padding-bottom: 10px;
-	max-width: 25%;
+	max-width: 50%;
 	flex: 1 1 auto;
 	justify-content: space-around;
 	border-right: 1px solid #e2e2e2;
-	padding-left: 20px;
-	padding-right: 20px;
+	border-bottom: 1px solid #e2e2e2;
+	padding: 30px;
 	flex-direction: column;
 	align-items: center;
 }
@@ -763,6 +761,14 @@ iframe {
 
 @media (max-width: 1200px) {
 
+	/* .lower-header{
+		padding-bottom: 20px;
+		margin-bottom: 0px;
+	}
+	h4{
+		padding-top: 0px;
+	} */
+
 	#main-header {
 		padding-bottom: 0px;
 	}
@@ -773,19 +779,6 @@ iframe {
 	.feature-wrapper:not(:first-child) {
 		margin-left: 0px;
 	}
-	/* .main {
-		flex-direction: column;
-		align-items: left;
-	}
-
-	.features {
-		flex-flow: column wrap;
-	}
-
-	.feature-wrapper {
-		width: inherit;
-	} */
-
 	.hours-and-events {
 		flex-flow: column wrap;
 		align-items: left;
@@ -794,16 +787,16 @@ iframe {
 	.events-section>div {
 		flex-flow: column wrap;
 	}
-
+	
 	.event {
 		width: 100%;
-		margin-top: 20px;
+
 	}
 
 	#collections-and-videos {
 		display: flex;
 		flex-flow: column wrap;
-		align-items: left;
+		align-items: flex-start;
 	}
 	.collection-image-container {
 		width: 100%;
@@ -823,14 +816,14 @@ iframe {
 		align-items: flex-start;
 	}
 
-	.news>li {
+	.news-item {
 		padding-bottom: 10px;
 		max-width: 100%;
 		flex: 1 1 auto;
 		justify-content: space-around;
 		border-right: 1px solid #e2e2e2;
 		padding-right: 30px;
-		padding-left: 25px;
+		padding-left: 0px;
 		flex-direction: column;
 		align-items: flex-start;
 	}
@@ -859,7 +852,6 @@ iframe {
 	.feature-wrapper {
 		width: 100%;
 	}
-	
 }
 
 /* sidebar */
