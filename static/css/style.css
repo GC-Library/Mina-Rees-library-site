@@ -656,7 +656,7 @@ iframe {
 }
 
 .news-wrapper {
-	background-color: #f5f5f5;
+	
 }
 
 #news {
@@ -717,6 +717,10 @@ iframe {
 }
 
 /* Collections and Videos */
+.collections-wrapper{
+	background-color: #f5f5f5;
+}
+
 #collections-and-videos {
 	margin-top: 30px;
 	margin-bottom: 30px;

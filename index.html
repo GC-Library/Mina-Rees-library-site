@@ -449,6 +449,22 @@
                 </div>
             </div>
         </div>
+        <div class="container-fluid content news-wrapper">
+            <div class="news-section row col-xxl-8 space-between col-10">
+                <div id='news' class='col-xl-12 col-9 rss-feed'>
+                    <h3 class='lower-header option3'><a href='https://gclibrary.commons.gc.cuny.edu/'>News &amp;
+                            Views</a></h3>
+                    <script id="news-template" type="x-tmpl-mustache">
+            <h3 class='lower-header'><a href='https://gclibrary.commons.gc.cuny.edu/'>News &amp; Views</a></h3>
+            <ul class='news'>
+            {{#items}}
+                <li class='news-item'><div class='news-image-container'><img src='{{image}}' alt='{{title}}' /></div><h4><a href="{{link}}">{{title}}</a></h4><p>{{shortBodyWithDots}}</p></li>
+            {{/items}}
+            </ul>
+            </script>
+                </div>
+            </div>
+        </div>
         <div class="container-fluid content collections-wrapper">
             <div id='collections-and-videos' class="row col-xxl-8 space-between col-10">
                 <div class='collections-section col-xl-6 col-9' id='collection'>
@@ -481,22 +497,6 @@
                         src="https://www.youtube.com/embed/videoseries?list=PLbp9SdWbaAjmttsctx1kDqiVOZruZDwCm"
                         frameborder="0" allowfullscreen></iframe>
 
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid content news-wrapper">
-            <div class="news-section row col-xxl-8 space-between col-10">
-                <div id='news' class='col-xl-12 col-9 rss-feed'>
-                    <h3 class='lower-header option3'><a href='https://gclibrary.commons.gc.cuny.edu/'>News &amp;
-                            Views</a></h3>
-                    <script id="news-template" type="x-tmpl-mustache">
-            <h3 class='lower-header'><a href='https://gclibrary.commons.gc.cuny.edu/'>News &amp; Views</a></h3>
-            <ul class='news'>
-            {{#items}}
-                <li class='news-item'><div class='news-image-container'><img src='{{image}}' alt='{{title}}' /></div><h4><a href="{{link}}">{{title}}</a></h4><p>{{shortBodyWithDots}}</p></li>
-            {{/items}}
-            </ul>
-            </script>
                 </div>
             </div>
         </div>
