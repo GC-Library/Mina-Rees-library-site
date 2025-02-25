@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
 @import url('https://fonts.googleapis.com/css?family=Lora');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 
 #main_statement {
 	font-family: Roboto Condensed !important;
@@ -182,21 +183,23 @@ h6 {
 
 #main-header{
 	padding-bottom: 40px;
+	min-height: 390px;
+	max-height: 418px;
 }
 
 .header-filter {
-position: absolute;
-top: -43px;
-bottom: 0px;
-left: 0;
-right: 0;
-z-index: -1;
-height: 45vh;
-min-height: 300px;
-max-height: 418px;
-background-position: 10% 0%;
-background-repeat: no-repeat;
-background-size: cover;
+	position: absolute;
+	top: -43px;
+	bottom: 0px;
+	left: 0;
+	right: 0;
+	z-index: -1;
+	height: 45vh;
+	min-height: 300px;
+	max-height: 418px;
+	background-position: 10% 0%;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .header-filter:before,
@@ -215,7 +218,7 @@ background-size: cover;
 }
 
 .bento {
-	margin-top: 100px;
+	margin-top: 150px;
 	/* min-height: 340px; */
 }
 
@@ -537,19 +540,20 @@ input[type="radio"]+label:hover {
 .lower-header {
 	font-size: 30px;
 	font-weight: 400;
-	padding-top: 20px;
-    font-family: 'Playfair Display', serif;
+	/* padding-top: 20px; */
+    /* font-family: 'Playfair Display', serif; */
+	font-family: 'Oswald', sans-serif;
 	/* font-family: 'Lora', serif; */
 }
 
+
 .front-page-list{
-	padding-left: 10px;
-	margin-left: 8px;
+	padding-left: 8px;
 }
 
 .front-page-list>li {
 	border-left: 1px solid #b1b4b6;
-	padding-left: 5px;
+	padding-left: 10px;
 	font-size: 18px;
 }
 
@@ -855,6 +859,12 @@ iframe {
 	}
 	.feature-wrapper {
 		width: 100%;
+	}
+}
+
+@media(max-width: 575px){
+	.links-wrapper{
+		padding-top: 50px;
 	}
 }
 
