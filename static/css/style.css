@@ -182,8 +182,8 @@ h6 {
 }
 
 #main-header{
-	padding-bottom: 40px;
-	min-height: 390px;
+	padding-bottom: 60px;
+	min-height: 300px;
 	max-height: 418px;
 }
 
@@ -778,7 +778,7 @@ iframe {
 	} */
 
 	#main-header {
-		padding-bottom: 0px;
+		padding-bottom: 10px;
 	}
 
 	.features {
