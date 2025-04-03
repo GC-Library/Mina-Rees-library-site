@@ -10,5 +10,6 @@
 # https://getbootstrap.com/docs/5.0/components/alerts/
 alert:
   style: info
-  message: The library is currently closed due to a power outage. We anticipate reopening on Monday.
-  show: False
+  message: |
+    Fulltext is not available through <a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC" target="_blank">OneSearch</a> and use the <a href="https://www.cuny.edu/libraries/e-resources/_" target="_blank">CUNY A-Z</a> to access databases
+  show: True
