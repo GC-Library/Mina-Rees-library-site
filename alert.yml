@@ -11,5 +11,5 @@
 alert:
   style: info
   message: |
-    Fulltext is not available through <a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC" target="_blank">OneSearch</a> and use the <a href="https://www.cuny.edu/libraries/e-resources/_" target="_blank">CUNY A-Z</a> to access databases
+    Fulltext is currently available through <a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC" target="_blank">OneSearch</a>. For database access, please use the <a href="https://www.cuny.edu/libraries/e-resources/_" target="_blank">CUNY A-Z</a>.
   show: True
