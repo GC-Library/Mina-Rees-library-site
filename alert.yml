@@ -11,5 +11,5 @@
 alert:
   style: info
   message: |
-    Fulltext is currently not available in <a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC" target="_blank">OneSearch</a>. For database access, please use the <a href="https://www.cuny.edu/libraries/e-resources/_" target="_blank">CUNY A-Z</a>. ILL is also not available. 
-  show: False
+On Saturday April 12th, fulltext will not be available in <a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC" target="_blank">OneSearch</a>. For database access, please use the <a href="https://www.cuny.edu/libraries/e-resources/_" target="_blank">CUNY A-Z</a>. ILL is also not available.  
+show: False
