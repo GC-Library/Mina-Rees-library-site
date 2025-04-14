@@ -11,5 +11,5 @@
 alert:
   style: info
   message: |
-    On Saturday April 12th, fulltext will not be available in <a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC" target="_blank">OneSearch</a>. For database access, please use the <a href="https://www.cuny.edu/libraries/e-resources/_" target="_blank">CUNY A-Z</a>. ILL is also not available.
+    Fulltext  in <a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC" target="_blank">OneSearch</a>will be intermittently unavailable after 5 p.m. on Thursday, April 17. For database access, please use the <a href="https://www.cuny.edu/libraries/e-resources/_" target="_blank">CUNY A-Z</a>. ILL is also not available.
   show: False
