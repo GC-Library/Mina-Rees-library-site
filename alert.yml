@@ -11,5 +11,5 @@
 alert:
   style: info
   message: |
-    Due to scheduled IT maintenance on the Graduate Center network, the library website will be intermittently be unavailable after 5 p.m. on Thursday, April 17.  If you need access to Graduate Center Library resources during the outage, please visit our <a href="https://bit.ly/GCLibraryBackup" target="_blank">back up site</a>.  For database access, please use the <a href="https://www.cuny.edu/libraries/e-resources/_" target="_blank">CUNY-wide A-Z</a>. ILL is also not available. ILL is also not available.
+    Due to scheduled IT maintenance on the Graduate Center network, the library website will be intermittently be unavailable after 5 p.m. on Thursday, April 17.  If you need access to Graduate Center Library resources during the outage, please visit our <a href="https://bit.ly/GCLibraryBackup" target="_blank">back up site</a>.  For database access, please use the <a href="https://www.cuny.edu/libraries/e-resources/_" target="_blank">CUNY-wide A-Z</a>. ILL is also not available. 
   show: True
