@@ -186,6 +186,9 @@ h6 {
 .alert {
 	height: fit-content;
 }
+.alert a{
+	color: red;
+}
 
 .alert .btn-close:hover {
 	background-color: inherit;
