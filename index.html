@@ -325,20 +325,36 @@
 
         <div class='hours-and-events row col-xxl-8 space-between col-md-12'>
             <div class='events-section col-md-8' id='events'>
-                <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/calendar?cid=15537">Events</a></h3>
-                <p>No events!</p>
-                <script id="template" type="x-tmpl-mustache">
+                <!-- Container for actual events, populated by Mustache -->
+                <div id="actual-events-display">
                     <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/calendar?cid=15537">Events</a></h3>
-                    <div>
-                    {{#events}}
-                    <div class='event'>
-                    <h4><a href='{{event_link}}'>{{event_name}}</a></h4>
-                    <div class='event-date'>{{event_date}} {{event_time}}</div>
-                    <div class='event-description line-clamp'>{{{event_description}}}</div>
-                    </div>
-                    {{/events}}
-                    </div>
-                </script>
+                    <p class="initial-loading-message">Loading events...</p>
+                    <script id="template" type="x-tmpl-mustache">
+                        <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/calendar?cid=15537">Events</a></h3>
+                        <div>
+                        {{#events}}
+                        <div class='event'>
+                        <h4><a href='{{event_link}}'>{{event_name}}</a></h4>
+                        <div class='event-date'>{{event_date}} {{event_time}}</div>
+                        <div class='event-description line-clamp'>{{{event_description}}}</div>
+                        </div>
+                        {{/events}}
+                        </div>
+                    </script>
+                </div>
+
+                <!-- Fallback content, initially hidden -->
+                <div id="events-fallback-display" style="display: none;">
+                    <h3 class="lower-header">Featured Article</h3>
+                    <a href="https://www.gc.cuny.edu/news/why-small-mighty-library-vital-research-and-democracy" target="_blank" rel="noopener noreferrer">
+                        <img src="https://www.gc.cuny.edu/sites/default/files/styles/2560x1440/public/2023-01/Maura_Smale_2560px_1440px.webp?h=a92f03cd&itok=c_J3cfa_" alt="Maura Smale in the library">
+                    </a>
+                    <p>
+                        <a href="https://www.gc.cuny.edu/news/why-small-mighty-library-vital-research-and-democracy" target="_blank" rel="noopener noreferrer">
+                            Why This Small but Mighty Library Is Vital for Research and Democracy
+                        </a>
+                    </p>
+                </div>
             </div>
             <div class='hours-section col-md-4' id=hours>
                 <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/hours">Hours</a></h3>

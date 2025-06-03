@@ -176,7 +176,7 @@ function loadVideos() {
 // Success handlers
 function handleEventsSuccess(result) {
     let allEvents = [];
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 2; i++) { // Process up to 2 events
         const event = result.events[i];
         if (!event) break;
         
@@ -189,11 +189,25 @@ function handleEventsSuccess(result) {
         });
     }
 
+    // Clear the initial "Loading events..." message from the #actual-events-display container
+    // This targets the <p class="initial-loading-message"> within #actual-events-display
+    $('#actual-events-display .initial-loading-message').remove();
+
     if (allEvents.length === 0) {
-        $("#events").html('<h3 class="lower-header">No upcoming events</h3>');
+        console.log("No events found. Displaying fallback content. Adjusting column widths.");
+        $('#actual-events-display').hide();
+        $('#events-fallback-display').show();
+        // Adjust columns for fallback: events section and hours section become col-md-6
+        $('#events').removeClass('col-md-8').addClass('col-md-6');
+        $('#hours').removeClass('col-md-4').addClass('col-md-6');
     } else {
+        // Events are present
         const template = document.getElementById('template').innerHTML;
-        $("#events").html(Mustache.render(template, { events: allEvents }));
+        $('#actual-events-display').html(Mustache.render(template, { events: allEvents })).show();
+        $('#events-fallback-display').hide();
+        // Revert columns to original widths when events are shown
+        $('#events').removeClass('col-md-6').addClass('col-md-8');
+        $('#hours').removeClass('col-md-6').addClass('col-md-4');
     }
 }
 

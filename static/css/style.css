@@ -971,3 +971,47 @@ iframe {
 	text-decoration: underline;
 	border-bottom: none;
 }
+
+/* Styles for the Events Fallback Content */
+#events-fallback-display {
+    display: block !important; 
+    /* text-align: left;  */
+    padding: 0 15px 15px 15px; 
+}
+
+#events-fallback-display .lower-header {
+    margin-bottom: 20px; 
+}
+
+/* Style the 'a' tag wrapping the image */
+#events-fallback-display > a { /* Direct child 'a' of the fallback display */
+    display: block; /* Ensure the link itself is a block for layout control */
+    margin-bottom: 15px; /* Space below the image (via its link container) */
+    border: 1px solid #e2e2e2; /* Optional border around the link/image */
+    width: 100%; /* Make the link container responsive */
+    max-width: 500px; 
+}
+
+#events-fallback-display > a img { /* Image inside the direct child 'a' */
+    width: 100%; 
+    max-width: 100%; /* Image takes full width of its 'a' container */
+    height: auto; 
+    display: block; /* Ensure image is block to fill its 'a' container */
+}
+
+#events-fallback-display p { 
+    margin-top: 0; 
+    margin-bottom: 0; 
+    font-size: 16px; 
+    text-align: left; 
+    width: 100%;
+	max-width: fit-500px;
+}
+
+#events-fallback-display p a {
+    font-weight: 500; 
+    font-size: 18px; 
+    line-height: 1.4; 
+}
+
+
