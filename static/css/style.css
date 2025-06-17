@@ -218,7 +218,7 @@ h6 {
 }
 
 .bento {
-	margin-top: 16vh;
+	margin-top: 12vh;
 	margin-bottom: 4vh;
 }
 
@@ -882,6 +882,9 @@ iframe {
 @media(max-width: 575px){
 	.links-wrapper{
 		padding-top: 50px;
+	}
+	.bento{
+		margin-top: 50px;
 	}
 }
 
