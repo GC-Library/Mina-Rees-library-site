@@ -8,12 +8,20 @@ const DEBUG = {
 };
 
 $(document).ready(function ($) {
-    // Database list loading
-    if (!DEBUG.SIMULATE_ALL_DOWN) {
-        $(".database-list").load("https://lgapi-us.libapps.com/widgets.php?site_id=146&widget_type=2&search_terms=&search_match=2&subject_ids=&sort_by=name&list_format=2&drop_text=Select+a+Database...&output_format=1&load_type=2&enable_description=1&widget_embed_type=2&num_results=0&enable_more_results=0&window_target=2&config_id=1535395835265", function () {
-            $("#s-lg-frm-az-widget-1535395835265").addClass('col-md-12');
-        });
-    }
+    $(".database-list").load("https://lgapi-us.libapps.com/widgets.php?site_id=146&widget_type=2&search_terms=&search_match=2&subject_ids=&sort_by=name&list_format=2&drop_text=Select+a+Database...&output_format=1&load_type=2&enable_description=1&widget_embed_type=2&num_results=0&enable_more_results=0&window_target=2&config_id=1535395835265", function () {
+        $("#s-lg-frm-az-widget-1535395835265").addClass('col-md-10');
+    })
+
+    $("#journalSearchButton").click(function () {
+        var query = $("#primoQueryTemp2").val();
+        query = 'query=any,contains,' + query.replace(/[,]/g, " ") + '&tab=jsearch_slot&vid=01CUNY_GC:CUNY_GC&offset=0&journals=any,' + query.replace(/[,]/g, " ");
+        window.location = 'https://cuny-gc.primo.exlibrisgroup.com/discovery/jsearch?' + query;
+    });
+    $('#primoQueryTemp2').keypress(function (e) {
+        if (e.which == 13) {//Enter key pressed
+            $('#journalSearchButton').click();//Trigger search button click event
+        }
+    });
 
     // Search functionality setup
     setupSearchHandlers();
