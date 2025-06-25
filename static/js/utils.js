@@ -90,34 +90,16 @@ async function loadBlogEntries() {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
             }
         });
-        if (!response.ok) throw new Error('Primary feed unavailable');
-        
-        const str = await response.text();
-        const data = new window.DOMParser().parseFromString(str, "text/xml");
-        let entriesList = processNewsEntries(data, 3);
-        
-        // Try fellow posts feed if main feed succeeded
-        try {
-            const fellowResponse = await fetch(`https://gclibrary.commons.gc.cuny.edu/category/blog/fellow-post/feed/?fsk=5c1146bca3512&_=${timestamp}`, {
-                cache: 'no-store',  // Prevent caching to always get fresh feed
-                headers: {
-                    'Accept': 'application/rss+xml, application/xml, text/xml, */*',
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
-                }
-            });
-            if (fellowResponse.ok) {
-                const fellowStr = await fellowResponse.text();
-                const fellowData = new window.DOMParser().parseFromString(fellowStr, "text/xml");
-                const fellowEntries = processNewsEntries(fellowData, 1);
-                entriesList = entriesList.concat(fellowEntries);
-            }
-        } catch (fellowError) {
-            console.log('Fellow posts unavailable:', fellowError.message);
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        renderNews({ items: entriesList });
+        const str = await response.text();
+        const data = (new window.DOMParser()).parseFromString(str, "text/xml");
+        const entries = processNewsEntries(data, 2);
+        renderNews({ items: entries });
 
-        
     } catch (error) {
         console.log('Commons site unavailable:', error.message);
         $('.news-section.rss-feed.row').remove();
@@ -202,12 +184,10 @@ function handleEventsSuccess(result) {
     $('#actual-events-display .initial-loading-message').remove();
 
     if (allEvents.length === 0) {
-        console.log("No events found. Displaying fallback content. Adjusting column widths.");
-        $('#actual-events-display').hide();
-        $('#events-fallback-display').show();
-        // Adjust columns for fallback: events section and hours section become col-md-6
-        $('#events').removeClass('col-md-8').addClass('col-md-6');
-        $('#hours').removeClass('col-md-4').addClass('col-md-6');
+        console.log("No events found");
+        $("#events").html('<h3 class="lower-header">Explore Our Digital Projects</h3><iframe title="Content Box frame" id="s-lg-widget-frame-1716564549198" width="" height="" scrolling="no" style="height: 410px; width: 90%;" src="//lgapi-us.libapps.com/widget_box.php?site_id=146&widget_type=8&output_format=2&widget_title=Digital+Collections+Gallery&widget_height=&widget_width=&widget_embed_type=1&guide_id=1204677&box_id=32696065&map_id=38442276&content_only=0&include_jquery=0&config_id=1716564549198"></iframe>');
+
+        $('.events-section').removeClass('col-md-8').addClass('col-md-7');
     } else {
         // Events are present
         const template = document.getElementById('template').innerHTML;
