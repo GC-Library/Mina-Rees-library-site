@@ -137,6 +137,14 @@ h6 {
 	border-radius: 0 !important;
 }
 
+.dropdown-item {
+	font-size: 16px;
+	font-weight: 400;
+	padding: 10px 15px;
+	border-bottom: 1px solid rgba(40, 40, 40, .6);
+	text-transform: none;
+}
+
 .dropdown-item:hover {
 	background-color: #005daa !important;
 	color: white !important;
