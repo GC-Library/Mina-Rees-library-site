@@ -97,7 +97,7 @@ async function loadBlogEntries() {
 
         const str = await response.text();
         const data = (new window.DOMParser()).parseFromString(str, "text/xml");
-        const entries = processNewsEntries(data, 2);
+        const entries = processNewsEntries(data, 4);
         renderNews({ items: entries });
 
     } catch (error) {
