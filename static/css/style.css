@@ -133,6 +133,15 @@ h6 {
 	margin-left: 20px;
 }
 
+.dropdown-menu {
+	border-radius: 0 !important;
+}
+
+.dropdown-item:hover {
+	background-color: #005daa !important;
+	color: white !important;
+}
+
 .nav-link {
 	color: white !important;
 	font-size: 16px;
