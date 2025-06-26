@@ -76,29 +76,38 @@ function loadEvents() {
 // Blog entries fetching with fallback
 async function loadBlogEntries() {
     try {
-        // Simulate API being down if debug flag is set
         if (DEBUG.SIMULATE_ALL_DOWN || DEBUG.SIMULATE_COMMONS_DOWN) {
             throw new Error('Simulated API downtime');
         }
 
-        // Try main feed first
-        const timestamp = new Date().getTime();
-        const response = await fetch(`https://gclibrary.commons.gc.cuny.edu/category/blog/website-front-page/feed/?fsk=5c1146bca3512&_=${timestamp}`, {
-            cache: 'no-store',  // Prevent caching to always get fresh feed
+        const urls = [
+            'https://gclibrary.commons.gc.cuny.edu/category/blog/website-front-page/feed/?fsk=5c1146bca3512',
+            'https://gclibrary.commons.gc.cuny.edu/category/blog/fellow-post/feed/?fsk=5c1146bca3512'
+        ];
+
+        const requests = urls.map(url => fetch(url, {
+            cache: 'no-store',
             headers: {
                 'Accept': 'application/rss+xml, application/xml, text/xml, */*',
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
             }
-        });
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        }));
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        const [mainFeed, fellowFeed] = await Promise.all(requests);
 
-        const str = await response.text();
-        const data = (new window.DOMParser()).parseFromString(str, "text/xml");
-        const entries = processNewsEntries(data, 4);
-        renderNews({ items: entries });
+        const mainData = (new window.DOMParser()).parseFromString(mainFeed, "text/xml");
+        const fellowData = (new window.DOMParser()).parseFromString(fellowFeed, "text/xml");
+
+        const mainEntries = processNewsEntries(mainData, 3);
+        const fellowEntries = processNewsEntries(fellowData, 1);
+
+        const combinedEntries = [...mainEntries, ...fellowEntries];
+        renderNews({ items: combinedEntries });
 
     } catch (error) {
         console.log('Commons site unavailable:', error.message);
