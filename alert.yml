@@ -10,5 +10,5 @@
 # https://getbootstrap.com/docs/5.0/components/alerts/
 alert:
   style: info
-  message: The library will open at 12pm on Thursday.
+  message: The library will open at 12pm on Thursday August 31st.
   show: True
