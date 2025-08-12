@@ -64,9 +64,48 @@ function loadEvents() {
     }
 
     $.ajax({
-        url: 'https://gc-cuny.libcal.com/1.0/events?cal_id=15537&iid=5568&key=1329a09432a4a0fce7f49801a8824ed7',
+        url: 'https://gc-cuny.libcal.com/api_events.php?m=upc&cid=15537&audience=&c=&d=&tags=&l=2&tar=0&bs=0&simple=image',
         type: 'GET',
-        success: handleEventsSuccess,
+        success: function(response) {
+            if (!response.trim()) {
+                // If there are no events, show the fallback
+                $("#events").html('<h3 class="lower-header">Explore Our Digital Projects</h3><iframe title="Content Box frame" id="s-lg-widget-frame-1716564549198" width="" height="" scrolling="no" style="height: 410px; width: 90%;" src="//lgapi-us.libapps.com/widget_box.php?site_id=146&widget_type=8&output_format=2&widget_title=Digital+Collections+Gallery&widget_height=&widget_width=&widget_embed_type=1&guide_id=1204677&box_id=32696065&map_id=38442276&content_only=0&include_jquery=0&config_id=1716564549198"></iframe>').addClass('digital-projects-fallback');
+                $('.events-section').removeClass('col-md-8').addClass('col-md-7');
+            } else {
+                const events = [];
+                const parsed = $(response);
+                parsed.filter('.s-lc-c-evt').each(function() {
+                    const title = $(this).find('.s-lc-c-evt-title a').text();
+                    const url = $(this).find('.s-lc-c-evt-title a').attr('href');
+                    const date = $(this).find('dt:contains("From:")').next('dd').text();
+                    let description = $(this).find('.s-lc-c-evt-des').text();
+                    if (description.length > 150) {
+                        description = description.substring(0, 250) + '...';
+                    }
+                    events.push({
+                        title: title,
+                        url: url,
+                        date: date,
+                        description: description
+                    });
+                });
+
+                if (events.length === 0) {
+                    $("#events").html('<h3 class="lower-header">Explore Our Digital Projects</h3><iframe title="Content Box frame" id="s-lg-widget-frame-1716564549198" width="" height="" scrolling="no" style="height: 410px; width: 90%;" src="//lgapi-us.libapps.com/widget_box.php?site_id=146&widget_type=8&output_format=2&widget_title=Digital+Collections+Gallery&widget_height=&widget_width=&widget_embed_type=1&guide_id=1204677&box_id=32696065&map_id=38442276&content_only=0&include_jquery=0&config_id=1716564549198"></iframe>').addClass('digital-projects-fallback');
+                    $('.events-section').removeClass('col-md-8').addClass('col-md-7');
+                } else {
+                    const template = '<div class="events-container">' +
+                        events.map(event => {
+                            return '<div class="event">' +
+                                '<h4><a href="' + event.url + '">' + event.title + '</a></h4>' +
+                                '<p class="event-date">' + event.date + '</p>' +
+                                '<p class="event-description">' + event.description + '</p>' +
+                                '</div>';
+                        }).join('') + '</div>';
+                    $('#events').append(template);
+                }
+            }
+        },
         error: handleEventsError
     });
 }
@@ -171,41 +210,6 @@ function loadVideos() {
 }
 
 // Success handlers
-function handleEventsSuccess(result) {
-    let allEvents = [];
-    for (let i = 0; i < 2; i++) { // Process up to 2 events
-        const event = result.events[i];
-        if (!event) break;
-        
-        allEvents.push({
-            event_name: event.title,
-            event_description: event.description.replace(/(<([^>]+)>)/gi, "").substring(0, 300) + "...",
-            event_date: new Date(event.start).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }),
-            event_time: new Date(event.start).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-            event_link: event.url.public
-        });
-    }
-
-    // Clear the initial "Loading events..." message from the #actual-events-display container
-    // This targets the <p class="initial-loading-message"> within #actual-events-display
-    $('#actual-events-display .initial-loading-message').remove();
-
-    if (allEvents.length === 0) {
-        console.log("No events found");
-        $("#events").html('<h3 class="lower-header">Explore Our Digital Projects</h3><iframe title="Content Box frame" id="s-lg-widget-frame-1716564549198" width="" height="" scrolling="no" style="height: 410px; width: 90%;" src="//lgapi-us.libapps.com/widget_box.php?site_id=146&widget_type=8&output_format=2&widget_title=Digital+Collections+Gallery&widget_height=&widget_width=&widget_embed_type=1&guide_id=1204677&box_id=32696065&map_id=38442276&content_only=0&include_jquery=0&config_id=1716564549198"></iframe>').addClass('digital-projects-fallback');
-
-        $('.events-section').removeClass('col-md-8').addClass('col-md-7');
-    } else {
-        // Events are present
-        const template = document.getElementById('template').innerHTML;
-        $('#actual-events-display').html(Mustache.render(template, { events: allEvents })).show();
-        $('#events-fallback-display').hide();
-        // Revert columns to original widths when events are shown
-        $('#events').removeClass('col-md-6').addClass('col-md-8');
-        $('#hours').removeClass('col-md-6').addClass('col-md-4');
-    }
-}
-
 function handleHoursSuccess(result) {
     const today = moment().format('dddd');
     const hoursThisWeek = result.locations[0].weeks[0];
