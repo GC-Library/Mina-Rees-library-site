@@ -11,4 +11,4 @@
 alert:
   style: info
   message: The interlibrary loan system (ILLiad) is temporarily out of service. 
-  show: False
+  show: True
