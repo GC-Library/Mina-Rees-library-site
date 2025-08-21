@@ -10,5 +10,5 @@
 # https://getbootstrap.com/docs/5.0/components/alerts/
 alert:
   style: info
-  message:
+  message: The interlibrary loan system (ILLiad) is temporarily out of service. 
   show: False
