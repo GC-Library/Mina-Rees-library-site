@@ -10,5 +10,5 @@
 # https://getbootstrap.com/docs/5.0/components/alerts/
 alert:
   style: info
-  message: There is a outage with interlibrary loan (ILL) system (ILLiad). 
+  message: There is an outage with interlibrary loan (ILL) system (ILLiad). 
   show: True
