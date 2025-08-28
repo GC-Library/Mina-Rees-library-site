@@ -64,7 +64,7 @@ function loadEvents() {
     }
 
     $.ajax({
-        url: 'https://gc-cuny.libcal.com/api_events.php?m=upc&cid=15537&audience=&c=&d=&tags=&l=2&tar=0&bs=0&simple=image',
+        url: 'https://gc-cuny.libcal.com/api_events.php?m=month&cid=15537&audience=&c=&d=&tags=&l=2&tar=0&bs=0&simple=image',
         type: 'GET',
         success: function(response) {
             if (!response.trim()) {
