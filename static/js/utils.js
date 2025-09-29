@@ -23,6 +23,7 @@ $(document).ready(function ($) {
 
     // Search functionality setup
     setupSearchHandlers();
+    setupTabAccessibility();
 
     // Load dynamic content
     loadEvents();
@@ -53,6 +54,54 @@ function setupSearchHandlers() {
                 handler();
             }
         });
+    });
+}
+
+// Tab accessibility helpers
+function setupTabAccessibility() {
+    const tabs = $('.bento-tabs [role="tab"]');
+
+    tabs.each((index, tab) => {
+        const isActive = $(tab).hasClass('active');
+        $(tab).attr({ 'aria-selected': isActive ? 'true' : 'false', tabindex: isActive ? 0 : -1 });
+    });
+
+    tabs.on('shown.bs.tab', event => {
+        const activatedTab = $(event.target);
+        const previousTab = $(event.relatedTarget);
+        const previousTabEl = $(previousTab);
+
+        activatedTab.attr({ 'aria-selected': 'true', tabindex: 0 });
+        if (previousTabEl.length) {
+            previousTabEl.attr({ 'aria-selected': 'false', tabindex: -1 });
+        }
+    });
+
+    tabs.on('keydown', function (event) {
+        const { key } = event;
+        const keys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'];
+        if (!keys.includes(key)) {
+            return;
+        }
+
+        event.preventDefault();
+        const currentIndex = tabs.index(this);
+        let targetIndex = currentIndex;
+
+        if (key === 'ArrowRight' || key === 'ArrowDown') {
+            targetIndex = (currentIndex + 1) % tabs.length;
+        } else if (key === 'ArrowLeft' || key === 'ArrowUp') {
+            targetIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        } else if (key === 'Home') {
+            targetIndex = 0;
+        } else if (key === 'End') {
+            targetIndex = tabs.length - 1;
+        }
+
+        const targetTab = tabs.get(targetIndex);
+        if (targetTab) {
+            bootstrap.Tab.getOrCreateInstance(targetTab).show();
+        }
     });
 }
 
@@ -214,14 +263,18 @@ function handleHoursSuccess(result) {
     const today = moment().format('dddd');
     const hoursThisWeek = result.locations[0].weeks[0];
     
-    const formattedHours = Object.keys(hoursThisWeek).map(key => ({
-        ...hoursThisWeek[key],
-        day: key,
-        isToday: key === today,
-        rendered: hoursThisWeek[key].times.status !== "closed" 
-            ? hoursThisWeek[key].times.hours.map(h => `${h.from} - ${h.to}`).join("") 
-            : "Closed"
-    }));
+    const formattedHours = Object.keys(hoursThisWeek).map(key => {
+        const isToday = key === today;
+        return {
+            ...hoursThisWeek[key],
+            day: key,
+            isToday,
+            rowClass: isToday ? 'hours-row-today' : null,
+            rendered: hoursThisWeek[key].times.status !== "closed"
+                ? hoursThisWeek[key].times.hours.map(h => `${h.from} - ${h.to}`).join(" ")
+                : "Closed"
+        };
+    });
 
     const todayHours = formattedHours.find(h => h.isToday);
     $('#today-hours').html(todayHours.times.status === "closed" 

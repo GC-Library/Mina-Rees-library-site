@@ -18,6 +18,7 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top col-xs-10">
         <div class="container-fluid col-xs-10 col-xxl-8">
@@ -83,38 +84,84 @@
             </div>
         </div>
     </nav>
+    <main id="main-content">
     <div>
         <div class="container-fluid content" id="main-header">
             <div class='bento col-xxl-8 row col-md-10'>
                 <div class="">
-                    <!-- <div class="bento-header">
-                        <h5 id='institution'>
-                            <span>
-                                CUNY Graduate Center
-                            </span>
-                        </h5>
-                        <h1 id="main_statement">
-                            <span>
-                                Search the Collections
-                            </span>
+                    <div class="page-intro">
+                        <h1 id="main_statement" class="visually-hidden">
+                            Mina Rees Library Collections and Services
                         </h1>
-                    </div> -->
+                    </div>
                     <div class="tab bento-tabs" role="tabpanel">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="nav-item"><a href="#Section1" aria-controls="Catalog" role="tab"
-                                    data-bs-toggle="tab" data-bs-target="#Section1" class='active nav-link'>CATALOG</a></li>
-                            <li role="presentation" class="nav-item"><a href="#Section2" aria-controls="Articles" role="tab"
-                                    data-bs-toggle="tab" data-bs-target="#Section2" class="nav-link">ARTICLES +</a></li>
-                            <li role="presentation" class="nav-item"><a href="#Section4" aria-controls="Databases" role="tab"
-                                    data-bs-toggle="tab" data-bs-target="#Section4" class="nav-link">DATABASES</a></li>
-                            <li role="presentation" class="nav-item"><a href="#Section3" aria-controls="Journals" role="tab"
-                                    data-bs-toggle="tab" data-bs-target="#Section3" class="nav-link">JOURNALS</a></li>
+                            <li role="presentation" class="nav-item">
+                                <button
+                                    class="nav-link active"
+                                    id="tab-catalog"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="true"
+                                    aria-controls="Section1"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#Section1"
+                                    tabindex="0"
+                                >
+                                    Catalog
+                                </button>
+                            </li>
+                            <li role="presentation" class="nav-item">
+                                <button
+                                    class="nav-link"
+                                    id="tab-articles"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="false"
+                                    aria-controls="Section2"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#Section2"
+                                    tabindex="-1"
+                                >
+                                    Articles +
+                                </button>
+                            </li>
+                            <li role="presentation" class="nav-item">
+                                <button
+                                    class="nav-link"
+                                    id="tab-databases"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="false"
+                                    aria-controls="Section4"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#Section4"
+                                    tabindex="-1"
+                                >
+                                    Databases
+                                </button>
+                            </li>
+                            <li role="presentation" class="nav-item">
+                                <button
+                                    class="nav-link"
+                                    id="tab-journals"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="false"
+                                    aria-controls="Section3"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#Section3"
+                                    tabindex="-1"
+                                >
+                                    Journals
+                                </button>
+                            </li>
                         </ul>
                     </div>
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade show active" id="Section1">
+                        <div role="tabpanel" class="tab-pane fade show active" id="Section1" aria-labelledby="tab-catalog">
                             <div class="search-input col-xs-10">
                                 <div class="input-group col-md-10">
                                     <input id="primoQueryTemp" class="search-query
@@ -122,8 +169,8 @@
                                         placeholder="Find books & e-books">
                                     <span class="input-group-btn">
                                         <button class="btn" form="booksearch" value="Submit" id="booksearchButton"
-                                            type="submit" aria-label="submit">
-                                            <i class="fas fa-search"></i><span> Search</span>
+                                            type="submit">
+                                            <i class="fas fa-search" aria-hidden="true"></i><span> Search</span>
                                         </button>
                                     </span>
                                 </div>
@@ -154,15 +201,15 @@
                             </ul>
 
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="Section2">
+                        <div role="tabpanel" class="tab-pane fade" id="Section2" aria-labelledby="tab-articles">
                             <div class="search-input col-xs-10">
                                 <div class="input-group col-md-10">
                                     <input type="text" class="search-query
                         form-control" id="articleSearch" placeholder="Find articles, online resources, and more"
                                         aria-label="Search for articles" />
                                     <span class="input-group-btn">
-                                        <button class="btn" type="button" id="articleButton" aria-label="submit">
-                                            <i class="fas fa-search"></i><span> Search</span>
+                                        <button class="btn" type="button" id="articleButton">
+                                            <i class="fas fa-search" aria-hidden="true"></i><span> Search</span>
                                         </button>
                                     </span>
                                 </div>
@@ -180,20 +227,20 @@
                                         for="subject2">Subject</label></li>
                             </ul>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="Section3">
+                        <div role="tabpanel" class="tab-pane fade" id="Section3" aria-labelledby="tab-journals">
                             <div class="search-input col-xs-10">
                                 <div class="input-group col-md-10">
                                     <input type="text" id="primoQueryTemp2" placeholder="Find journals"
                                         aria-label="Search for journals" class="search-query form-control">
                                     <span class="input-group-btn">
-                                        <button class="btn" type="button" id="journalSearchButton" aria-label="submit">
-                                            <i class="fas fa-search"></i><span> Search</span>
+                                        <button class="btn" type="button" id="journalSearchButton">
+                                            <i class="fas fa-search" aria-hidden="true"></i><span> Search</span>
                                         </button>
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="Section4">
+                        <div role="tabpanel" class="tab-pane fade" id="Section4" aria-labelledby="tab-databases">
                             <div class="database-list input-group col-xs-10"></div>
                             <div class="databases">
                                 <h3 class='browse-header'><a href='https://libguides.gc.cuny.edu/az/databases'>Browse
@@ -405,20 +452,25 @@
                     <p>Hours failed to load!</p>
                     <script id="hours-template" type="x-tmpl-mustache">
 
-                    <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/hours">Hours    <i class="fa-solid fa-angles-right"></i></a></h3> 
+                    <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/hours">Hours    <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a></h3> 
                     <div class='hours'>
                     <table class='hours-table table table-striped'>
+                    <caption class='visually-hidden'>Library hours for the current week</caption>
                     <thead>
-
+                        <tr>
+                            <th scope="col">Day</th>
+                            <th scope="col">Hours</th>
+                        </tr>
                     </thead>
                     <tbody>
                     {{#days}}
-                        <tr class={{isToday}}>
-                            <td>{{day}}</td>
+                        <tr{{#rowClass}} class="{{rowClass}}"{{/rowClass}}>
+                            <th scope="row">{{day}}</th>
                             <td>{{rendered}}</td>
                         </tr>
                     {{/days}}
                     </tbody>
+                    </table>
                     </div>
                 </script>
                 </div>
@@ -430,7 +482,7 @@
                     <h3 class='lower-header option3'><a href='https://gclibrary.commons.gc.cuny.edu/'>News &amp;
                             Views</a></h3>
                     <script id="news-template" type="x-tmpl-mustache">
-            <h3 class='lower-header'><a href='https://gclibrary.commons.gc.cuny.edu/'>News &amp; Views    <i class="fa-solid fa-angles-right"></i></a></h3>
+            <h3 class='lower-header'><a href='https://gclibrary.commons.gc.cuny.edu/'>News &amp; Views    <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a></h3>
             <ul class='news'>
             {{#items}}
                 <li class='news-item'><div class='news-image-container'><img src='{{image}}' alt='{{title}}' /></div><h4><a href="{{link}}">{{title}}</a></h4><p>{{shortBodyWithDots}}</p></li>
@@ -448,7 +500,7 @@
                     </h3>
                     <p>Collections failed to load!</p>
                     <script id="collections-template" type="x-tmpl-mustache">
-                    <h3 class="lower-header"><a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/collectionDiscovery?vid=01CUNY_GC%3ACUNY_GC">Featured Collection    <i class="fa-solid fa-angles-right"></i></a></h3>
+                    <h3 class="lower-header"><a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/collectionDiscovery?vid=01CUNY_GC%3ACUNY_GC">Featured Collection    <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a></h3>
                     <div class='collections'>
                     {{#collection}}
                         <div>
@@ -468,7 +520,7 @@
                 <div class='youtube-section col-xl-6 col-9' id=youtube>
                     <h3 class="lower-header option2"><a
                             href="https://www.youtube.com/channel/UCF11xs3zCmMdMdWoOfxP_kg">Featured
-                            Video    <i class="fa-solid fa-angles-right"></i></a></h3><iframe id="vid" width="560" height="315"
+                            Video    <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a></h3><iframe id="vid" width="560" height="315"
                         src="https://www.youtube.com/embed/videoseries?list=PLbp9SdWbaAjmttsctx1kDqiVOZruZDwCm"
                         frameborder="0" allowfullscreen title="Featured Video"></iframe>
 
@@ -493,6 +545,7 @@
     </div>
     </div>
 
+    </main>
     <footer class="footer row col-12">
         <div class="container col-xs-10 col-10 col-xxl-8">
             <div class="footer-content">
@@ -502,25 +555,25 @@
                 </div>
                 <div class='col-md-3'>
                     <p>
-                        <i class="fas fa-phone"></i>
+                        <i class="fas fa-phone" aria-hidden="true"></i>
                         <a href="tel:2128177040"> (212) 817-7040</a>
                     </p>
                     <p>
-                        <i class="fas fa-map-marker"></i>
+                        <i class="fas fa-map-marker" aria-hidden="true"></i>
                         <span> 365 Fifth Avenue, </br>
                             New York, NY 10016</span>
                     </p>
                     <p>
-                        <i class="fas fa-envelope"></i>
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
                         <a href="https://libguides.gc.cuny.edu/contact_us"> Contact Us</a>
                     </p>
                     <p>
-                        <i class="fa-brands fa-bluesky"></i><a
+                        <i class="fa-brands fa-bluesky" aria-hidden="true"></i><a
                             href="https://bsky.app/profile/minareeslibrary.bsky.social"><span>
                                 @minareeslibrary.bsky.social</span></a>
                     </p>
                     <p>
-                        <i class="fab fa-instagram"></i><a href="https://www.instagram.com/minareeslibrary/"><span>
+                        <i class="fab fa-instagram" aria-hidden="true"></i><a href="https://www.instagram.com/minareeslibrary/"><span>
                                 @minareeslibrary</span></a>
                     </p>
                 </div>
@@ -541,7 +594,6 @@
         </div>
         <div id="alert-container"></div>
     </footer>
-    </div>
 
     <!-- <div class="question-form-link">
         <a href="https://cuny.libanswers.com/chat/widget/ba1a6a4dac7e5525a9e2ec72bea7ed40">Chat with a Librarian</a>
