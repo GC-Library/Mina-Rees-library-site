@@ -338,17 +338,13 @@ h6 {
 	padding-top: 5px;
 }
 
-#searchCUNY,
-#searchJournals,
-#articleSearchRadio {
+#searchTypeRadio {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 }
 
-#searchCUNY>div,
-#searchJournals>div,
-#articleSearchRadio>div {
+#searchTypeRadio>div {
 	flex: 0 1 auto;
 	width: 101px;
 }
@@ -495,6 +491,63 @@ input[type="radio"]+label {
 
 input[type="radio"]+label:hover {
 	color: #fff;
+}
+
+/* Search filters (dropdowns) */
+.search-filters {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 20px;
+	padding: 15px 10px;
+	background: rgba(40, 40, 40, .6);
+	border-radius: 3px;
+	margin-top: 10px;
+}
+
+.filter-group {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 10px;
+}
+
+.filter-group label {
+	font-size: 16px;
+	font-weight: 600;
+	color: white;
+	margin-bottom: 0;
+	white-space: nowrap;
+}
+
+.filter-dropdown {
+	height: 38px;
+	min-width: 200px;
+	padding: 5px 10px;
+	font-size: 15px;
+	font-weight: 500;
+	background: rgba(255, 255, 255, 0.95);
+	border: 2px solid #005daa;
+	border-radius: 3px;
+	color: #12130f;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.filter-dropdown:hover {
+	background: rgba(255, 255, 255, 1);
+	border-color: #0076d6;
+}
+
+.filter-dropdown:focus {
+	outline: none;
+	border-color: #0076d6;
+	box-shadow: 0 0 5px rgba(0, 118, 214, 0.5);
+}
+
+/* Additional spacing for options links */
+.options-links {
+	margin-top: 10px;
 }
 
 /* Below the Fold*/

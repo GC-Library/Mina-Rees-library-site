@@ -101,17 +101,11 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs row" role="tablist">
                             <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section1"
-                                class="nav-item col-sm-2"><a href="#Section1" aria-controls="Catalog" role="tab"
-                                    data-toggle="tab" class='active nav-link'>CATALOG</a></li>
-                            <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section2"
-                                class="nav-item col-sm-2"><a href="#Section2" aria-controls="Articles" role="tab"
-                                    data-toggle="tab" class="nav-link">ARTICLES +</a></li>
+                                class="nav-item col-sm-3"><a href="#Section1" aria-controls="OneSearch" role="tab"
+                                    data-toggle="tab" class='active nav-link'>ONESEARCH</a></li>
                             <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section4"
-                                class="nav-item col-sm-2"><a href="#Section4" aria-controls="Databases" role="tab"
-                                    data-toggle="tab" class="nav-link" class="nav-link">DATABASES</a></li>
-                            <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section3"
-                                class="nav-item col-sm-2"><a href="#Section3" aria-controls="Journals" role="tab"
-                                    data-toggle="tab" class="nav-link">JOURNALS</a></li>
+                                class="nav-item col-sm-3"><a href="#Section4" aria-controls="Databases" role="tab"
+                                    data-toggle="tab" class="nav-link">DATABASES</a></li>
                         </ul>
                     </div>
                     <!-- Tab panes -->
@@ -119,11 +113,11 @@
                         <div role="tabpanel" class="tab-pane fade show active" id="Section1">
                             <div class="search-input col-xs-10">
                                 <div class="input-group col-md-10">
-                                    <input id="primoQueryTemp" class="search-query
-                        form-control" name="query" size="35" type="text" aria-label="search books"
-                                        placeholder="Find books & e-books">
+                                    <input id="oneSearchInput" class="search-query form-control" name="query" size="35"
+                                        type="text" aria-label="search books, ebooks, articles and more"
+                                        placeholder="Search books, ebooks, articles & more">
                                     <span class="input-group-btn">
-                                        <button class="btn" form="booksearch" value="Submit" id="booksearchButton"
+                                        <button class="btn" value="Submit" id="oneSearchButton"
                                             type="submit" aria-label="submit">
                                             <i class="fas fa-search"></i><span> Search</span>
                                         </button>
@@ -131,21 +125,41 @@
                                 </div>
                             </div>
 
-                            <ul class="options" id="searchCUNY">
+                            <ul class="options" id="searchTypeRadio">
                                 <li>
-                                    <input name="ONESEARCH" type="radio" value="any" checked="checked"
+                                    <input name="searchType" type="radio" value="any" checked="checked"
                                         id="keyword"><label for="keyword">Keyword</label>
                                 </li>
-                                <li> <input name="ONESEARCH" type="radio" value="title" id="title"><label
+                                <li> <input name="searchType" type="radio" value="title" id="title"><label
                                         for="title">Title</label></li>
-                                <li> <input name="ONESEARCH" type="radio" value="creator" id="author"><label
+                                <li> <input name="searchType" type="radio" value="creator" id="author"><label
                                         for="author">Author</label></li>
-                                <li> <input name="ONESEARCH" type="radio" value="sub" id="subject"><label
+                                <li> <input name="searchType" type="radio" value="sub" id="subject"><label
                                         for="subject">Subject</label></li>
-                                <!--                              <li> <input name="ONESEARCH" type="radio"
-                        value="lsr06"
-                        id="call"><label for="call">Call Number</label></li> -->
+                            </ul>
 
+                            <div class="search-filters">
+                                <div class="filter-group">
+                                    <label for="resourceTypeDropdown">Resource Type:</label>
+                                    <select id="resourceTypeDropdown" class="filter-dropdown" aria-label="Select resource type">
+                                        <option value="all">Books, Ebooks & Articles</option>
+                                        <option value="books">Books</option>
+                                        <option value="books-ebooks">Books & Ebooks</option>
+                                        <option value="articles">Articles</option>
+                                    </select>
+                                </div>
+
+                                <div class="filter-group">
+                                    <label for="scopeDropdown">Search Scope:</label>
+                                    <select id="scopeDropdown" class="filter-dropdown" aria-label="Select search scope">
+                                        <option value="gc" selected>GC</option>
+                                        <option value="gc-cuny">GC & CUNY</option>
+                                        <option value="gc-cuny-suny">GC, CUNY & SUNY</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <ul class="options options-links">
                                 <li><a href='http://libguides.gc.cuny.edu/OneSearchAdvanced' class='classic'>Advanced
                                         Search</a>
                                 </li>
@@ -155,45 +169,6 @@
                                         class='classic'>Renew Books</a></li>
                             </ul>
 
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="Section2">
-                            <div class="search-input col-xs-10">
-                                <div class="input-group col-md-10">
-                                    <input type="text" class="search-query
-                        form-control" id="articleSearch" placeholder="Find articles, online resources, and more"
-                                        aria-label="Search for articles" />
-                                    <span class="input-group-btn">
-                                        <button class="btn" type="button" id="articleButton" aria-label="submit">
-                                            <i class="fas fa-search"></i><span> Search</span>
-                                        </button>
-                                    </span>
-                                </div>
-                            </div>
-                            <ul class="options" id="articleSearchRadio">
-                                <li>
-                                    <input name="articleSearch" type="radio" value="any" checked="checked"
-                                        id="keyword2"><label for="keyword2">Keyword</label>
-                                </li>
-                                <li> <input name="articleSearch" type="radio" value="title" id="title2"><label
-                                        for="title2">Title</label></li>
-                                <li> <input name="articleSearch" type="radio" value="creator" id="author2"><label
-                                        for="author2">Author</label></li>
-                                <li> <input name="articleSearch" type="radio" value="sub" id="subject2"><label
-                                        for="subject2">Subject</label></li>
-                            </ul>
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="Section3">
-                            <div class="search-input col-xs-10">
-                                <div class="input-group col-md-10">
-                                    <input type="text" id="primoQueryTemp2" placeholder="Find journals"
-                                        aria-label="Search for journals" class="search-query form-control">
-                                    <span class="input-group-btn">
-                                        <button class="btn" type="button" id="journalSearchButton" aria-label="submit">
-                                            <i class="fas fa-search"></i><span> Search</span>
-                                        </button>
-                                    </span>
-                                </div>
-                            </div>
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="Section4">
                             <div class="database-list input-group col-xs-10"></div>

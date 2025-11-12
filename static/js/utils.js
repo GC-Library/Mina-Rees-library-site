@@ -9,37 +9,80 @@ $(document).ready(function ($) {
         $("#s-lg-frm-az-widget-1535395835265").addClass('col-md-10');
     })
 
-    $("#journalSearchButton").click(function () {
-        var query = $("#primoQueryTemp2").val();
-        query = 'query=any,contains,' + query.replace(/[,]/g, " ") + '&tab=jsearch_slot&vid=01CUNY_GC:CUNY_GC&offset=0&journals=any,' + query.replace(/[,]/g, " ");
-        window.location = 'https://cuny-gc.primo.exlibrisgroup.com/discovery/jsearch?' + query;
-    });
-    $('#primoQueryTemp2').keypress(function (e) {
-        if (e.which == 13) {//Enter key pressed
-            $('#journalSearchButton').click();//Trigger search button click event
+    // Unified OneSearch Handler
+    $("#oneSearchButton").click(function () {
+        var query = $("#oneSearchInput").val();
+        var searchType = $("#searchTypeRadio input[name=searchType]:checked").val();
+        var resourceType = $("#resourceTypeDropdown").val();
+        var scope = $("#scopeDropdown").val();
+
+        // Base URL components
+        var baseUrl = "https://cuny-gc.primo.exlibrisgroup.com/discovery/search";
+        var vid = "01CUNY_GC:CUNY_GC";
+
+        // Scope mapping - both tab and search_scope change together
+        var tabParam;
+        var scopeParam;
+        switch(scope) {
+            case "gc":
+                // GC only - Institution Zone + Central Index + Academic Works
+                tabParam = "Everything";
+                scopeParam = "IZ_CI_AW";
+                break;
+            case "gc-cuny":
+                // GC + CUNY Libraries - Network Zone Physical
+                tabParam = "NZPhysical";
+                scopeParam = "NZPhysical";
+                break;
+            case "gc-cuny-suny":
+                // GC + CUNY + SUNY - Institution Zone + Network Zone + SUNY
+                tabParam = "IZ_NZ_SUNY";
+                scopeParam = "IZ_CI_AW_NZ_SUNY";
+                break;
+            default:
+                tabParam = "Everything";
+                scopeParam = "IZ_CI_AW";
         }
+
+        // Resource type filters
+        var resourceFilters = "";
+        switch(resourceType) {
+            case "books":
+                // Books only
+                resourceFilters = "&mfacet=rtype,include,books,1";
+                break;
+            case "books-ebooks":
+                // Books and ebooks
+                resourceFilters = "&mfacet=rtype,include,books,1&mfacet=rtype,include,book_chapters,1";
+                break;
+            case "articles":
+                // Articles only (exclude books and book chapters)
+                resourceFilters = "&facet=rtype,exclude,book_chapters&facet=rtype,exclude,books";
+                break;
+            case "all":
+            default:
+                // No filters - search everything
+                resourceFilters = "";
+                break;
+        }
+
+        // Construct final query URL
+        var finalQuery = baseUrl + "?vid=" + vid +
+                        "&query=" + searchType + ",contains," + query +
+                        "&tab=" + tabParam +
+                        "&search_scope=" + scopeParam +
+                        "&sortby=rank" +
+                        resourceFilters +
+                        "&lang=en_US&mode=basic&offset=0";
+
+        // Redirect to Primo search
+        window.location = finalQuery;
     });
 
-    $("#booksearchButton").click(function () {
-        query = $("input#primoQueryTemp").val();
-        radio = $("#searchCUNY > li input[name=ONESEARCH]:checked").val();
-        finalQuery = "https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC&query=" + radio + ",contains," + query + "&tab=Everything&search_scope=IZ_CI_AW&sortby=rank&mfacet=rtype,include,books,1&mfacet=rtype,include,book_chapters,1&lang=en_US&mode=basic&offset=0";
-        window.location = finalQuery;
-    });
-    $('#primoQueryTemp').keypress(function (e) {
+    // Enter key support for OneSearch
+    $('#oneSearchInput').keypress(function (e) {
         if (e.which == 13) {//Enter key pressed
-            $('#booksearchButton').click();//Trigger search button click event
-        }
-    });
-    $("#articleButton").click(function () {
-        query = $("#articleSearch").val();
-        radio = $("#articleSearchRadio > li input[name=articleSearch]:checked").val();
-        finalQuery = "https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC&query=" + radio + ",contains," + query + "&tab=Everything&search_scope=IZ_CI_AW&sortby=rank&facet=rtype,exclude,book_chapters&facet=rtype,exclude,books&lang=en_US&mode=basic&offset=0";
-        window.location = finalQuery;
-    });
-    $('#articleSearch').keypress(function (e) {
-        if (e.which == 13) {//Enter key pressed
-            $('#articleButton').click();//Trigger search button click event
+            $('#oneSearchButton').click();//Trigger search button click event
         }
     });
 
