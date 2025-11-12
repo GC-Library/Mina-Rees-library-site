@@ -32,7 +32,7 @@ function setupSearchHandlers() {
         var query = $("#oneSearchInput").val();
         var searchType = $("#searchTypeRadio input[name=searchType]:checked").val();
         var resourceType = $("#resourceTypeDropdown").val();
-        var scope = $("#scopeDropdown").val();
+        var includeExternal = $("#scopeCheckbox").is(":checked");
 
         // Base URL components
         var baseUrl = "https://cuny-gc.primo.exlibrisgroup.com/discovery/search";
@@ -41,25 +41,14 @@ function setupSearchHandlers() {
         // Scope mapping - both tab and search_scope change together
         var tabParam;
         var scopeParam;
-        switch(scope) {
-            case "gc":
-                // GC only - Institution Zone + Central Index + Academic Works
-                tabParam = "Everything";
-                scopeParam = "IZ_CI_AW";
-                break;
-            case "gc-cuny":
-                // GC + CUNY Libraries - Network Zone Physical
-                tabParam = "NZPhysical";
-                scopeParam = "NZPhysical";
-                break;
-            case "gc-cuny-suny":
-                // GC + CUNY + SUNY - Institution Zone + Network Zone + SUNY
-                tabParam = "IZ_NZ_SUNY";
-                scopeParam = "IZ_CI_AW_NZ_SUNY";
-                break;
-            default:
-                tabParam = "Everything";
-                scopeParam = "IZ_CI_AW";
+        if (includeExternal) {
+            // GC + CUNY + SUNY - Institution Zone + Network Zone + SUNY
+            tabParam = "IZ_NZ_SUNY";
+            scopeParam = "IZ_CI_AW_NZ_SUNY";
+        } else {
+            // GC only - Institution Zone + Central Index + Academic Works
+            tabParam = "Everything";
+            scopeParam = "IZ_CI_AW";
         }
 
         // Resource type filters
