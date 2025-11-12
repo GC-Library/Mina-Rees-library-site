@@ -92,6 +92,20 @@ function setupSearchHandlers() {
             $('#oneSearchButton').click();//Trigger search button click event
         }
     });
+
+    // Dynamic show/hide for scope checkbox based on format selection
+    $('#resourceTypeDropdown').on('change', function() {
+        var resourceType = $(this).val();
+        var $checkboxGroup = $('.checkbox-group');
+
+        if (resourceType === 'articles') {
+            // Hide checkbox for articles-only searches
+            $checkboxGroup.addClass('hidden');
+        } else {
+            // Show checkbox for formats that include books
+            $checkboxGroup.removeClass('hidden');
+        }
+    });
 }
 
 // Tab accessibility helpers
