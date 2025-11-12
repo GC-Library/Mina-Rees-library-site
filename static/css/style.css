@@ -456,7 +456,7 @@ h6 {
 	font-size: 14px;
 	font-weight: 500;
 	background: rgba(255, 255, 255, 0.95);
-	border: 2px solid #3c4859;
+	border: 2px solid #005daa;
 	color: #12130f;
 	cursor: pointer;
 	transition: all 0.3s ease;
@@ -464,13 +464,13 @@ h6 {
 
 .filter-dropdown:hover {
 	background: rgba(255, 255, 255, 1);
-	border-color: #555;
+	border-color: #004d80;
 }
 
 .filter-dropdown:focus {
 	outline: none;
-	border-color: #555;
-	box-shadow: 0 0 3px rgba(60, 72, 89, 0.5);
+	border-color: #004d80;
+	box-shadow: 0 0 3px rgba(0, 93, 170, 0.5);
 }
 
 .form-group {
