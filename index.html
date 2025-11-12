@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href='static/css/style.css' rel='stylesheet' type='text/css'>
     <title>Mina Rees Library</title>
     <link rel="icon" href="favicon.png" sizes="32x32">
@@ -20,13 +18,13 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top col-xs-10">
         <div class="container-fluid col-xs-10 col-xxl-8">
-            <a class="navbar-brand" href="/" aria-label="Mina Rees Library Home">Mina Rees Library</a>
+            <a class="navbar-brand" href="/" aria-label="Mina Rees Library Home">Mina Rees Library • CUNY Graduate Center</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
-                aria-label="Toggle navigation">
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" aria-hidden="true"></span>
             </button>
             <div class="collapse navbar-collapse ms-auto" id="navbarNavDropdown">
@@ -41,27 +39,28 @@
                         <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://lgapi-us.libapps.com/widgets.php?site_id=146&widget_type=7&widget_embed_type=1&output_format=1&search_box_type=1&group_id=0&placeholder_text=Search+Library+Site&button_text=Search&widget_height=&widget_width=250&config_id=1709908805506"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "s-lg-widget-script-1709908805506");</script>
                     </li> -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink-Help" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Help
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink-Help">
                             <li><a class="dropdown-item" href="https://libguides.gc.cuny.edu/ask-a-librarian">Ask a
                                     Librarian</a></li>
                             <li><a class="dropdown-item" href="https://libguides.gc.cuny.edu/contact_us">Contact Us</a>
                             </li>
                             <li><a class="dropdown-item" href="https://libguides.gc.cuny.edu/cuny_accounts">
-                                    Accounts &amp; Logins</a></li>
+                                    Accounts & Logins</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink-About" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             About
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink-About">
                             <li><a class="dropdown-item" href="https://libguides.gc.cuny.edu/about_the_library">About
                                     the Library</a></li>
+                            <li><a class="dropdown-item" href="https://libguides.gc.cuny.edu/accessibility">Accessibility</a></li>
                             <li><a class="dropdown-item"
                                     href="https://libguides.gc.cuny.edu/library_collections">Collections</a></li>
                             <li><a class="dropdown-item" href="https://gc-cuny.libcal.com/hours">Hours</a></li>
@@ -71,10 +70,12 @@
                                     to the Library</a></li>
                             <li><a class="dropdown-item" href="https://libguides.gc.cuny.edu/librarytech">Technology in
                                     the Library</a></li>
+                            <li><a class="dropdown-item" href="https://libguides.gc.cuny.edu/visit">Visiting
+                                    the Library</a></li>
                         </ul>
                     </li>
                     <li class="nav-item" id="give">
-                        <a class="nav-link" href="https://www.gc.cuny.edu/giving/friends-mina-rees-library"
+                        <a class="nav-link" href="https://www.gc.cuny.edu/giving/make-donation/library"
                             aria-label="Give to the Library">
                             Give</a>
                     </li>
@@ -83,43 +84,62 @@
             </div>
         </div>
     </nav>
+    <main id="main-content">
     <div>
-        <div class="container-fluid content">
+        <div class="container-fluid content" id="main-header">
             <div class='bento col-xxl-8 row col-md-10'>
                 <div class="">
-                    <h5 id='institution'>
-                        <span>
-                            CUNY Graduate Center
-                        </span>
-                    </h5>
-                    <h1 id="main_statement">
-                        <span>
-                            Search the Collections
-                        </span>
-                    </h1>
+                    <div class="page-intro">
+                        <h1 id="main_statement" class="visually-hidden">
+                            Mina Rees Library Collections and Services
+                        </h1>
+                    </div>
                     <div class="tab bento-tabs" role="tabpanel">
                         <!-- Nav tabs -->
-                        <ul class="nav nav-tabs row" role="tablist">
-                            <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section1"
-                                class="nav-item col-sm-3"><a href="#Section1" aria-controls="OneSearch" role="tab"
-                                    data-toggle="tab" class='active nav-link'>ONESEARCH</a></li>
-                            <li role="presentation" data-bs-toggle="tab" data-bs-target="#Section4"
-                                class="nav-item col-sm-3"><a href="#Section4" aria-controls="Databases" role="tab"
-                                    data-toggle="tab" class="nav-link">DATABASES</a></li>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="nav-item">
+                                <button
+                                    class="nav-link active"
+                                    id="tab-onesearch"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="true"
+                                    aria-controls="Section1"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#Section1"
+                                    tabindex="0"
+                                >
+                                    OneSearch
+                                </button>
+                            </li>
+                            <li role="presentation" class="nav-item">
+                                <button
+                                    class="nav-link"
+                                    id="tab-databases"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="false"
+                                    aria-controls="Section4"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#Section4"
+                                    tabindex="-1"
+                                >
+                                    Databases
+                                </button>
+                            </li>
                         </ul>
                     </div>
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade show active" id="Section1">
+                        <div role="tabpanel" class="tab-pane fade show active" id="Section1" aria-labelledby="tab-onesearch">
                             <div class="search-input col-xs-10">
                                 <div class="input-group col-md-10">
                                     <input id="oneSearchInput" class="search-query form-control" name="query" size="35"
                                         type="text" aria-label="search books, ebooks, articles and more"
                                         placeholder="Search books, ebooks, articles & more">
                                     <span class="input-group-btn">
-                                        <button class="btn" value="Submit" id="oneSearchButton"
-                                            type="submit" aria-label="submit">
-                                            <i class="fas fa-search"></i><span> Search</span>
+                                        <button class="btn" value="Submit" id="oneSearchButton" type="submit">
+                                            <i class="fas fa-search" aria-hidden="true"></i><span> Search</span>
                                         </button>
                                     </span>
                                 </div>
@@ -130,16 +150,14 @@
                                     <input name="searchType" type="radio" value="any" checked="checked"
                                         id="keyword"><label for="keyword">Keyword</label>
                                 </li>
-                                <li> <input name="searchType" type="radio" value="title" id="title"><label
+                                <li><input name="searchType" type="radio" value="title" id="title"><label
                                         for="title">Title</label></li>
-                                <li> <input name="searchType" type="radio" value="creator" id="author"><label
+                                <li><input name="searchType" type="radio" value="creator" id="author"><label
                                         for="author">Author</label></li>
-                                <li> <input name="searchType" type="radio" value="sub" id="subject"><label
+                                <li><input name="searchType" type="radio" value="sub" id="subject"><label
                                         for="subject">Subject</label></li>
-                            </ul>
 
-                            <div class="search-filters">
-                                <div class="filter-group">
+                                <li class="filter-group">
                                     <label for="resourceTypeDropdown">Resource Type:</label>
                                     <select id="resourceTypeDropdown" class="filter-dropdown" aria-label="Select resource type">
                                         <option value="all">Books, Ebooks & Articles</option>
@@ -147,19 +165,17 @@
                                         <option value="books-ebooks">Books & Ebooks</option>
                                         <option value="articles">Articles</option>
                                     </select>
-                                </div>
+                                </li>
 
-                                <div class="filter-group">
+                                <li class="filter-group">
                                     <label for="scopeDropdown">Search Scope:</label>
                                     <select id="scopeDropdown" class="filter-dropdown" aria-label="Select search scope">
                                         <option value="gc" selected>GC</option>
                                         <option value="gc-cuny">GC & CUNY</option>
                                         <option value="gc-cuny-suny">GC, CUNY & SUNY</option>
                                     </select>
-                                </div>
-                            </div>
+                                </li>
 
-                            <ul class="options options-links">
                                 <li><a href='http://libguides.gc.cuny.edu/OneSearchAdvanced' class='classic'>Advanced
                                         Search</a>
                                 </li>
@@ -170,7 +186,46 @@
                             </ul>
 
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="Section4">
+                        <div role="tabpanel" class="tab-pane fade" id="Section2" aria-labelledby="tab-articles">
+                            <div class="search-input col-xs-10">
+                                <div class="input-group col-md-10">
+                                    <input type="text" class="search-query
+                        form-control" id="articleSearch" placeholder="Find articles, online resources, and more"
+                                        aria-label="Search for articles" />
+                                    <span class="input-group-btn">
+                                        <button class="btn" type="button" id="articleButton">
+                                            <i class="fas fa-search" aria-hidden="true"></i><span> Search</span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <ul class="options" id="articleSearchRadio">
+                                <li>
+                                    <input name="articleSearch" type="radio" value="any" checked="checked"
+                                        id="keyword2"><label for="keyword2">Keyword</label>
+                                </li>
+                                <li> <input name="articleSearch" type="radio" value="title" id="title2"><label
+                                        for="title2">Title</label></li>
+                                <li> <input name="articleSearch" type="radio" value="creator" id="author2"><label
+                                        for="author2">Author</label></li>
+                                <li> <input name="articleSearch" type="radio" value="sub" id="subject2"><label
+                                        for="subject2">Subject</label></li>
+                            </ul>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="Section3" aria-labelledby="tab-journals">
+                            <div class="search-input col-xs-10">
+                                <div class="input-group col-md-10">
+                                    <input type="text" id="primoQueryTemp2" placeholder="Find journals"
+                                        aria-label="Search for journals" class="search-query form-control">
+                                    <span class="input-group-btn">
+                                        <button class="btn" type="button" id="journalSearchButton">
+                                            <i class="fas fa-search" aria-hidden="true"></i><span> Search</span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="Section4" aria-labelledby="tab-databases">
                             <div class="database-list input-group col-xs-10"></div>
                             <div class="databases">
                                 <h3 class='browse-header'><a href='https://libguides.gc.cuny.edu/az/databases'>Browse
@@ -238,14 +293,18 @@
                 </div>
             </div>
 
-            <div class="header-filter" style="background-image: url(static/images/DSC_1707.JPG)">
+
+            <div class="header-filter" style="background-image: url(static/images/cuny14-0045-min.jpg)">
+            
+            <!-- <div class="header-filter" style="background-image: url(static/images/DSC_1707.JPG)"> -->
+           
             </div><!-- /.header-filter -->
         </div>
         <div class="container-fluid content links-wrapper">
             <div class="main row col-xxl-8 space-between col-10">
-                <div class="features col-xl-12 col-9 ">
+                <div class="features col-xl-12 col-9">
                     <!-- Research Section -->
-                    <div class="feature-wrapper research">
+                    <div class="feature-wrapper research col-3">
                         <h3 class="lower-header">Research</h3>
                         <ul class="list-unstyled front-page-list">
                             <li>
@@ -269,9 +328,7 @@
                         </li> -->
                             <li>
                                 <a href="http://libguides.gc.cuny.edu/OneSearch">OneSearch</a>
-                                <p class="link-description">Search across all library materials: books, articles,
-                                    databases,
-                                    and more.</p>
+                                <p class="link-description">Search for books, ebooks, articles, dissertations, and more.</p>
                             </li>
                             <li>
                                 <a href="https://libguides.gc.cuny.edu/">Research Guides</a>
@@ -287,7 +344,7 @@
                     </div>
 
                     <!-- Services Section -->
-                    <div class="feature-wrapper services">
+                    <div class="feature-wrapper services col-3">
                         <h3 class="lower-header">Services</h3>
                         <ul class="list-unstyled front-page-list">
                             <!-- <li>
@@ -308,17 +365,13 @@
                             <li>
                                 <a href="https://libguides.gc.cuny.edu/instruction-and-workshops">Instruction &amp;
                                     Workshops</a>
-                                <p class="link-description">Attend library workshops and instructional sessions on
-                                    research
-                                    skills.</p>
+                                <p class="link-description">Explore library workshops or invite a librarian to your course.</p>
                             </li>
                             <li>
                                 <a
                                     href="https://ezproxy.gc.cuny.edu/login?url=https://gc-cuny.illiad.oclc.org/illiad/illiad.dll">Interlibrary
                                     Loan</a>
-                                <p class="link-description">Request materials from other libraries via our interlibrary
-                                    loan
-                                    system.</p>
+                                <p class="link-description">Request any material you cannot find, or scans of material on our shelves.</p>
                             </li>
                             <!-- <li>
                             <a href='https://cuny-gc.primo.exlibrisgroup.com/discovery/account?vid=01CUNY_GC:CUNY_GC'
@@ -335,7 +388,7 @@
                     </div>
 
                     <!-- Scholarship Section -->
-                    <div class="feature-wrapper scholarship">
+                    <div class="feature-wrapper scholarship col-3">
                         <h3 class="lower-header">Scholarship</h3>
                         <ul class="list-unstyled front-page-list">
                             <li>
@@ -348,14 +401,9 @@
                                 <a href="https://libguides.gc.cuny.edu/datamgmt">Data Management</a>
                                 <p class="link-description">Get support for managing research data effectively.</p>
                             </li>
-                            <!-- <li>
-                            <a href="https://libguides.gc.cuny.edu/digital_tools_consult">Digital Scholarship</a>
-                            <p class="link-description">Learn about digital tools and techniques for research and publication.</p>
-                        </li> -->
                             <li>
                                 <a href="https://libguides.gc.cuny.edu/dissertations">Dissertations &amp; Theses</a>
-                                <p class="link-description">Access dissertations and theses submitted by Graduate Center
-                                    students.</p>
+                                <p class="link-description">Learn about depositing your dissertation or thesis, or find dissertations by others.</p>
                             </li>
                             <!-- <li>
                             <a href="https://libguides.gc.cuny.edu/grants">Grants &amp; Funding</a>
@@ -370,8 +418,7 @@
                             </li>
                             <li>
                                 <a href="https://libguides.gc.cuny.edu/share">Share Your Work</a>
-                                <p class="link-description">Learn how to submit your scholarly work to the library's
-                                    repository.</p>
+                                <p class="link-description">Publicly share your work on CUNY Academic Works and other platforms.</p>
                             </li>
                         </ul>
                     </div>
@@ -382,42 +429,51 @@
         <div class="container-fluid content events-wrapper">
             <div class='hours-and-events row col-xxl-8 space-between col-10'>
                 <div class='events-section col-xl-8 col-9' id='events'>
-                    <h3 class="lower-header option4"><a href="https://gc-cuny.libcal.com/calendar?cid=15537">Events</a></h3>
-                    <p>No events!</p>
-                    <script id="template" type="x-tmpl-mustache">
-                    <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/calendar?cid=15537">Events</a></h3>
-                    <div>
-                    {{#events}}
-                    <div class='event'>
-                    <h4><a href='{{event_link}}'>{{event_name}}</a></h4>
-                    <div class='event-date'>{{event_date}} {{event_time}}</div>
-                    <div class='event-description line-clamp'>{{{event_description}}}</div>
-                    </div>
-                    {{/events}}
-                    </div>
-                </script>
+                    <h3 class="lower-header option4"><a href="https://gc-cuny.libcal.com/calendar?cid=15537">Events <i class="fa-solid fa-angles-right"></i></a>
+                    </h3>
                 </div>
                 <div class='hours-section col-xl-4 col-9' id=hours>
-                    <h3 class="lower-header option5"><a href="https://gc-cuny.libcal.com/hours">Hours</a></h3>
+                    <h3 class="lower-header option5"><a href="https://gc-cuny.libcal.com/hours">Hours <i class="fa-solid fa-angles-right"></i></a></h3>
                     <p>Hours failed to load!</p>
                     <script id="hours-template" type="x-tmpl-mustache">
 
-                    <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/hours">Hours</a></h3> 
+                    <h3 class="lower-header"><a href="https://gc-cuny.libcal.com/hours">Hours    <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a></h3> 
                     <div class='hours'>
                     <table class='hours-table table table-striped'>
+                    <caption class='visually-hidden'>Library hours for the current week</caption>
                     <thead>
-
+                        <tr>
+                            <th scope="col">Day</th>
+                            <th scope="col">Hours</th>
+                        </tr>
                     </thead>
                     <tbody>
                     {{#days}}
-                        <tr class={{isToday}}>
-                            <td>{{day}}</td>
+                        <tr{{#rowClass}} class="{{rowClass}}"{{/rowClass}}>
+                            <th scope="row">{{day}}</th>
                             <td>{{rendered}}</td>
                         </tr>
                     {{/days}}
                     </tbody>
+                    </table>
                     </div>
                 </script>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid content news-wrapper">
+            <div class="news-section row col-xxl-8 space-between col-10">
+                <div id='news' class='col-xl-12 col-9 rss-feed'>
+                    <h3 class='lower-header option3'><a href='https://gclibrary.commons.gc.cuny.edu/'>News &amp;
+                            Views</a></h3>
+                    <script id="news-template" type="x-tmpl-mustache">
+            <h3 class='lower-header'><a href='https://gclibrary.commons.gc.cuny.edu/'>News &amp; Views    <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a></h3>
+            <ul class='news'>
+            {{#items}}
+                <li class='news-item'><div class='news-image-container'><img src='{{image}}' alt='{{title}}' /></div><h4><a href="{{link}}">{{title}}</a></h4><p>{{shortBodyWithDots}}</p></li>
+            {{/items}}
+            </ul>
+            </script>
                 </div>
             </div>
         </div>
@@ -429,13 +485,13 @@
                     </h3>
                     <p>Collections failed to load!</p>
                     <script id="collections-template" type="x-tmpl-mustache">
-                    <h3 class="lower-header"><a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/collectionDiscovery?vid=01CUNY_GC%3ACUNY_GC">Featured Collection</a></h3>
+                    <h3 class="lower-header"><a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/collectionDiscovery?vid=01CUNY_GC%3ACUNY_GC">Featured Collection    <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a></h3>
                     <div class='collections'>
                     {{#collection}}
                         <div>
                             <a href="{{collectionLink}}">
                                 <div class='collection-image-container'>
-                                <img src="{{collectionThumbnail}}" alt="{{collectionName}}" aria-hidden="true">
+                                <img src="{{collectionThumbnail}}" alt="{{collectionName}}">
                                 <div class="collection-overlay">
                                     <div class="text">{{collectionName}}</div>
                                 </div>
@@ -447,26 +503,12 @@
                 </script>
                 </div>
                 <div class='youtube-section col-xl-6 col-9' id=youtube>
-                    <h3 class="lower-header option2"><a href="https://www.youtube.com/channel/UCF11xs3zCmMdMdWoOfxP_kg">Featured
-                            Video</a></h3><iframe id="vid" width="560" height="315"
+                    <h3 class="lower-header option2"><a
+                            href="https://www.youtube.com/channel/UCF11xs3zCmMdMdWoOfxP_kg">Featured
+                            Video    <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a></h3><iframe id="vid" width="560" height="315"
                         src="https://www.youtube.com/embed/videoseries?list=PLbp9SdWbaAjmttsctx1kDqiVOZruZDwCm"
-                        frameborder="0" allowfullscreen></iframe>
+                        frameborder="0" allowfullscreen title="Featured Video"></iframe>
 
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid content news-wrapper">
-            <div class="news-section row col-xxl-8 space-between col-10">
-            <div id='news' class='col-xl-12 col-9 rss-feed'>
-                    <h3 class='lower-header option3'><a href='https://gclibrary.commons.gc.cuny.edu/'>News &amp; Views</a></h3>
-                    <script id="news-template" type="x-tmpl-mustache">
-            <h3 class='lower-header'><a href='https://gclibrary.commons.gc.cuny.edu/'>News &amp; Views</a></h3>
-            <ul class='news'>
-            {{#items}}
-                <li><div class='news-image-container'><img src='{{image}}' alt='{{title}}' /></div><h4><a href="{{link}}">{{title}}</a></h4><p>{{shortBodyWithDots}}</p></li>
-            {{/items}}
-            </ul>
-            </script>
                 </div>
             </div>
         </div>
@@ -488,33 +530,35 @@
     </div>
     </div>
 
+    </main>
     <footer class="footer row col-12">
         <div class="container col-xs-10 col-10 col-xxl-8">
             <div class="footer-content">
-                <div id="footer-logo col-md-2">
+                <div id="footer-logo col-md-1">
                     <a href="https://library.gc.cuny.edu/"><img src="static/images/MRS_logo_One_Search.png"
-                            alt="library logo" class='footer-logo'></a>
+                            alt="Mina Rees Library Logo" class='footer-logo'></a>
                 </div>
-                <div class='col-md-2'>
+                <div class='col-md-3'>
                     <p>
-                        <i class="fas fa-phone"></i>
+                        <i class="fas fa-phone" aria-hidden="true"></i>
                         <a href="tel:2128177040"> (212) 817-7040</a>
                     </p>
                     <p>
-                        <i class="fas fa-map-marker"></i>
+                        <i class="fas fa-map-marker" aria-hidden="true"></i>
                         <span> 365 Fifth Avenue, </br>
                             New York, NY 10016</span>
                     </p>
                     <p>
-                        <i class="fas fa-envelope"></i>
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
                         <a href="https://libguides.gc.cuny.edu/contact_us"> Contact Us</a>
                     </p>
                     <p>
-                        <i class="fab fa-twitter"></i><a href="https://twitter.com/cunyGClibrary"><span>
-                                @cunyGClibrary</span></a>
+                        <i class="fa-brands fa-bluesky" aria-hidden="true"></i><a
+                            href="https://bsky.app/profile/minareeslibrary.bsky.social"><span>
+                                @minareeslibrary.bsky.social</span></a>
                     </p>
                     <p>
-                        <i class="fab fa-instagram"></i><a href="https://www.instagram.com/minareeslibrary/"><span>
+                        <i class="fab fa-instagram" aria-hidden="true"></i><a href="https://www.instagram.com/minareeslibrary/"><span>
                                 @minareeslibrary</span></a>
                     </p>
                 </div>
@@ -523,9 +567,10 @@
                         <ul class='footer-list'>
                             <li><a href="https://libguides.gc.cuny.edu/cuny_accounts">Accounts &amp; Logins</a>
                             </li>
-                            <li><a href="https://libguides.gc.cuny.edu/support-the-library">Donate to the
+                            <li><a href="https://www.gc.cuny.edu/giving/make-donation/library">Donate to the
                                     Library</a></li>
                             <li><a href="https://libguides.gc.cuny.edu/friends">Friends of the Library</a></li>
+                            <li><a href="https://libguides.gc.cuny.edu/jobs">Jobs</a></li>
                             <li><a href="https://www.gc.cuny.edu/">The Graduate Center</a></li>
                         </ul>
                     </div>
@@ -534,7 +579,6 @@
         </div>
         <div id="alert-container"></div>
     </footer>
-    </div>
 
     <!-- <div class="question-form-link">
         <a href="https://cuny.libanswers.com/chat/widget/ba1a6a4dac7e5525a9e2ec72bea7ed40">Chat with a Librarian</a>
