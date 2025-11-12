@@ -476,15 +476,16 @@ h6 {
 /* Checkbox filter group */
 .checkbox-group {
 	margin-top: 8px;
-	max-height: 50px;
 	opacity: 1;
 	overflow: hidden;
-	transition: opacity 0.3s ease, max-height 0.3s ease, margin 0.3s ease;
+	transform-origin: top;
+	transition: opacity 0.25s ease, transform 0.25s ease, margin 0.25s ease;
 }
 
 .checkbox-group.hidden {
 	opacity: 0;
-	max-height: 0;
+	transform: scaleY(0);
+	height: 0;
 	margin-top: 0;
 	margin-bottom: 0;
 }
