@@ -106,6 +106,20 @@ function setupSearchHandlers() {
             $checkboxGroup.removeClass('hidden');
         }
     });
+
+    // Journal Search Handler
+    $("#journalSearchButton").click(function () {
+        var query = $("#primoQueryTemp2").val().replace(/[,]/g, " ");
+        window.location = "https://cuny-gc.primo.exlibrisgroup.com/discovery/jsearch?query=any,contains," + query +
+                         "&tab=jsearch_slot&vid=01CUNY_GC:CUNY_GC&offset=0&journals=any," + query;
+    });
+
+    // Enter key support for Journal Search
+    $('#primoQueryTemp2').keypress(function (e) {
+        if (e.which == 13) {//Enter key pressed
+            $('#journalSearchButton').click();//Trigger search button click event
+        }
+    });
 }
 
 // Tab accessibility helpers
