@@ -655,7 +655,8 @@ div.journals-a-z>span>a {
 	list-style: none;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
-	padding-bottom: 10px;
+	padding-bottom: 12px;
+	padding-top: 2px;
 }
 
 .options li {
@@ -671,12 +672,16 @@ div.journals-a-z>span>a {
 	border-bottom: 3px solid transparent;
 }
 
+.options li a:hover {
+	border-bottom: 3px solid rgb(0, 93, 170);
+}
+
 input[type="radio"] {
 	width: 18px;
 	height: 18px;
 	cursor: pointer;
 	accent-color: #005daa;
-	margin-right: 3px;
+	margin-right: 2px;
 }
 
 input[type="radio"]:focus {
@@ -716,7 +721,6 @@ input[type="radio"]+label:hover {
 .radio-group {
 	display: flex;
 	align-items: center;
-	gap: 15px;
 }
 
 /* Links group */
