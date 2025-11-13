@@ -423,7 +423,7 @@ h6 {
 	flex-direction: row;
 	flex-wrap: wrap;
 	align-items: center;
-	justify-content: space-evenly;
+	justify-content: space-between;
 }
 
 #searchCUNY>div,
@@ -686,6 +686,30 @@ input[type="radio"]+label:hover {
 	font-weight: 600;
 	color: white;
 	margin-right: 10px;
+}
+
+/* Filter group container - groups radio buttons with label */
+.filter-group-container {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+/* Radio button group */
+.radio-group {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+/* Links group */
+.links-group {
+	display: flex;
+	gap: 15px;
+}
+
+.links-group a {
+	white-space: nowrap;
 }
 
 /* Below the Fold*/
