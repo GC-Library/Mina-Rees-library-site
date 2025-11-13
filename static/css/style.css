@@ -686,6 +686,7 @@ input[type="radio"]:focus {
 input[type="radio"]+label {
 	font-weight: 600;
 	padding-left: 0px;
+	margin-right: 20px;
 	color: white;
 	cursor: pointer;
 	user-select: none;
