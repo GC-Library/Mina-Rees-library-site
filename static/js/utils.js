@@ -30,7 +30,7 @@ function setupSearchHandlers() {
     // Unified OneSearch Handler
     $("#oneSearchButton").click(function () {
         var query = $("#oneSearchInput").val();
-        var searchType = $("#searchTypeRadio input[name=searchType]:checked").val();
+        var searchType = "any"; // Default to keyword search
         var resourceType = $("#resourceTypeDropdown").val();
         var includeExternal = $("#scopeCheckbox").is(":checked");
 
