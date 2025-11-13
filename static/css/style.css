@@ -675,7 +675,7 @@ input[type="radio"] {
 	height: 18px;
 	cursor: pointer;
 	accent-color: #005daa;
-	margin-right: 5px;
+	margin-right: 3px;
 }
 
 input[type="radio"]:focus {
