@@ -31,7 +31,7 @@ function setupSearchHandlers() {
     $("#oneSearchButton").click(function () {
         var query = $("#oneSearchInput").val();
         var searchType = "any"; // Default to keyword search
-        var resourceType = $("#resourceTypeDropdown").val();
+        var resourceType = $("input[name='resourceType']:checked").val();
         var includeExternal = $("#scopeCheckbox").is(":checked");
 
         // Base URL components
@@ -55,11 +55,7 @@ function setupSearchHandlers() {
         var resourceFilters = "";
         switch(resourceType) {
             case "books":
-                // Books only
-                resourceFilters = "&mfacet=rtype,include,books,1";
-                break;
-            case "books-ebooks":
-                // Books and ebooks
+                // Books only (physical + ebooks)
                 resourceFilters = "&mfacet=rtype,include,books,1&mfacet=rtype,include,book_chapters,1";
                 break;
             case "articles":
@@ -93,8 +89,8 @@ function setupSearchHandlers() {
         }
     });
 
-    // Dynamic show/hide for scope checkbox based on format selection
-    $('#resourceTypeDropdown').on('change', function() {
+    // Dynamic show/hide for scope checkbox based on resource type selection
+    $('input[name="resourceType"]').on('change', function() {
         var resourceType = $(this).val();
         var $checkboxGroup = $('.checkbox-group');
 

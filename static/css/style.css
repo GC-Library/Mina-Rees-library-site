@@ -529,9 +529,24 @@ h6 {
 
 /* Text Inside Searchbar */
 .form-control::-moz-placeholder {
-	color: #12130f;
-	opacity: .9;
+	color: #888;
+	opacity: 1;
 	font-size: 16px;
+	font-style: italic;
+}
+
+.form-control::placeholder {
+	color: #888;
+	opacity: 1;
+	font-size: 16px;
+	font-style: italic;
+}
+
+.form-control::-webkit-input-placeholder {
+	color: #888;
+	opacity: 1;
+	font-size: 16px;
+	font-style: italic;
 }
 
 /* Input Group */
@@ -663,6 +678,14 @@ input[type="radio"]+label {
 
 input[type="radio"]+label:hover {
 	color: #fff;
+}
+
+/* Filter group label */
+.filter-group-label {
+	font-size: 16px;
+	font-weight: 600;
+	color: white;
+	margin-right: 10px;
 }
 
 /* Below the Fold*/

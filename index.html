@@ -151,7 +151,7 @@
                                 <div class="input-group col-md-10">
                                     <input id="oneSearchInput" class="search-query form-control" name="query" size="35"
                                         type="text" aria-label="search books, ebooks, articles and more"
-                                        placeholder="Search books, ebooks, articles & more">
+                                        placeholder="Search for books, articles & more at the Graduate Center">
                                     <span class="input-group-btn">
                                         <button class="btn" value="Submit" id="oneSearchButton" type="submit">
                                             <i class="fas fa-search" aria-hidden="true"></i><span> Search</span>
@@ -161,20 +161,24 @@
                             </div>
 
                             <ul class="options" id="searchTypeRadio">
-                                <li class="filter-group">
-                                    <label for="resourceTypeDropdown">Item Types:</label>
-                                    <select id="resourceTypeDropdown" class="filter-dropdown" aria-label="Select item types">
-                                        <option value="all">Books, Ebooks & Articles</option>
-                                        <option value="books">Books</option>
-                                        <option value="books-ebooks">Books & Ebooks</option>
-                                        <option value="articles">Articles</option>
-                                    </select>
+                                <li class="filter-group-label">Limit to:</li>
+                                <li>
+                                    <input name="resourceType" type="radio" value="all" checked="checked" id="limitEverything">
+                                    <label for="limitEverything">Everything</label>
+                                </li>
+                                <li>
+                                    <input name="resourceType" type="radio" value="books" id="limitBooks">
+                                    <label for="limitBooks">Books</label>
+                                </li>
+                                <li>
+                                    <input name="resourceType" type="radio" value="articles" id="limitArticles">
+                                    <label for="limitArticles">Articles</label>
                                 </li>
 
                                 <li class="filter-group checkbox-group">
                                     <label>
-                                        <input type="checkbox" id="scopeCheckbox" class="scope-checkbox" aria-label="Include CUNY and SUNY books">
-                                        Include CUNY & SUNY books
+                                        <input type="checkbox" id="scopeCheckbox" class="scope-checkbox" aria-label="Include other CUNY and SUNY libraries (books only)">
+                                        Include other CUNY & SUNY (books only)
                                     </label>
                                 </li>
 
