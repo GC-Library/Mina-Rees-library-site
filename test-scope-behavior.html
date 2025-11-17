@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primo Scope Testing - Click to Test Each Combination</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #005daa;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #005daa;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        a {
+            color: #005daa;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-left: 4px solid #005daa;
+        }
+        .instructions {
+            background: #fffbcc;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ffcc00;
+        }
+        .result-note {
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Primo OneSearch Scope Behavior Testing</h1>
+
+    <div class="instructions">
+        <strong>Instructions:</strong>
+        <ol>
+            <li>Click each link below to open that search in a new tab</li>
+            <li>Note the <strong>number of results</strong> shown</li>
+            <li>Compare results within each section to see if scope actually changes results</li>
+            <li>Record your findings to determine if scope matters for that format</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>Test 1: E-books (book_chapters) - Query: "machine learning"</h2>
+        <table>
+            <tr>
+                <th>Scope</th>
+                <th>Test Link</th>
+                <th>Results (fill in manually)</th>
+            </tr>
+            <tr>
+                <td>Graduate Center Only</td>
+                <td><a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC&query=any,contains,machine+learning&tab=Everything&search_scope=IZ_CI_AW&sortby=rank&mfacet=rtype,include,book_chapters,1&lang=en_US&mode=basic&offset=0" target="_blank">Test GC Only</a></td>
+                <td>_______</td>
+            </tr>
+            <tr>
+                <td>Graduate Center & CUNY</td>
+                <td><a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC&query=any,contains,machine+learning&tab=NZPhysical&search_scope=NZPhysical&sortby=rank&mfacet=rtype,include,book_chapters,1&lang=en_US&mode=basic&offset=0" target="_blank">Test GC & CUNY</a></td>
+                <td>_______</td>
+            </tr>
+            <tr>
+                <td>Graduate Center, CUNY & SUNY</td>
+                <td><a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC&query=any,contains,machine+learning&tab=IZ_NZ_SUNY&search_scope=IZ_CI_AW_NZ_SUNY&sortby=rank&mfacet=rtype,include,book_chapters,1&lang=en_US&mode=basic&offset=0" target="_blank">Test GC, CUNY & SUNY</a></td>
+                <td>_______</td>
+            </tr>
+        </table>
+        <div class="result-note"><strong>Hypothesis:</strong> E-book results should be similar across all scopes due to licensing restrictions.</div>
+    </div>
+
+    <div class="section">
+        <h2>Test 2: Articles (excluding books) - Query: "machine learning"</h2>
+        <table>
+            <tr>
+                <th>Scope</th>
+                <th>Test Link</th>
+                <th>Results (fill in manually)</th>
+            </tr>
+            <tr>
+                <td>Graduate Center Only</td>
+                <td><a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC&query=any,contains,machine+learning&tab=Everything&search_scope=IZ_CI_AW&sortby=rank&facet=rtype,exclude,book_chapters&facet=rtype,exclude,books&lang=en_US&mode=basic&offset=0" target="_blank">Test GC Only</a></td>
+                <td>_______</td>
+            </tr>
+            <tr>
+                <td>Graduate Center & CUNY</td>
+                <td><a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC&query=any,contains,machine+learning&tab=NZPhysical&search_scope=NZPhysical&sortby=rank&facet=rtype,exclude,book_chapters&facet=rtype,exclude,books&lang=en_US&mode=basic&offset=0" target="_blank">Test GC & CUNY</a></td>
+                <td>_______</td>
+            </tr>
+            <tr>
+                <td>Graduate Center, CUNY & SUNY</td>
+                <td><a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC&query=any,contains,machine+learning&tab=IZ_NZ_SUNY&search_scope=IZ_CI_AW_NZ_SUNY&sortby=rank&facet=rtype,exclude,book_chapters&facet=rtype,exclude,books&lang=en_US&mode=basic&offset=0" target="_blank">Test GC, CUNY & SUNY</a></td>
+                <td>_______</td>
+            </tr>
+        </table>
+        <div class="result-note"><strong>Hypothesis:</strong> Article results might differ across scopes if Central Index changes.</div>
+    </div>
+
+    <div class="section">
+        <h2>Test 3: Physical Books - Query: "machine learning"</h2>
+        <table>
+            <tr>
+                <th>Scope</th>
+                <th>Test Link</th>
+                <th>Results (fill in manually)</th>
+            </tr>
+            <tr>
+                <td>Graduate Center Only</td>
+                <td><a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC&query=any,contains,machine+learning&tab=Everything&search_scope=IZ_CI_AW&sortby=rank&mfacet=rtype,include,books,1&lang=en_US&mode=basic&offset=0" target="_blank">Test GC Only</a></td>
+                <td>_______</td>
+            </tr>
+            <tr>
+                <td>Graduate Center & CUNY</td>
+                <td><a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC&query=any,contains,machine+learning&tab=NZPhysical&search_scope=NZPhysical&sortby=rank&mfacet=rtype,include,books,1&lang=en_US&mode=basic&offset=0" target="_blank">Test GC & CUNY</a></td>
+                <td>_______</td>
+            </tr>
+            <tr>
+                <td>Graduate Center, CUNY & SUNY</td>
+                <td><a href="https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC&query=any,contains,machine+learning&tab=IZ_NZ_SUNY&search_scope=IZ_CI_AW_NZ_SUNY&sortby=rank&mfacet=rtype,include,books,1&lang=en_US&mode=basic&offset=0" target="_blank">Test GC, CUNY & SUNY</a></td>
+                <td>_______</td>
+            </tr>
+        </table>
+        <div class="result-note"><strong>Hypothesis:</strong> Physical book results should significantly increase with broader scopes (this is the main use case for scope expansion).</div>
+    </div>
+
+    <div class="section">
+        <h2>Test Summary & Conclusions</h2>
+        <p><strong>Based on your testing, answer these questions:</strong></p>
+        <ul>
+            <li>Do E-book results change significantly across scopes? <strong>YES / NO</strong></li>
+            <li>Do Article results change significantly across scopes? <strong>YES / NO</strong></li>
+            <li>Do Physical Book results change significantly across scopes? <strong>YES / NO</strong></li>
+        </ul>
+        <p><strong>Recommendation:</strong> If only physical books show significant scope differences, we can keep the current simple interface without dynamic dropdown behavior.</p>
+    </div>
+
+</body>
+</html>
