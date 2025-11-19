@@ -654,35 +654,10 @@ div.journals-a-z>span>a {
 	background: white;
 	border-radius: 8px;
 	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
-	max-height: 400px;
-	overflow-y: auto;
 	z-index: 1000;
 	min-width: 600px;
 	max-width: 90vw;
 	animation: slideDown 0.2s ease-out;
-
-	/* Custom scrollbar - Firefox */
-	scrollbar-width: thin;
-	scrollbar-color: #005daa #f0f0f0;
-}
-
-/* Custom scrollbar - Webkit browsers */
-.database-dropdown::-webkit-scrollbar {
-	width: 10px;
-}
-
-.database-dropdown::-webkit-scrollbar-track {
-	background: transparent;
-}
-
-.database-dropdown::-webkit-scrollbar-thumb {
-	background: #005daa;
-	border-radius: 10px;
-	border: 2px solid white;
-}
-
-.database-dropdown::-webkit-scrollbar-thumb:hover {
-	background: #004080;
 }
 
 @keyframes slideDown {
@@ -737,6 +712,31 @@ div.journals-a-z>span>a {
 	padding: 15px;
 	column-count: 2;
 	column-gap: 20px;
+	max-height: 400px;
+	overflow-y: auto;
+
+	/* Custom scrollbar - Firefox */
+	scrollbar-width: thin;
+	scrollbar-color: #005daa #f0f0f0;
+}
+
+/* Custom scrollbar - Webkit browsers */
+.database-dropdown-content::-webkit-scrollbar {
+	width: 10px;
+}
+
+.database-dropdown-content::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.database-dropdown-content::-webkit-scrollbar-thumb {
+	background: #005daa;
+	border-radius: 10px;
+	border: 2px solid white;
+}
+
+.database-dropdown-content::-webkit-scrollbar-thumb:hover {
+	background: #004080;
 }
 
 .database-dropdown-item {
