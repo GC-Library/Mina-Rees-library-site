@@ -709,9 +709,10 @@ div.journals-a-z>span>a {
 }
 
 .database-dropdown-content {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0 20px;
 	padding: 15px;
-	column-count: 2;
-	column-gap: 20px;
 	max-height: 400px;
 	overflow-y: auto;
 
@@ -741,12 +742,9 @@ div.journals-a-z>span>a {
 
 .database-dropdown-item {
 	padding: 8px 10px;
-	break-inside: avoid;
-	page-break-inside: avoid;
 	transition: background 0.15s;
 	border-radius: 4px;
 	background: transparent;
-	margin-bottom: 2px;
 }
 
 .database-dropdown-item:hover {
