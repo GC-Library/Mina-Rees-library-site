@@ -647,6 +647,181 @@ div.journals-a-z>span>a {
 	margin-top: 0;
 }
 
+/* Database Dropdown Styles */
+.database-dropdown {
+	position: absolute;
+	display: none;
+	background: white;
+	border-radius: 8px;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+	max-height: 400px;
+	overflow-y: auto;
+	z-index: 1000;
+	min-width: 600px;
+	max-width: 90vw;
+	animation: slideDown 0.2s ease-out;
+
+	/* Custom scrollbar - Firefox */
+	scrollbar-width: thin;
+	scrollbar-color: #005daa #f0f0f0;
+}
+
+/* Custom scrollbar - Webkit browsers */
+.database-dropdown::-webkit-scrollbar {
+	width: 10px;
+}
+
+.database-dropdown::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.database-dropdown::-webkit-scrollbar-thumb {
+	background: #005daa;
+	border-radius: 10px;
+	border: 2px solid white;
+}
+
+.database-dropdown::-webkit-scrollbar-thumb:hover {
+	background: #004080;
+}
+
+@keyframes slideDown {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.database-dropdown.show {
+	display: block;
+}
+
+.database-dropdown-header {
+	background: #005daa;
+	color: white;
+	padding: 12px 20px;
+	font-weight: 600;
+	font-size: 16px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.database-dropdown-close {
+	background: none;
+	border: none;
+	color: white;
+	font-size: 20px;
+	cursor: pointer;
+	padding: 0;
+	width: 24px;
+	height: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0.8;
+	transition: opacity 0.2s;
+}
+
+.database-dropdown-close:hover {
+	opacity: 1;
+}
+
+.database-dropdown-content {
+	padding: 15px;
+	column-count: 2;
+	column-gap: 20px;
+}
+
+.database-dropdown-item {
+	padding: 8px 10px;
+	break-inside: avoid;
+	page-break-inside: avoid;
+	transition: background 0.15s;
+	border-radius: 4px;
+	background: transparent;
+	margin-bottom: 2px;
+}
+
+.database-dropdown-item:hover {
+	background: #f0f7ff;
+}
+
+.database-dropdown-item a {
+	color: #005daa;
+	text-decoration: none;
+	font-size: 14px;
+	line-height: 1.4;
+	display: block;
+	font-weight: 500;
+}
+
+.database-dropdown-item a:hover {
+	border-bottom: none;
+	text-decoration: underline;
+}
+
+.database-dropdown-empty {
+	padding: 40px 20px;
+	text-align: center;
+	color: #666;
+	font-style: italic;
+}
+
+/* Position search dropdown below search box */
+#database-search-dropdown {
+	top: 100%;
+	left: 0;
+	right: 0;
+	margin-top: 5px;
+}
+
+/* Position letter dropdown below the databases bar */
+#database-letter-dropdown {
+	top: 100%;
+	left: 10px;
+	margin-top: 5px;
+}
+
+/* Make parent position relative */
+.search-input {
+	position: relative;
+}
+
+/* Database search input - restore right border since button is hidden */
+#databaseSearchInput {
+	border-right: 3px solid #005daa !important;
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+}
+
+/* When clear button is visible, remove right border from input */
+#databaseClearSearch:not([style*="display: none"]) ~ #databaseSearchInput,
+#databaseClearSearch:not([style*="display:none"]) ~ #databaseSearchInput {
+	border-right: none !important;
+}
+
+div.databases {
+	position: relative;
+}
+
+/* Responsive: single column on smaller screens */
+@media (max-width: 768px) {
+	.database-dropdown {
+		min-width: 90vw;
+	}
+
+	.database-dropdown-content {
+		column-count: 1;
+	}
+}
+
 /* Radio Buttons */
 .options {
 	font-size: 16px !important;

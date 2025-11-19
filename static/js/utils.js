@@ -8,13 +8,17 @@ const DEBUG = {
 };
 
 $(document).ready(function ($) {
+    // Load the widget to extract database data
     $(".database-list").load("https://lgapi-us.libapps.com/widgets.php?site_id=146&widget_type=2&search_terms=&search_match=2&subject_ids=&sort_by=name&list_format=2&drop_text=Select+a+Database...&output_format=1&load_type=2&enable_description=1&widget_embed_type=2&num_results=0&enable_more_results=0&window_target=2&config_id=1535395835265", function () {
         $("#s-lg-frm-az-widget-1535395835265").addClass('col-md-10');
+        // Parse and populate database browser
+        parseDatabases();
     })
 
     // Search functionality setup
     setupSearchHandlers();
     setupTabAccessibility();
+    setupDatabaseBrowser();
 
     // Load dynamic content
     loadEvents();
@@ -447,3 +451,147 @@ function renderNews(newsData) {
     const template = document.getElementById('news-template').innerHTML;
     $('#news').html(Mustache.render(template, newsData));
 }
+
+// Database Browser Functions
+let databasesData = [];
+
+function parseDatabases() {
+    const $select = $('#s-lg-sel-az-widget-1535395835265');
+    const $options = $select.find('option');
+
+    databasesData = [];
+    $options.each(function() {
+        const $option = $(this);
+        const url = $option.val();
+        const name = $option.text();
+
+        // Skip the placeholder option
+        if (url && name) {
+            databasesData.push({
+                name: name,
+                url: url,
+                firstChar: name.charAt(0).toUpperCase()
+            });
+        }
+    });
+
+    console.log(`Loaded ${databasesData.length} databases`);
+}
+
+function showDatabaseDropdown($dropdown, databases, title) {
+    if (databases.length === 0) {
+        const html = `
+            <div class="database-dropdown-header">
+                <span>${title}</span>
+                <button class="database-dropdown-close" onclick="closeDatabaseDropdowns()">&times;</button>
+            </div>
+            <div class="database-dropdown-empty">No databases found</div>
+        `;
+        $dropdown.html(html).addClass('show');
+        return;
+    }
+
+    const itemsHtml = databases.map(db => `
+        <div class="database-dropdown-item">
+            <a href="${db.url}" target="_blank">${db.name}</a>
+        </div>
+    `).join('');
+
+    const html = `
+        <div class="database-dropdown-header">
+            <span>${title} (${databases.length})</span>
+            <button class="database-dropdown-close" onclick="closeDatabaseDropdowns()">&times;</button>
+        </div>
+        <div class="database-dropdown-content">
+            ${itemsHtml}
+        </div>
+    `;
+
+    $dropdown.html(html).addClass('show');
+}
+
+function closeDatabaseDropdowns() {
+    $('.database-dropdown').removeClass('show');
+}
+
+function setupDatabaseBrowser() {
+    // Letter navigation
+    $('.db-letter-link').on('click', function(e) {
+        e.preventDefault();
+        const letter = $(this).data('letter');
+
+        let filtered;
+        let title;
+
+        if (letter === '0-9') {
+            filtered = databasesData.filter(db => /^\d/.test(db.name));
+            title = 'Databases: 0-9';
+        } else {
+            filtered = databasesData.filter(db => db.firstChar === letter);
+            title = `Databases: ${letter}`;
+        }
+
+        // Close search dropdown
+        $('#database-search-dropdown').removeClass('show');
+
+        // Show letter dropdown
+        showDatabaseDropdown($('#database-letter-dropdown'), filtered, title);
+    });
+
+    // Search functionality - real-time
+    let searchTimeout;
+    $('#databaseSearchInput').on('input', function() {
+        const searchTerm = $(this).val().trim();
+
+        // Clear previous timeout
+        clearTimeout(searchTimeout);
+
+        if (searchTerm.length === 0) {
+            closeDatabaseDropdowns();
+            $('#databaseClearSearch').hide();
+            return;
+        }
+
+        $('#databaseClearSearch').show();
+
+        // Debounce search
+        searchTimeout = setTimeout(() => {
+            const term = searchTerm.toLowerCase();
+            const filtered = databasesData.filter(db =>
+                db.name.toLowerCase().includes(term)
+            );
+
+            // Close letter dropdown
+            $('#database-letter-dropdown').removeClass('show');
+
+            // Show search dropdown
+            showDatabaseDropdown(
+                $('#database-search-dropdown'),
+                filtered,
+                `Search results for "${searchTerm}"`
+            );
+        }, 300);
+    });
+
+    // Clear search button
+    $('#databaseClearSearch').on('click', function() {
+        $('#databaseSearchInput').val('');
+        closeDatabaseDropdowns();
+        $(this).hide();
+    });
+
+    // Close dropdowns when clicking outside
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('.database-dropdown, .db-letter-link, #databaseSearchInput').length) {
+            closeDatabaseDropdowns();
+        }
+    });
+
+    // Prevent dropdown close when clicking inside
+    $('.database-dropdown').on('click', function(e) {
+        e.stopPropagation();
+    });
+}
+
+// Make closeDatabaseDropdowns global
+window.closeDatabaseDropdowns = closeDatabaseDropdowns;
