@@ -1390,13 +1390,12 @@ footer.footer.footer-black {
 }
 
 .footer-content {
-	display: flex;
-	flex-flow: row wrap;
-	flex: 1 1 auto;
-	justify-content: space-between;
 	color: white;
-	margin-top: 40px;
+	margin-top: var(--space-2xl);
+	padding: var(--space-lg) 0;
 	font-size: 16px;
+	display: flex;
+	justify-content: space-between;
 }
 
 .footer-content>div>div {
@@ -1428,10 +1427,19 @@ footer .glyphicon {
 
 .footer-list {
 	list-style: none;
+	text-align: right;
+	padding-right: 0;
 }
 
 .footer-list li {
-	margin-bottom: 20px;
+	margin-bottom: var(--space-md);
+}
+
+#footer-logo {
+	display: flex;
+	align-items: center;
+	flex: 0 0 auto;
+	max-width: 200px;
 }
 
 .social-media {
