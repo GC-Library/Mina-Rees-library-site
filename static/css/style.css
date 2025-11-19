@@ -5,6 +5,17 @@
 @import url('https://fonts.googleapis.com/css?family=Lora');
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
+/* Design System Variables */
+:root {
+	/* Spacing Scale (8px base) */
+	--space-xs: 4px;
+	--space-sm: 8px;
+	--space-md: 16px;
+	--space-lg: 24px;
+	--space-xl: 32px;
+	--space-2xl: 48px;
+}
+
 /* General Styles */
 html,
 body {
@@ -24,7 +35,7 @@ body {
 	left: 0;
 	background: #005daa;
 	color: #fff;
-	padding: 10px 16px;
+	padding: var(--space-sm) var(--space-md);
 	z-index: 1000;
 	text-decoration: none;
 }
@@ -291,9 +302,9 @@ h6 {
 .bento-header {
 	display: inline-flex;
 	flex-direction: column;
-	margin-bottom: 10px;
+	margin-bottom: var(--space-sm);
 	color: white;
-	padding: 10px;
+	padding: var(--space-sm);
 	padding-bottom: 0px;
 	background: rgba(10, 10, 10, .6) !important;
 }
@@ -320,7 +331,7 @@ h6 {
 	min-width: 150px;
 	max-width: 250px;
 	margin-bottom: 0;
-	margin-right: 10px;
+	margin-right: var(--space-sm);
 	flex: 1 1 auto;
 }
 
@@ -329,7 +340,7 @@ h6 {
 	align-items: center;
 	justify-content: center;
 	background: rgba(10, 10, 10, .6) !important;
-	padding: 10px;
+	padding: var(--space-sm);
 	border: 1px solid rgba(40, 40, 40, .6);
 	border-radius: 0;
 	font-size: 14px;
@@ -373,8 +384,8 @@ h6 {
 
 /* Tab Content */
 .tab .tab-content {
-	padding: 20px;
-	margin-top: -5px;
+	padding: var(--space-lg);
+	margin-top: calc(var(--space-xs) * -1);
 	border-radius: 0;
 	font-size: 15px;
 	color: white;
@@ -438,8 +449,8 @@ h6 {
 .filter-group {
 	display: inline-flex;
 	align-items: center;
-	gap: 5px;
-	margin-right: 15px;
+	gap: var(--space-xs);
+	margin-right: var(--space-md);
 }
 
 .filter-group label {
@@ -451,9 +462,9 @@ h6 {
 }
 
 .filter-dropdown {
-	height: 32px;
+	height: var(--space-xl);
 	min-width: 160px;
-	padding: 4px 8px;
+	padding: var(--space-xs) var(--space-sm);
 	font-size: 14px;
 	font-weight: 500;
 	background: rgba(255, 255, 255, 0.95);
@@ -478,7 +489,7 @@ h6 {
 .checkbox-group {
 	display: inline-flex;
 	align-items: center;
-	margin-right: 15px;
+	margin-right: var(--space-md);
 	opacity: 1;
 	overflow: hidden;
 	transform-origin: top;
@@ -496,7 +507,7 @@ h6 {
 .checkbox-group label {
 	display: flex;
 	align-items: center;
-	gap: 8px;
+	gap: var(--space-sm);
 	cursor: pointer;
 	font-size: 16px;
 	font-weight: 600;
@@ -678,7 +689,7 @@ div.journals-a-z>span>a {
 .database-dropdown-header {
 	background: #005daa;
 	color: white;
-	padding: 12px 20px;
+	padding: var(--space-md) var(--space-lg);
 	font-weight: 600;
 	font-size: 16px;
 	border-top-left-radius: 8px;
@@ -711,8 +722,8 @@ div.journals-a-z>span>a {
 .database-dropdown-content {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: 0 20px;
-	padding: 15px;
+	gap: 0 var(--space-lg);
+	padding: var(--space-md);
 	max-height: 400px;
 	overflow-y: auto;
 
@@ -741,9 +752,9 @@ div.journals-a-z>span>a {
 }
 
 .database-dropdown-item {
-	padding: 8px 10px;
+	padding: var(--space-sm) var(--space-sm);
 	transition: background 0.15s;
-	border-radius: 4px;
+	border-radius: var(--space-xs);
 	background: transparent;
 }
 
@@ -766,7 +777,7 @@ div.journals-a-z>span>a {
 }
 
 .database-dropdown-empty {
-	padding: 40px 20px;
+	padding: var(--space-2xl) var(--space-lg);
 	text-align: center;
 	color: #666;
 	font-style: italic;
@@ -777,14 +788,14 @@ div.journals-a-z>span>a {
 	top: 100%;
 	left: 0;
 	right: 0;
-	margin-top: 5px;
+	margin-top: var(--space-xs);
 }
 
 /* Position letter dropdown below the databases bar */
 #database-letter-dropdown {
 	top: 100%;
-	left: 10px;
-	margin-top: 5px;
+	left: var(--space-sm);
+	margin-top: var(--space-xs);
 }
 
 /* Make parent position relative */
@@ -833,8 +844,8 @@ div.databases {
 }
 
 .options li {
-	margin-right: 15px;
-	padding: 5px 10px 0px 10px;
+	margin-right: var(--space-md);
+	padding: var(--space-xs) var(--space-sm) 0px var(--space-sm);
 }
 
 .options li a {
@@ -899,7 +910,7 @@ input[type="radio"]+label:hover {
 /* Links group */
 .links-group {
 	display: flex;
-	gap: 15px;
+	gap: var(--space-md);
 }
 
 .links-group a {
@@ -1102,13 +1113,13 @@ iframe {
 
 .news-item {
 	display: flex;
-	padding-bottom: 10px;
+	padding-bottom: var(--space-sm);
 	max-width: 50%;
 	flex: 1 1 auto;
 	justify-content: space-around;
 	border-right: 1px solid #e2e2e2;
 	border-bottom: 1px solid #e2e2e2;
-	padding: 30px;
+	padding: var(--space-xl);
 	flex-direction: column;
 	align-items: center;
 }
@@ -1343,7 +1354,7 @@ iframe {
 	}
 
 	.navbar-nav>.nav-item>a {
-		padding: 10px 15px;
+		padding: var(--space-sm) var(--space-md);
 	}
 	.bento {
 		margin-top: 15px;
