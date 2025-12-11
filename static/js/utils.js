@@ -75,12 +75,12 @@ function setupSearchHandlers() {
 
         // Construct final query URL
         var finalQuery = baseUrl + "?vid=" + vid +
-                        "&query=" + searchType + ",contains," + query +
+                        "&query=" + searchType + ",contains," + encodeURIComponent(query) +
                         "&tab=" + tabParam +
                         "&search_scope=" + scopeParam +
                         "&sortby=rank" +
                         resourceFilters +
-                        "&lang=en_US&mode=basic&offset=0";
+                        "&lang=en&mode=basic";
 
         // Redirect to Primo search
         window.location = finalQuery;
