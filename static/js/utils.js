@@ -8,22 +8,17 @@ const DEBUG = {
 };
 
 $(document).ready(function ($) {
-    $(".database-list").load("https://lgapi-us.libapps.com/widgets.php?site_id=146&widget_type=2&search_terms=&search_match=2&subject_ids=&sort_by=name&list_format=2&drop_text=Select+a+Database...&output_format=1&load_type=2&enable_description=1&widget_embed_type=2&num_results=0&enable_more_results=0&window_target=2&config_id=1535395835265")
-
-    $("#journalSearchButton").click(function () {
-        var query = $("#primoQueryTemp2").val();
-        query = 'query=any,contains,' + query.replace(/[,]/g, " ") + '&tab=jsearch_slot&vid=01CUNY_GC:CUNY_GC&offset=0&journals=any,' + query.replace(/[,]/g, " ");
-        window.location = 'https://cuny-gc.primo.exlibrisgroup.com/discovery/jsearch?' + query;
-    });
-    $('#primoQueryTemp2').keypress(function (e) {
-        if (e.which == 13) {//Enter key pressed
-            $('#journalSearchButton').click();//Trigger search button click event
-        }
-    });
+    // Load the widget to extract database data
+    $(".database-list").load("https://lgapi-us.libapps.com/widgets.php?site_id=146&widget_type=2&search_terms=&search_match=2&subject_ids=&sort_by=name&list_format=2&drop_text=Select+a+Database...&output_format=1&load_type=2&enable_description=1&widget_embed_type=2&num_results=0&enable_more_results=0&window_target=2&config_id=1535395835265", function () {
+        $("#s-lg-frm-az-widget-1535395835265").addClass('col-md-10');
+        // Parse and populate database browser
+        parseDatabases();
+    })
 
     // Search functionality setup
     setupSearchHandlers();
     setupTabAccessibility();
+    setupDatabaseBrowser();
 
     // Load dynamic content
     loadEvents();
@@ -36,24 +31,94 @@ $(document).ready(function ($) {
 
 // Search functionality
 function setupSearchHandlers() {
-    $("#journalSearchButton").click(handleJournalSearch);
-    $("#booksearchButton").click(handleBookSearch);
-    $("#articleButton").click(handleArticleSearch);
-    
-    // Enter key handlers for all search inputs
-    const searchInputMap = {
-        '#primoQueryTemp2': handleJournalSearch,
-        '#primoQueryTemp': handleBookSearch,
-        '#articleSearch': handleArticleSearch
-    };
+    // Unified OneSearch Handler
+    $("#oneSearchButton").click(function () {
+        var query = $("#oneSearchInput").val();
+        var searchType = "any"; // Default to keyword search
+        var resourceType = $("input[name='resourceType']:checked").val();
+        var includeExternal = $("#scopeCheckbox").is(":checked");
 
-    Object.entries(searchInputMap).forEach(([inputSelector, handler]) => {
-        $(inputSelector).keydown(e => {
-            if (e.key === 'Enter') {
-                e.preventDefault(); // Prevent default form submission
-                handler();
-            }
-        });
+        // Base URL components
+        var baseUrl = "https://cuny-gc.primo.exlibrisgroup.com/discovery/search";
+        var vid = "01CUNY_GC:CUNY_GC";
+
+        // Scope mapping - both tab and search_scope change together
+        var tabParam;
+        var scopeParam;
+        if (includeExternal) {
+            // GC + CUNY + SUNY - Institution Zone + Network Zone + SUNY
+            tabParam = "IZ_NZ_SUNY";
+            scopeParam = "IZ_CI_AW_NZ_SUNY";
+        } else {
+            // GC only - Institution Zone + Central Index + Academic Works
+            tabParam = "Everything";
+            scopeParam = "IZ_CI_AW";
+        }
+
+        // Resource type filters
+        var resourceFilters = "";
+        switch(resourceType) {
+            case "books":
+                // Books only (physical + ebooks)
+                resourceFilters = "&mfacet=rtype,include,books,1&mfacet=rtype,include,book_chapters,1";
+                break;
+            case "articles":
+                // Articles only (exclude books and book chapters)
+                resourceFilters = "&facet=rtype,exclude,book_chapters&facet=rtype,exclude,books";
+                break;
+            case "all":
+            default:
+                // No filters - search everything
+                resourceFilters = "";
+                break;
+        }
+
+        // Construct final query URL
+        var finalQuery = baseUrl + "?vid=" + vid +
+                        "&query=" + searchType + ",contains," + encodeURIComponent(query) +
+                        "&tab=" + tabParam +
+                        "&search_scope=" + scopeParam +
+                        "&sortby=rank" +
+                        resourceFilters +
+                        "&lang=en&mode=basic";
+
+        // Redirect to Primo search
+        window.location = finalQuery;
+    });
+
+    // Enter key support for OneSearch
+    $('#oneSearchInput').keypress(function (e) {
+        if (e.which == 13) {//Enter key pressed
+            $('#oneSearchButton').click();//Trigger search button click event
+        }
+    });
+
+    // Dynamic show/hide for scope checkbox based on resource type selection
+    $('input[name="resourceType"]').on('change', function() {
+        var resourceType = $(this).val();
+        var $checkboxGroup = $('.checkbox-group');
+
+        if (resourceType === 'articles') {
+            // Hide checkbox for articles-only searches
+            $checkboxGroup.addClass('hidden');
+        } else {
+            // Show checkbox for formats that include books
+            $checkboxGroup.removeClass('hidden');
+        }
+    });
+
+    // Journal Search Handler
+    $("#journalSearchButton").click(function () {
+        var query = $("#primoQueryTemp2").val().replace(/[,]/g, " ");
+        window.location = "https://cuny-gc.primo.exlibrisgroup.com/discovery/jsearch?query=any,contains," + query +
+                         "&tab=jsearch_slot&vid=01CUNY_GC:CUNY_GC&offset=0&journals=any," + query;
+    });
+
+    // Enter key support for Journal Search
+    $('#primoQueryTemp2').keypress(function (e) {
+        if (e.which == 13) {//Enter key pressed
+            $('#journalSearchButton').click();//Trigger search button click event
+        }
     });
 }
 
@@ -262,7 +327,7 @@ function loadVideos() {
 function handleHoursSuccess(result) {
     const today = moment().format('dddd');
     const hoursThisWeek = result.locations[0].weeks[0];
-    
+
     const formattedHours = Object.keys(hoursThisWeek).map(key => {
         const isToday = key === today;
         return {
@@ -277,7 +342,7 @@ function handleHoursSuccess(result) {
     });
 
     const todayHours = formattedHours.find(h => h.isToday);
-    $('#today-hours').html(todayHours.times.status === "closed" 
+    $('#today-hours').html(todayHours.times.status === "closed"
         ? "Today's Hours: Closed"
         : `Today's Hours: ${todayHours.times.hours[0].from} - ${todayHours.times.hours[0].to}`
     );
@@ -300,7 +365,7 @@ function handleAlertSuccess(data) {
 function handleCollectionsSuccess(data) {
     const collections = data.collection.filter(c => c.mms_id.value !== "9994569275306140");
     const collection = collections[Math.floor(Math.random() * collections.length)];
-    
+
     const collectionData = {
         collection: [{
             collectionName: collection.name,
@@ -376,7 +441,7 @@ function processContent(content) {
 function extractImage(content) {
     const imgMatch = content.match(/<img[^>]+>/);
     if (!imgMatch) return "";
-    
+
     const tempDiv = document.createElement("div");
     tempDiv.innerHTML = imgMatch[0];
     return tempDiv.firstChild?.src || "";
@@ -387,20 +452,146 @@ function renderNews(newsData) {
     $('#news').html(Mustache.render(template, newsData));
 }
 
-// Search handlers
-function handleJournalSearch() {
-    const query = $("#primoQueryTemp2").val().replace(/[,]/g, " ");
-    window.location = `https://cuny-gc.primo.exlibrisgroup.com/discovery/jsearch?query=any,contains,${query}&tab=jsearch_slot&vid=01CUNY_GC:CUNY_GC&offset=0&journals=any,${query}`;
+// Database Browser Functions
+let databasesData = [];
+
+function parseDatabases() {
+    const $select = $('#s-lg-sel-az-widget-1535395835265');
+    const $options = $select.find('option');
+
+    databasesData = [];
+    $options.each(function() {
+        const $option = $(this);
+        const url = $option.val();
+        const name = $option.text();
+
+        // Skip the placeholder option
+        if (url && name) {
+            databasesData.push({
+                name: name,
+                url: url,
+                firstChar: name.charAt(0).toUpperCase()
+            });
+        }
+    });
+
+    console.log(`Loaded ${databasesData.length} databases`);
 }
 
-function handleBookSearch() {
-    const query = $("input#primoQueryTemp").val();
-    const radio = $("#searchCUNY > li input[name=ONESEARCH]:checked").val();
-    window.location = `https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC&query=${radio},contains,${query}&tab=Everything&search_scope=IZ_CI_AW&sortby=rank&mfacet=rtype,include,books,1&mfacet=rtype,include,book_chapters,1&lang=en_US&mode=basic&offset=0`;
+function showDatabaseDropdown($dropdown, databases, title) {
+    if (databases.length === 0) {
+        const html = `
+            <div class="database-dropdown-header">
+                <span>${title}</span>
+                <button class="database-dropdown-close" onclick="closeDatabaseDropdowns()">&times;</button>
+            </div>
+            <div class="database-dropdown-empty">No databases found</div>
+        `;
+        $dropdown.html(html).addClass('show');
+        return;
+    }
+
+    const itemsHtml = databases.map(db => `
+        <div class="database-dropdown-item">
+            <a href="${db.url}" target="_blank">${db.name}</a>
+        </div>
+    `).join('');
+
+    const html = `
+        <div class="database-dropdown-header">
+            <span>${title} (${databases.length})</span>
+            <button class="database-dropdown-close" onclick="closeDatabaseDropdowns()">&times;</button>
+        </div>
+        <div class="database-dropdown-content">
+            ${itemsHtml}
+        </div>
+    `;
+
+    $dropdown.html(html).addClass('show');
 }
 
-function handleArticleSearch() {
-    const query = $("#articleSearch").val();
-    const radio = $("#articleSearchRadio > li input[name=articleSearch]:checked").val();
-    window.location = `https://cuny-gc.primo.exlibrisgroup.com/discovery/search?vid=01CUNY_GC:CUNY_GC&query=${radio},contains,${query}&tab=Everything&search_scope=IZ_CI_AW&sortby=rank&facet=rtype,exclude,book_chapters&facet=rtype,exclude,books&lang=en_US&mode=basic&offset=0`;
+function closeDatabaseDropdowns() {
+    $('.database-dropdown').removeClass('show');
 }
+
+function setupDatabaseBrowser() {
+    // Letter navigation
+    $('.db-letter-link').on('click', function(e) {
+        e.preventDefault();
+        const letter = $(this).data('letter');
+
+        let filtered;
+        let title;
+
+        if (letter === '0-9') {
+            filtered = databasesData.filter(db => /^\d/.test(db.name));
+            title = 'Databases: 0-9';
+        } else {
+            filtered = databasesData.filter(db => db.firstChar === letter);
+            title = `Databases: ${letter}`;
+        }
+
+        // Close search dropdown
+        $('#database-search-dropdown').removeClass('show');
+
+        // Show letter dropdown
+        showDatabaseDropdown($('#database-letter-dropdown'), filtered, title);
+    });
+
+    // Search functionality - real-time
+    let searchTimeout;
+    $('#databaseSearchInput').on('input', function() {
+        const searchTerm = $(this).val().trim();
+
+        // Clear previous timeout
+        clearTimeout(searchTimeout);
+
+        if (searchTerm.length === 0) {
+            closeDatabaseDropdowns();
+            $('#databaseClearSearch').hide();
+            return;
+        }
+
+        $('#databaseClearSearch').show();
+
+        // Debounce search
+        searchTimeout = setTimeout(() => {
+            const term = searchTerm.toLowerCase();
+            const filtered = databasesData.filter(db =>
+                db.name.toLowerCase().includes(term)
+            );
+
+            // Close letter dropdown
+            $('#database-letter-dropdown').removeClass('show');
+
+            // Show search dropdown
+            showDatabaseDropdown(
+                $('#database-search-dropdown'),
+                filtered,
+                `Search results for "${searchTerm}"`
+            );
+        }, 300);
+    });
+
+    // Clear search button
+    $('#databaseClearSearch').on('click', function() {
+        $('#databaseSearchInput').val('');
+        closeDatabaseDropdowns();
+        $(this).hide();
+    });
+
+    // Close dropdowns when clicking outside
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('.database-dropdown, .db-letter-link, #databaseSearchInput').length) {
+            closeDatabaseDropdowns();
+        }
+    });
+
+    // Prevent dropdown close when clicking inside
+    $('.database-dropdown').on('click', function(e) {
+        e.stopPropagation();
+    });
+}
+
+// Make closeDatabaseDropdowns global
+window.closeDatabaseDropdowns = closeDatabaseDropdowns;

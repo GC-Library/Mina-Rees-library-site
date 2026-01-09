@@ -5,6 +5,24 @@
 @import url('https://fonts.googleapis.com/css?family=Lora');
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
+/* Design System Variables */
+:root {
+	/* Spacing Scale (8px base) */
+	--space-xs: 4px;
+	--space-sm: 8px;
+	--space-md: 16px;
+	--space-lg: 24px;
+	--space-xl: 32px;
+	--space-2xl: 48px;
+
+	/* Tab Navigation Colors */
+	--tab-inactive-bg: rgba(15, 15, 20, 0.75);
+	--tab-inactive-border: rgba(60, 60, 70, 0.4);
+	--tab-active-bg: #005daa;
+	--tab-active-glow: rgba(0, 93, 170, 0.4);
+	--tab-hover-bg: rgba(0, 93, 170, 0.15);
+}
+
 /* General Styles */
 html,
 body {
@@ -24,7 +42,7 @@ body {
 	left: 0;
 	background: #005daa;
 	color: #fff;
-	padding: 10px 16px;
+	padding: var(--space-sm) var(--space-md);
 	z-index: 1000;
 	text-decoration: none;
 }
@@ -291,9 +309,9 @@ h6 {
 .bento-header {
 	display: inline-flex;
 	flex-direction: column;
-	margin-bottom: 10px;
+	margin-bottom: var(--space-sm);
 	color: white;
-	padding: 10px;
+	padding: var(--space-sm);
 	padding-bottom: 0px;
 	background: rgba(10, 10, 10, .6) !important;
 }
@@ -314,42 +332,58 @@ h6 {
 	border-bottom: none;
 	position: relative;
 	width: fit-content;
+	gap: var(--space-sm);
+	padding-bottom: 0;
 }
 
 .tab .nav-tabs li {
 	min-width: 150px;
 	max-width: 250px;
 	margin-bottom: 0;
-	margin-right: 10px;
 	flex: 1 1 auto;
+	position: relative;
 }
 
 .tab .nav-tabs .nav-link {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: rgba(10, 10, 10, .6) !important;
-	padding: 10px;
-	border: 1px solid rgba(40, 40, 40, .6);
+	background: var(--tab-inactive-bg) !important;
+	padding: 12px var(--space-md);
+	border: 1px solid var(--tab-inactive-border);
+	border-bottom: none;
 	border-radius: 0;
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: 600;
-	color: white;
-	margin-right: 0;
+	letter-spacing: 0.5px;
+	color: rgba(255, 255, 255, 0.85);
 	text-align: center;
+	position: relative;
 	z-index: 1;
-	transition: all 0.3s ease 0s;
+	transition: all 0.25s ease;
 	width: 100%;
 	text-transform: uppercase;
+	margin-bottom: -1px;
 }
 
-.tab .nav-tabs .nav-link:hover,
-.tab .nav-tabs .nav-link.active {
-	background-color: #005daa !important;
-	border: 1px solid #005daa;
+/* Hover State - Subtle lift */
+.tab .nav-tabs .nav-link:hover {
+	background: var(--tab-inactive-bg) !important;
+	border-color: rgba(0, 93, 170, 0.4);
 	color: white;
+	z-index: 2;
 }
 
+/* Active State - Connected to content */
+.tab .nav-tabs .nav-link.active {
+	background: var(--tab-active-bg) !important;
+	border: 1px solid var(--tab-active-bg);
+	border-bottom: none;
+	color: white;
+	z-index: 3;
+}
+
+/* Button reset - maintain polish */
 .tab .nav-tabs button {
 	box-shadow: none;
 	padding: 0;
@@ -357,6 +391,7 @@ h6 {
 	width: 100%;
 	height: 100%;
 	background: none;
+	cursor: pointer;
 }
 
 .tab .nav-tabs button:hover,
@@ -364,23 +399,18 @@ h6 {
 	background: none;
 }
 
-.tab .nav-tabs li.active .nav-link:before,
-.tab .nav-tabs li .nav-link:hover:before,
-.tab .nav-tabs li active .nav-link:after,
-.tab .nav-tabs li .nav-link:hover:after {
-	width: 50%;
-}
-
-/* Tab Content */
+/* Tab Content - Connected to tabs */
 .tab .tab-content {
-	padding: 20px;
-	margin-top: -5px;
+	padding: var(--space-lg);
+	margin-top: 0;
 	border-radius: 0;
 	font-size: 15px;
 	color: white;
 	line-height: 30px;
 	background: rgba(10, 10, 10, .6);
 	min-height: 180px;
+	border: 1px solid var(--tab-inactive-border);
+	position: relative;
 }
 
 .tab .tab-content h3 {
@@ -417,17 +447,103 @@ h6 {
 /* Search Sections */
 #searchCUNY,
 #searchJournals,
-#articleSearchRadio {
+#articleSearchRadio,
+#searchTypeRadio {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
 }
 
 #searchCUNY>div,
 #searchJournals>div,
-#articleSearchRadio>div {
+#articleSearchRadio>div,
+#searchTypeRadio>div {
 	flex: 0 1 auto;
 	width: 101px;
+}
+
+/* Dropdown filters integrated with radio buttons */
+.filter-group {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-xs);
+	margin-right: var(--space-md);
+}
+
+.filter-group label {
+	font-size: 16px;
+	font-weight: 600;
+	color: white;
+	margin-bottom: 0;
+	white-space: nowrap;
+}
+
+.filter-dropdown {
+	height: var(--space-xl);
+	min-width: 160px;
+	padding: var(--space-xs) var(--space-sm);
+	font-size: 14px;
+	font-weight: 500;
+	background: rgba(255, 255, 255, 0.95);
+	border: 2px solid #005daa;
+	color: #12130f;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.filter-dropdown:hover {
+	background: rgba(255, 255, 255, 1);
+	border-color: #004d80;
+}
+
+.filter-dropdown:focus {
+	outline: none;
+	border-color: #004d80;
+	box-shadow: 0 0 3px rgba(0, 93, 170, 0.5);
+}
+
+/* Checkbox filter group */
+.checkbox-group {
+	display: inline-flex;
+	align-items: center;
+	margin-right: var(--space-md);
+	opacity: 1;
+	overflow: hidden;
+	transform-origin: top;
+	transition: opacity 0.25s ease, transform 0.25s ease, margin 0.25s ease;
+}
+
+.checkbox-group.hidden {
+	opacity: 0;
+	transform: scaleY(0);
+	height: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.checkbox-group label {
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm);
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: 600;
+	color: white;
+}
+
+.scope-checkbox {
+	width: 18px;
+	height: 18px;
+	cursor: pointer;
+	accent-color: #005daa;
+	border: 2px solid #005daa;
+}
+
+.scope-checkbox:focus {
+	outline: 2px solid #004d80;
+	outline-offset: 2px;
 }
 
 .form-group {
@@ -443,9 +559,24 @@ h6 {
 
 /* Text Inside Searchbar */
 .form-control::-moz-placeholder {
-	color: #12130f;
-	opacity: .9;
+	color: #888;
+	opacity: 1;
 	font-size: 16px;
+	font-style: italic;
+}
+
+.form-control::placeholder {
+	color: #888;
+	opacity: 1;
+	font-size: 16px;
+	font-style: italic;
+}
+
+.form-control::-webkit-input-placeholder {
+	color: #888;
+	opacity: 1;
+	font-size: 16px;
+	font-style: italic;
 }
 
 /* Input Group */
@@ -546,6 +677,179 @@ div.journals-a-z>span>a {
 	margin-top: 0;
 }
 
+/* Database Dropdown Styles */
+.database-dropdown {
+	position: absolute;
+	display: none;
+	background: white;
+	border-radius: 8px;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+	z-index: 1000;
+	min-width: 600px;
+	max-width: 90vw;
+	animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.database-dropdown.show {
+	display: block;
+}
+
+.database-dropdown-header {
+	background: #005daa;
+	color: white;
+	padding: var(--space-md) var(--space-lg);
+	font-weight: 600;
+	font-size: 16px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.database-dropdown-close {
+	background: none;
+	border: none;
+	color: white;
+	font-size: 20px;
+	cursor: pointer;
+	padding: 0;
+	width: 24px;
+	height: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0.8;
+	transition: opacity 0.2s;
+}
+
+.database-dropdown-close:hover {
+	opacity: 1;
+}
+
+.database-dropdown-content {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0 var(--space-lg);
+	padding: var(--space-md);
+	max-height: 400px;
+	overflow-y: auto;
+
+	/* Custom scrollbar - Firefox */
+	scrollbar-width: thin;
+	scrollbar-color: #005daa #f0f0f0;
+}
+
+/* Custom scrollbar - Webkit browsers */
+.database-dropdown-content::-webkit-scrollbar {
+	width: 10px;
+}
+
+.database-dropdown-content::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.database-dropdown-content::-webkit-scrollbar-thumb {
+	background: #005daa;
+	border-radius: 10px;
+	border: 2px solid white;
+}
+
+.database-dropdown-content::-webkit-scrollbar-thumb:hover {
+	background: #004080;
+}
+
+.database-dropdown-item {
+	padding: var(--space-sm) var(--space-sm);
+	transition: background 0.15s;
+	border-radius: var(--space-xs);
+	background: transparent;
+}
+
+.database-dropdown-item:hover {
+	background: #f0f7ff;
+}
+
+.database-dropdown-item a {
+	color: #005daa;
+	text-decoration: none;
+	font-size: 14px;
+	line-height: 1.4;
+	display: block;
+	font-weight: 500;
+}
+
+.database-dropdown-item a:hover {
+	border-bottom: none;
+	text-decoration: underline;
+}
+
+.database-dropdown-empty {
+	padding: var(--space-2xl) var(--space-lg);
+	text-align: center;
+	color: #666;
+	font-style: italic;
+}
+
+/* Position search dropdown below search box */
+#database-search-dropdown {
+	top: 100%;
+	left: 0;
+	right: 0;
+	margin-top: var(--space-xs);
+}
+
+/* Position letter dropdown below the databases bar */
+#database-letter-dropdown {
+	top: 100%;
+	left: var(--space-sm);
+	margin-top: var(--space-xs);
+}
+
+/* Make parent position relative */
+.search-input {
+	position: relative;
+}
+
+/* Database search input - restore right border since button is hidden */
+#databaseSearchInput {
+	border-right: 3px solid #005daa !important;
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+}
+
+/* When clear button is visible, remove right border from input */
+#databaseClearSearch:not([style*="display: none"]) ~ #databaseSearchInput,
+#databaseClearSearch:not([style*="display:none"]) ~ #databaseSearchInput {
+	border-right: none !important;
+}
+
+div.databases {
+	position: relative;
+}
+
+/* Responsive: single column on smaller screens */
+@media (max-width: 768px) {
+	.database-dropdown {
+		min-width: 90vw;
+	}
+
+	.database-dropdown-content {
+		column-count: 1;
+	}
+}
+
 /* Radio Buttons */
 .options {
 	font-size: 16px !important;
@@ -554,12 +858,13 @@ div.journals-a-z>span>a {
 	list-style: none;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
-	padding-bottom: 10px;
+	padding-bottom: 12px;
+	padding-top: 2px;
 }
 
 .options li {
-	margin-right: 15px;
-	padding: 5px 10px 0px 10px;
+	margin-right: var(--space-md);
+	padding: var(--space-xs) var(--space-sm) 0px var(--space-sm);
 }
 
 .options li a {
@@ -567,26 +872,78 @@ div.journals-a-z>span>a {
 	font-size: 16px;
 	font-weight: 600;
 	text-decoration: none;
+	border-bottom: 3px solid transparent;
+}
+
+.options li a:hover {
+	border-bottom: 3px solid rgb(0, 93, 170);
+}
+
+input[type="radio"] {
+	width: 18px;
+	height: 18px;
+	cursor: pointer;
+	accent-color: #005daa;
+	margin-right: 5px;
+}
+
+input[type="radio"]:focus {
+	outline: 2px solid #004d80;
+	outline-offset: 2px;
 }
 
 input[type="radio"]+label {
 	font-weight: 600;
-	padding-left: 5px;
+	padding-left: 0px;
+	margin-right: 20px;
 	color: white;
+	cursor: pointer;
+	user-select: none;
 }
 
 input[type="radio"]+label:hover {
 	color: #fff;
 }
 
+/* Filter group label */
+.filter-group-label {
+	font-size: 16px;
+	font-weight: 600;
+	color: white;
+	margin-right: 10px;
+}
+
+/* Filter group container - groups radio buttons with label */
+.filter-group-container {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+/* Radio button group */
+.radio-group {
+	display: flex;
+	align-items: center;
+}
+
+/* Links group */
+.links-group {
+	display: flex;
+	gap: var(--space-md);
+}
+
+.links-group a {
+	white-space: nowrap;
+}
+
 /* Below the Fold*/
 
-.features {
+div.features {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	flex-wrap: wrap;
-	margin-bottom: 30px;
+	margin-bottom: 1rem;
 }
 
 /* Feature Wrapper */
@@ -617,6 +974,10 @@ input[type="radio"]+label:hover {
 
 .feature-wrapper h2 a {
 	color: #005daa;
+}
+
+div.feature-wrapper.col-3 h3 {
+	margin-bottom: 1rem;
 }
 
 /* Lower Header */
@@ -775,31 +1136,44 @@ iframe {
 
 .news-item {
 	display: flex;
-	padding-bottom: 10px;
+	padding-bottom: var(--space-sm);
 	max-width: 50%;
 	flex: 1 1 auto;
 	justify-content: space-around;
 	border-right: 1px solid #e2e2e2;
 	border-bottom: 1px solid #e2e2e2;
-	padding: 30px;
+	padding: var(--space-xl);
 	flex-direction: column;
 	align-items: center;
 }
 
+/* Remove right border from right column items */
+.news-item:nth-child(2n) {
+	border-right: none;
+}
+
+/* Remove bottom border from last row items */
+.news-item:nth-last-child(-n+2) {
+	border-bottom: none;
+}
+
 .news-image-container {
-	width: 100%;
-	height: 210px;
+	width: 200px;
+	height: 200px;
 	overflow: hidden;
 	position: relative;
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
 }
 
 .news li img {
-	margin-bottom: 15px;
-	max-width: 200px;
-	max-height: 200px;
+	width: 100%;
+	height: 100%;
 	object-fit: cover;
+	object-position: center;
+	margin-bottom: 15px;
 	padding-bottom: 20px;
 }
 
@@ -1016,7 +1390,7 @@ iframe {
 	}
 
 	.navbar-nav>.nav-item>a {
-		padding: 10px 15px;
+		padding: var(--space-sm) var(--space-md);
 	}
 	.bento {
 		margin-top: 15px;
@@ -1052,13 +1426,12 @@ footer.footer.footer-black {
 }
 
 .footer-content {
-	display: flex;
-	flex-flow: row wrap;
-	flex: 1 1 auto;
-	justify-content: space-between;
 	color: white;
-	margin-top: 40px;
+	margin-top: var(--space-2xl);
+	padding: var(--space-lg) 0;
 	font-size: 16px;
+	display: flex;
+	justify-content: space-between;
 }
 
 .footer-content>div>div {
@@ -1090,10 +1463,19 @@ footer .glyphicon {
 
 .footer-list {
 	list-style: none;
+	text-align: right;
+	padding-right: 0;
 }
 
 .footer-list li {
-	margin-bottom: 20px;
+	margin-bottom: var(--space-md);
+}
+
+#footer-logo {
+	display: flex;
+	align-items: center;
+	flex: 0 0 auto;
+	max-width: 200px;
 }
 
 .social-media {
