@@ -9,6 +9,6 @@
 # dark
 # https://getbootstrap.com/docs/5.0/components/alerts/
 alert:
-  style: info
-  message: The interlibrary loan system (ILLiad) is temporarily out of service. 
-  show: False
+  style: warning
+  message: The Library space will be closed on Sunday, January 25, in anticipation of the winter storm. But the Library is always open remotely for you! Visit <a href="http://library.gc.cuny.edu">library.gc.cuny.edu</a>
+  show: True
