@@ -10,5 +10,5 @@
 # https://getbootstrap.com/docs/5.0/components/alerts/
 alert:
   style: warning
-  message: The Graduate Center building, including the Library, is closed for the winter storm on Monday, January 26. Visit <a href="http://library.gc.cuny.edu">library.gc.cuny.edu</a>
-  show: True
+  message: ""
+  show: False
