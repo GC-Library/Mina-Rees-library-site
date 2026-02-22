@@ -10,5 +10,5 @@
 # https://getbootstrap.com/docs/5.0/components/alerts/
 alert:
   style: warning
-  message: ""
-  show: False
+  message: "The library will be closed Saturday, February 22 and Sunday, February 23 due to the winter storm."
+  show: True
