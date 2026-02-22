@@ -10,5 +10,5 @@
 # https://getbootstrap.com/docs/5.0/components/alerts/
 alert:
   style: warning
-  message: "The Library space will be closed on Sunday, February 22, and Monday, February 23, during the winter storm. But Library is always open remotely for you! Visit <a href='https://library.gc.cuny.edu'>library.gc.cuny.edu</a>"
+  message: "The library space will be closed on Sunday, February 22, and Monday, February 23, during the winter storm. But the library is always open remotely for you! Visit <a href='https://library.gc.cuny.edu'>library.gc.cuny.edu</a>"
   show: True
