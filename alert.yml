@@ -11,4 +11,4 @@
 alert:
   style: warning
   message: "We’re currently experiencing issues with the CUNYfirst. This may prevent you from logging in to OneSearch (for holds and renewals), accessing databases and e-journals, placing ILL requests, and using Blackboard. We’re working to resolve this as quickly as possible—thank you for your patience."
-  show: True
+  show: False
