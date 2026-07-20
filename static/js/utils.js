@@ -351,14 +351,29 @@ function handleHoursSuccess(result) {
     $('#hours').html(Mustache.render(template, { days: formattedHours }));
 }
 
+function isAlertActive(alert, now = Date.now()) {
+    if (!alert.show) {
+        return false;
+    }
+
+    if (!alert.expires) {
+        return true;
+    }
+
+    const expiresAt = new Date(alert.expires).getTime();
+    return Number.isNaN(expiresAt) || now < expiresAt;
+}
+
 function handleAlertSuccess(data) {
     const alert = jsyaml.load(data).alert;
-    if (alert.show) {
+    if (isAlertActive(alert)) {
         const alertHTML = `<div class="alert alert-dismissible alert-${alert.style} fade show" role="alert">
             ${alert.message}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>`;
         $('#alert-container').html(alertHTML).find('.alert').addClass(alert.style);
+    } else {
+        $('#alert-container').empty();
     }
 }
 
