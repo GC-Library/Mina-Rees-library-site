@@ -10,5 +10,5 @@
 # https://getbootstrap.com/docs/5.0/components/alerts/
 alert:
   style: warning
-  message: "We’re currently experiencing issues with the CUNYfirst. This may prevent you from logging in to OneSearch (for holds and renewals), accessing databases and e-journals, placing ILL requests, and using Blackboard. We’re working to resolve this as quickly as possible—thank you for your patience."
-  show: False
+  message: "The 2nd Floor of the Library will close early at 3:00pm on Monday, July 20, Tuesday, July 21, and Wednesday, July 22, so that critical IT work for the <a href='https://www.gc.cuny.edu/facilities-management-and-campus-planning/capital-projects/network-modernization-project-nmp'>Network Modernization Project</a> can be accomplished. The Library's 1st Floor will remain open during this time. We apologize for any inconvenience."
+  show: True
