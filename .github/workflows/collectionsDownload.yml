@@ -13,12 +13,18 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Download New JSON
+        env:
+          ALMA_API_KEY: ${{ secrets.ALMA_API_KEY }}
         run: |
+          if [ -z "$ALMA_API_KEY" ]; then
+            echo "ALMA_API_KEY secret is not set."
+            exit 1
+          fi
           if curl -o data/new-collections.json -H "Accept: application/json" \
           --connect-timeout 30 \
           --retry 300 \
           --retry-delay 5 \
-          https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/collections?apikey=l8xx19fe635164904a9a80d6787cbb6a28a5&format=json; then
+          https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/collections?apikey=${ALMA_API_KEY}&format=json; then
             echo "Download successful."
           else
             echo "Download failed."
